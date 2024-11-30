@@ -1,0 +1,35 @@
+name: Publish to NuGet
+
+on:
+  release:
+    types: [published]  # This triggers the workflow when a new release is published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/OpenMonday.Core/OpenMonday.Core.csproj
+
+    - name: Build the project
+      run: dotnet build ./src/OpenMonday.Core/OpenMonday.Core.csproj --configuration Release
+
+    - name: Pack the project into a NuGet package
+      run: dotnet pack ./src/OpenMonday.Core/OpenMonday.Core.csproj --configuration Release --no-build --output ./tmp/nupkg
+
+    - name: Publish to NuGet
+      run: |
+        dotnet nuget push "./tmp/nupkg/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
