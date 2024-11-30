@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v1.0.2"></a>
+## [v1.0.2] - 2024-11-30
+### Pull Requests
+- Merge pull request [#18](https://github.com/montipirlo21/OpenMonday/issues/18) from montipirlo21/17-validate-update-procedure-nuget-deploy
+
+
 <a name="v1.0.1"></a>
 ## [v1.0.1] - 2024-11-30
 ### Feat
@@ -23,5 +29,6 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.2...HEAD
+[v1.0.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.0...v1.0.1
