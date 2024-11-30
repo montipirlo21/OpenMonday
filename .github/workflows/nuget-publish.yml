@@ -3,6 +3,7 @@ name: Publish to NuGet
 on:
   release:
     types: [published]  # This triggers the workflow when a new release is published
+  workflow_dispatch:
 
 jobs:
   build:
