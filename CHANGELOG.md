@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v1.0.1"></a>
+## [v1.0.1] - 2024-11-30
+### Feat
+- **changelog:** Add changelog features
+
+### Pull Requests
+- Merge pull request [#16](https://github.com/montipirlo21/OpenMonday/issues/16) from montipirlo21/15-github-action-for-self-nuget-deoploying
+- Merge pull request [#13](https://github.com/montipirlo21/OpenMonday/issues/13) from montipirlo21/montipirlo21-patch-1
+- Merge pull request [#12](https://github.com/montipirlo21/OpenMonday/issues/12) from montipirlo21/3-create-first-page-of-documentation-project-structure-and-strawberry-shake
+- Merge pull request [#11](https://github.com/montipirlo21/OpenMonday/issues/11) from montipirlo21/10-automation-for-changelog
+
+
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2024-11-30
 ### Pull Requests
@@ -11,4 +23,5 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.1...HEAD
+[v1.0.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.0...v1.0.1
