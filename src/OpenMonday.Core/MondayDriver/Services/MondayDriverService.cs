@@ -1,10 +1,9 @@
 using OpenMonday.Core.MondayDriver.Interfaces;
 using OpenMonday.Core.strawberryShake;
-// using OpenMonday.Core.StrawberryShake;
 
 namespace OpenMonday.Core.MondayDriver.Services;
 
-internal class MondayDriverService : IMondayDriverService
+public class MondayDriverService : IMondayDriverService
 {
     private readonly IMondayClient _mondayClient;
 
@@ -13,4 +12,8 @@ internal class MondayDriverService : IMondayDriverService
         _mondayClient = mondayClient;
     }
 
+    public async Task<string> GetBoardsStructureById(string boardId)
+    {
+        return "OK";
+    }
 }
