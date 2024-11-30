@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using OpenMonday.Core.MondayDriver.Interfaces;
+using OpenMonday.Core.MondayDriver.InternalServices.Interfaces;
 using OpenMonday.Core.MondayDriver.Services;
 
 public static class ServiceCollectionExtensions
@@ -29,6 +30,7 @@ public static class ServiceCollectionExtensions
           );
 
         // Register custom service
+        services.AddScoped<IMondayBoardStructureConverterService, MondayBoardStructureConverterService>();
         services.AddScoped<IMondayDriverService, MondayDriverService>();
 
         return services;
