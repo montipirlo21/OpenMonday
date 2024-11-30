@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [		
+		{
+			"label": "build .NET Core",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/OpenMonday.sln"
+			],
+			"problemMatcher": "$msCompile",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}			
+		}
+	]
+}
