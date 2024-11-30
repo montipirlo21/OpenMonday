@@ -14,3 +14,10 @@ OpenMondayConfiguration__MondayToken
 set OpenMondayConfiguration__MondayToken="yourtoken"
 
 restart vscode
+
+
+changelog
+
+git tag -a v1.1.0 -m "Versione 1.1.0"
+git-chglog -o CHANGELOG.md
+git push origin --tags
