@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="StrawberryShake.Server" Version="15.0.0-p.15" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <StrawberryShake_EnableDebug>true</StrawberryShake_EnableDebug>
+  </PropertyGroup>
+
 </Project>

@@ -1,0 +1,11 @@
+query GetBoardsById($ids: [ID!]!){
+  boards(ids: $ids) {
+    id 
+    name
+    columns {
+      id
+      title
+      settings_str
+    }
+  }
+}
