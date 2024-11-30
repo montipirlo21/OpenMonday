@@ -1,4 +1,4 @@
-query GetBoardsById($ids: [ID!]!){
+query GetBoardsStructureById($ids: [ID!]!){
   boards(ids: $ids) {
     id 
     name
