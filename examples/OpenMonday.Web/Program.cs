@@ -5,6 +5,7 @@ builder.Services.Configure<OpenMondayConfiguration>(builder.Configuration.GetSec
 var openMondayConfiguration = new OpenMondayConfiguration();
 builder.Configuration.GetSection("OpenMondayConfiguration").Bind(openMondayConfiguration);
 
+
 // AddOpenMondayServices 
 builder.Services.AddOpenMondayServices(options =>
 {
