@@ -1,0 +1,22 @@
+{
+  "schema": "Schemas/schema_2024-10.graphql",
+  "documents": "**/*.graphql",
+  "extensions": {
+    "strawberryShake": {
+      "namespace": "OpenMonday.Core.strawberryShake",
+      "name": "MondayClient",
+      "url": "https://api.monday.com/v2/",
+      "dependencyInjection": true,
+      "records": {
+        "inputs": false,
+        "entities": false
+      },
+      "transportProfiles": [
+        {
+          "default": "Http",
+          "subscription": "WebSocket"
+        }
+      ]
+    }
+  }
+}

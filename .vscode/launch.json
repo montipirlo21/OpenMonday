@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [   
+    {
+      "name": "Debug Development",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build .NET Core",
+      "program": "${workspaceFolder}/examples/OpenMonday.Web/bin/Debug/net9.0/OpenMonday.Web.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/examples/OpenMonday.Web/bin/Debug/net9.0/",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      },
+      "console": "integratedTerminal", 
+    }]
+}
