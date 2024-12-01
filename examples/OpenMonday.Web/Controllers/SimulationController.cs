@@ -24,4 +24,15 @@ public class SimulationController : ControllerBase
         var result = await _mondayDriverService.GetBoardsStructureById(boardId);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("GetBoardItemsByCursor")]
+    public async Task<ActionResult<string>> GetBoardItemsByCursor([FromQuery] string boardId)
+    {
+        var result = await _mondayDriverService.GetBoardItemsByCursor(boardId);
+        return Ok($"{JsonSerializer.Serialize(result)}");
+    }
 }

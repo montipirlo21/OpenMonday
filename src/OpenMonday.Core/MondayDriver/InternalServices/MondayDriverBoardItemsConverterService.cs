@@ -252,31 +252,31 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                     }
                 case ColumnType.Status:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue)val;
                         result = MondayDriverStatusValueColumnData.Create(v.Text, v.Index, v.Is_done, v.Updated_at, v.Update_id);
                         break;
                     }
                 case ColumnType.Mirror:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue)val;
                         result = MondayDriverMirrorValueColumnData.Create(v.Display_value);
                         break;
                     }
                 case ColumnType.Dropdown:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue)val;
                         result = MondayDriverDropDownColumnData.Create(v.Text);
                         break;
                     }
                 case ColumnType.Text:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue)val;
                         result = MondayDriverTextColumnData.Create(v.Text);
                         break;
                     }
                 case ColumnType.Date:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue)val;
                        if (val.Value == null || val.Value.Value.Equals(string.Empty))
                         {
                             return result;
@@ -287,13 +287,13 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                     }
                 case ColumnType.Formula:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue)val;
                         result = MondayDriverFormulaColumnData.Create(v.Text);
                         break;
                     }
                  case ColumnType.Link:
                     {
-                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue)val;
+                        IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue v = (IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue)val;
                         result = MondayDriverLinkColumnData.Create(v.Text);
                         break;
                     }
