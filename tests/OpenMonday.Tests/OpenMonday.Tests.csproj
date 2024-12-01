@@ -23,4 +23,10 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <NoWarn>CS8625</NoWarn>
+    <NoWarn>CS8602</NoWarn>
+    <NoWarn>CS8604</NoWarn>
+  </PropertyGroup>
+
 </Project>
