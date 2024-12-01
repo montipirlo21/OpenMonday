@@ -10,72 +10,33 @@
 - **Efficient Workflow Management**: Manage and track workflows with ease.
 
 ---
-
-## Installation Guide for developing OpenMonday
-
-To install the necessary tools for working with **OpenMonday**, follow these steps:
-
-### 1. Install StrawberryShake Tools
-
-To install the necessary tool for the project, run the following command in your terminal:
-
-```bash
-dotnet tool install --global StrawberryShake.Tools --version 15.0.0-p.15
-```
-
-### 2. Set Environment Variable for Monday Token
-
-In order to interact with the monday.com API, you need to set your monday.com API token as an environment variable.
-
-### For Windows:
-
-1. Open a PowerShell or Command Prompt window.
-2. Run the following command, replacing `yourtoken` with your actual monday.com API token:
-
-```bash
-set OpenMondayConfiguration__MondayToken="yourtoken"
-```
-
-3. restart vscode if you don't see the variable. 
-
-### 3. Changelog policy
-
-1. Use the format
-    feat: Features
-    fix: Bug Fixes
-    perf: Performance Improvements
-    refactor: Code Refactoring
-
-    feat(documentation): add documentation 
-
-2. Generate changelog after tagging
-
-```bash
-git tag -a v1.1.0 -m "Versione 1.1.0"
-git-chglog -o CHANGELOG.md
-git push origin --tags
-```
-
 ## Installation Guide for using OpenMonday
 
-You can check the example project referencing the nuget package instead of the source project 
-
 1. Reference the OpenMonday nuget package
+2. In the initialization of the application you can configure the DI Service adding AddOpenMondayServices().
+3. AddOpenMondayServices needs the url of the monday api and the monday token. Here a simple example of program.cs file
+
 
 ```bash
-// Retrieve the configuration from app.settings or env
 
+var builder = WebApplication.CreateBuilder(args);
+
+// Retrieve the configuration from app.settings or env
 builder.Services.Configure<OpenMondayConfiguration>(builder.Configuration.GetSection("OpenMondayConfiguration"));
 var openMondayConfiguration = new OpenMondayConfiguration();
 builder.Configuration.GetSection("OpenMondayConfiguration").Bind(openMondayConfiguration);
 
-
-// AddOpenMondayServices 
+// AddOpenMondayServices into the DI 
 builder.Services.AddOpenMondayServices(options =>
 {
     options.MondayWebApiUrl = openMondayConfiguration.MondayWebApiUrl;
     options.MondayToken = openMondayConfiguration.MondayToken;
 });
+
+// Do other configuration and run the application as you like
+var app = builder.Build()
+app.Run();
+
 ```
 
 where OpenMondayConfiguration
