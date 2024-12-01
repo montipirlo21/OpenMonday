@@ -1,4 +1,4 @@
-query GetBoardItemsByCursor_NextItemsPage($cursor: String!) {
+query GetBoardItemsByCursor_NextPage($cursor: String!) {
   next_items_page(limit: 500, cursor: $cursor) {
     cursor
     items {
