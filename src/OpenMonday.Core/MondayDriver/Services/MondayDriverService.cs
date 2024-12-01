@@ -8,12 +8,15 @@ namespace OpenMonday.Core.MondayDriver.Services;
 public class MondayDriverService : IMondayDriverService
 {
     private readonly IMondayClient _mondayClient;
-    private readonly IMondayBoardStructureConverterService _mondayBoardStructureConverterService;
+    private readonly IMondayDriverBoardStructureConverterService _mondayBoardStructureConverterService;    
+    private readonly IMondayDriverBoardItemsConverterService _mondayDriverBoardItemsConverterService;
 
-    public MondayDriverService(IMondayClient mondayClient, IMondayBoardStructureConverterService mondayBoardStructureConverterService)
+    public MondayDriverService(IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService, 
+    IMondayDriverBoardItemsConverterService mondayDriverBoardItemsConverterService)
     {
         _mondayClient = mondayClient;
         _mondayBoardStructureConverterService = mondayBoardStructureConverterService;
+        _mondayDriverBoardItemsConverterService = mondayDriverBoardItemsConverterService;
     }
 
     public async Task<MondayDriverResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId)
@@ -60,5 +63,68 @@ public class MondayDriverService : IMondayDriverService
         }
     }
 
-   
+    public async Task<MondayDriverResult<List<MondayDriverBaseTask>>> GetBoardItemsByCursor(string board_id)
+    {
+        try
+        {
+            List<MondayDriverBaseTask> items = new List<MondayDriverBaseTask>();
+
+            // Faccio la query
+            var boards = await _mondayClient.GetBoardItemsByCursor.ExecuteAsync([board_id]);
+            IGetBoardItemsByCursor_Boards? board;
+            if (boards == null || boards.Data == null || boards.Data.Boards == null)
+            {
+                return MondayDriverResult<List<MondayDriverBaseTask>>.Failure("Error: boards == null || boards.Data == null || boards.Data.Boards == null");
+            }
+
+            if (boards.Data.Boards.Count == 0)
+            {
+                return MondayDriverResult<List<MondayDriverBaseTask>>.Failure("No board found");
+            }
+
+            if (boards.Data.Boards.Count > 1)
+            {
+                return MondayDriverResult<List<MondayDriverBaseTask>>.Failure($"Too many boards found {boards.Data.Boards.Count}");
+            }
+
+            board = boards.Data.Boards[0];
+
+            if (board == null)
+            {
+                return MondayDriverResult<List<MondayDriverBaseTask>>.Failure($"board is null");
+            }
+
+            items.AddRange(_mondayDriverBoardItemsConverterService.Convert_GetBoardItemsByCursor_MondayDriverBaseTask(board.Items_page.Items));
+
+            // Se cursore è diverso da null
+            var cursor = board.Items_page.Cursor;
+            if (cursor != null)
+            {
+                IOperationResult<IGetBoardItemsByCursor_NextPageResult> next;
+
+                do
+                {
+                    // Recupero i dati
+                    next = await _mondayClient.GetBoardItemsByCursor_NextPage.ExecuteAsync(cursor);
+                    if (next == null || next.Data == null)
+                    {
+                        return MondayDriverResult<List<MondayDriverBaseTask>>.Failure("next is null or next.Data is null");
+                    }
+
+                    // Aggiorno il cursore
+                    cursor = next.Data.Next_items_page.Cursor;
+                    items.AddRange(_mondayDriverBoardItemsConverterService.Convert_GetBoardItemsByCursor_MondayDriverBaseTask(next.Data.Next_items_page.Items));
+
+                } while (cursor != null);
+            }
+
+            // Do the conversion
+            return MondayDriverResult<List<MondayDriverBaseTask>>.Success(items);
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            throw;
+        }
+    }
 }

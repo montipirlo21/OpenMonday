@@ -11,14 +11,14 @@ namespace OpenMonday.Tests.MondayDriver
     {
         private readonly Mock<IMondayClient> _mondayClientMock;
         private readonly Mock<MondayDriverService> _mondayDriverService;
-        private readonly Mock<MondayBoardStructureConverterService> _mondayBoardStructureConverterService;
+        private readonly Mock<MondayDriverBoardStructureConverterService> _mondayBoardStructureConverterService;
 
         public MondayDriverServiceTests()
         {
             // Moq IMondayClient
             _mondayClientMock = new Mock<IMondayClient>();
 
-            _mondayBoardStructureConverterService = new Mock<MondayBoardStructureConverterService>();
+            _mondayBoardStructureConverterService = new Mock<MondayDriverBoardStructureConverterService>();
 
             // Moq MondayDriverService
             _mondayDriverService = new Mock<MondayDriverService>(_mondayClientMock.Object, _mondayBoardStructureConverterService.Object)
