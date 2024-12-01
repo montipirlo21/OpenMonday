@@ -1,7 +1,7 @@
 using OpenMonday.Core.MondayDriver.InternalServices.Interfaces;
 using OpenMonday.Core.strawberryShake;
 
-public class MondayBoardStructureConverterService : IMondayBoardStructureConverterService {
+public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStructureConverterService {
 
     public MondayDriverBoardStructure Convert_GetBoardsStructureById_MondayDriverBoardStructure(IGetBoardsStructureById_Boards mondayBoard){
         

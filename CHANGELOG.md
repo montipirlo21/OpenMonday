@@ -1,6 +1,18 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Feat
+- **driver:** Add first implementation of GetBoardItemsByCursor
+
+### Fix
+- **warning:** remove warning for possibile null references in tests
+
+
+<a name="v1.0.3"></a>
+## [v1.0.3] - 2024-12-01
+### Pull Requests
+- Merge pull request [#20](https://github.com/montipirlo21/OpenMonday/issues/20) from montipirlo21/19-create-release-102
+
 
 <a name="v1.0.2"></a>
 ## [v1.0.2] - 2024-11-30
@@ -29,6 +41,7 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.3...HEAD
+[v1.0.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.0...v1.0.1

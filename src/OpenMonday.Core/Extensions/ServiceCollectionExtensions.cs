@@ -30,7 +30,8 @@ public static class ServiceCollectionExtensions
           );
 
         // Register custom service
-        services.AddScoped<IMondayBoardStructureConverterService, MondayBoardStructureConverterService>();
+        services.AddScoped<IMondayDriverBoardStructureConverterService, MondayDriverBoardStructureConverterService>();
+        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();
         services.AddScoped<IMondayDriverService, MondayDriverService>();
 
         return services;

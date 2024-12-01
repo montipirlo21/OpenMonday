@@ -1,0 +1,27 @@
+query GetBoardItemsByCursor_NextPage($cursor: String!) {
+  next_items_page(limit: 500, cursor: $cursor) {
+    cursor
+    items {
+      id
+      name
+      column_values {
+        id
+        value
+        type
+        text
+        __typename
+
+        ... on StatusValue {
+          index
+          is_done
+          update_id
+          updated_at
+        }
+
+        ... on MirrorValue {
+          display_value
+        }
+      }
+    }
+  }
+}
