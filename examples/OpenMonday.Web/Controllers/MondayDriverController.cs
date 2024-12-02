@@ -5,11 +5,11 @@ using OpenMonday.Core.MondayDriver.Interfaces;
 
 [Route("api/[controller]")]
 [ApiController]
-public class SimulationController : ControllerBase
+public class MondayDriverController : ControllerBase
 {
     private readonly IMondayDriverService _mondayDriverService;
 
-    public SimulationController(IMondayDriverService mondayDriverService)
+    public MondayDriverController(IMondayDriverService mondayDriverService)
     {
         _mondayDriverService = mondayDriverService;
     }
