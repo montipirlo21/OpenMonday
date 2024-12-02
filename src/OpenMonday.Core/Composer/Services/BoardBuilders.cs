@@ -28,23 +28,14 @@ public class BoardBuilders : IBoardBuilder
 
             // Retrieve id and name
             string boardId = schema.BoardId;
-            string boardName = schema.BoardName;
-
-            // Determine the item type dynamically based on T
-            var itemsProperty = typeof(T).GetProperty("Items");
-            if (itemsProperty == null || !itemsProperty.PropertyType.IsGenericType)
-            {
-                return ServiceResult<T>.Failure("Unable to determine items type for board.");
-            }
+            string boardName = schema.BoardName;     
 
             var items = new List<TItem>();
-
             foreach (var task in tasks)
             {
                 // Run generic item builders
                 var item = new TItem();
-                typeof(TItem).GetProperty("ItemId")?.SetValue(item, task.Id);
-                typeof(TItem).GetProperty("Name")?.SetValue(item, task.Name);
+                item.SetItemIdAndName(task.Id, item.Name);
 
                 var dic = _boardItemBuilder.GenericItemBuilders(columnMapping.Data, task);               
 

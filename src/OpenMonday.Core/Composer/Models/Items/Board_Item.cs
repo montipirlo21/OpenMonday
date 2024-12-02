@@ -18,4 +18,9 @@ public class Board_Item
         return new Board_Item(itemId, name);
     }
 
+    public void SetItemIdAndName(string itemId, string name){
+        this.ItemId = itemId;
+        this.Name = name;
+    }
+
 }

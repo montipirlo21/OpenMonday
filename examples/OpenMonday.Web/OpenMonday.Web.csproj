@@ -9,9 +9,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="NSwag.AspNetCore" Version="14.1.0" />
+
+    <!-- Enable for nuget testing -->
+    <!-- <PackageReference Include="OpenMonday" Version="1.0.4" /> -->
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Disable for nuget testing -->
     <ProjectReference Include="..\..\src\OpenMonday.Core\OpenMonday.Core.csproj" />
   </ItemGroup>
 
