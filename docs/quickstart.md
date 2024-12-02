@@ -1,5 +1,4 @@
-
-## Installation Guide for using OpenMonday
+# Installation Guide for using OpenMonday
 
 You can check the example project referencing the nuget package instead of the source project 
 
@@ -52,3 +51,6 @@ public class OpenMondayConfiguration
 ```bash
 set OpenMondayConfiguration__MondayToken="yourtoken"
 ```
+
+
+
