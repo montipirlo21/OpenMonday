@@ -1,16 +1,36 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.0.4"></a>
+## [v1.0.4] - 2024-12-02
+### Feat
+- **composer:** completed first version of composer layer
+- **documentation:** add documentation of retrieveandbuildboard
+
+### Fix
+- **documentation:** restructured documentation
+- **documentation:** fixed nuget package documentation guide
+- **fragment:** Add fragment for Item
+- **index:** fixed index links
+
+### Pull Requests
+- Merge pull request [#31](https://github.com/montipirlo21/OpenMonday/issues/31) from montipirlo21/25-organize-documentation-pages-separate-developing-and-usage
+- Merge pull request [#30](https://github.com/montipirlo21/OpenMonday/issues/30) from montipirlo21/29-create-mondaymapper-board-and-items
+- Merge pull request [#28](https://github.com/montipirlo21/OpenMonday/issues/28) from montipirlo21/24-mondaydriverboarditemsconverterservice-need-rework-and-optimizations
+- Merge pull request [#27](https://github.com/montipirlo21/OpenMonday/issues/27) from montipirlo21/26-fixing-nuget-package-documentation
+
+
+<a name="v1.0.3"></a>
+## [v1.0.3] - 2024-12-01
 ### Feat
 - **driver:** Add first implementation of GetBoardItemsByCursor
 
 ### Fix
 - **warning:** remove warning for possibile null references in tests
 
-
-<a name="v1.0.3"></a>
-## [v1.0.3] - 2024-12-01
 ### Pull Requests
+- Merge pull request [#23](https://github.com/montipirlo21/OpenMonday/issues/23) from montipirlo21/21-create-graphql-query-for-reading-tasks-supporting-cursors
 - Merge pull request [#20](https://github.com/montipirlo21/OpenMonday/issues/20) from montipirlo21/19-create-release-102
 
 
@@ -41,7 +61,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.4...HEAD
+[v1.0.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.0...v1.0.1
