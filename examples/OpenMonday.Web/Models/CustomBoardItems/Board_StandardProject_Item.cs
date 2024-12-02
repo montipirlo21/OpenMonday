@@ -1,4 +1,3 @@
-// This is the row
 public class Board_StandardProject_Item : Board_Item
 {
     public Board_Column_People Owner { get; set; }
@@ -18,18 +17,4 @@ public class Board_StandardProject_Item : Board_Item
     {
         return new Board_StandardProject_Item(id, name, owner, status, timeline);
     }
-
-    public bool OwnedByPeopleId(int peopleId){
-        return this.Owner.CointainsPeopleId(peopleId);
-    }
-
-
-    public bool ScheduledOnThisTimeRanged(DateTime start, DateTime end){
-        return this.Timeline.ScheduledOnThisTimeRanged(start, end);
-    }
-
-    public bool EndingOnThisTimeRanged(DateTime start, DateTime end){
-        return this.Timeline.EndingOnThisTimeRanged(start, end);
-    }
-
 }

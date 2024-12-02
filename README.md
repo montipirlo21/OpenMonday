@@ -14,3 +14,4 @@
 1. [Development Setup](docs/development-setup.md)  
 2. [Quickstart](docs/quickstart.md)  
 3. [API References](docs/api-references.md)
+3.1 [Retrieve and Build Board](docs/api-references.md#retrieveandbuildboardt-titemstring-board_id-templateboard-template)
