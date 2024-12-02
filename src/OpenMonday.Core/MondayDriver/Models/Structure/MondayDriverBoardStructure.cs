@@ -15,4 +15,17 @@ public class MondayDriverBoardStructure
     {
         return new MondayDriverBoardStructure(id, name, boardColumns);
     }
+
+        public string FindColumnIdByNameOrStringEmpty(List<string> names)
+    {
+        var c = BoardColumns.FirstOrDefault(x => names.Contains(x.Title));
+        if (c != null)
+        {
+            return c.Id;
+        }
+        else
+        {
+           return string.Empty;
+        }
+    }
 }

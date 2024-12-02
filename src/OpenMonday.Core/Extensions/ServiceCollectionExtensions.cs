@@ -34,6 +34,11 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();
         services.AddScoped<IMondayDriverService, MondayDriverService>();
 
+        services.AddScoped<IBoardBuilder, BoardBuilders>();
+        services.AddScoped<IBoardItemBuilder, BoardItemBuilder>();
+
+        services.AddScoped<IBoardServices, BoardServices>();
+
         return services;
     }
 
