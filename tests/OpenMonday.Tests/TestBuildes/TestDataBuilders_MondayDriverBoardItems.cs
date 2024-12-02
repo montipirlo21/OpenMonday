@@ -115,9 +115,9 @@ public class TestDataBuilders_MondayDriverBoardItems
             // ITEM 1
             new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item
             ("1626989663", "Task 1",
-            new List<IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values>(){
+            new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
 
-                new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue("project_owner",
+                new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
                  JsonDocument.Parse("{\"changed_at\":\"2023-08-23T12:42:09.066Z\",\"personsAndTeams\":[{\"id\":66019177,\"kind\":\"person\"}]}").RootElement,
 
                 ColumnType.People, "cayayam389@janfab.com","PeopleValue")
@@ -126,17 +126,17 @@ public class TestDataBuilders_MondayDriverBoardItems
 
             // ITEM 2
             new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item("1626989661", "Task 2",
-             new List<IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values>(){
+             new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
 
-                new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue("project_owner",
+                new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
                 null, ColumnType.People, "","PeopleValue")
 
             }),
 
             // ITEM 3       
-            new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item("1626989662", "Task 3",  new List<IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values>(){
+            new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item("1626989662", "Task 3",  new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
 
-                new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue("project_owner",
+                new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
                 null, ColumnType.People, "","PeopleValue")
 
             })
