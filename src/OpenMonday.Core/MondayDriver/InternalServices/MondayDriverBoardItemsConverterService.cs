@@ -20,7 +20,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
         return tasks;
     }
 
-     public static MondayDriverBaseTask ConvertToMondayDriverBaseTask(IGetBoardItemsByCursor_Boards_Items_page_Items value)
+     public MondayDriverBaseTask ConvertToMondayDriverBaseTask(IGetBoardItemsByCursor_Boards_Items_page_Items value)
     {
 
         if (value == null)
@@ -33,7 +33,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
         return MondayDriverBaseTask.Create(value.Id, value.Name, baseColumns);
     }
 
-    public static List<MondayDriverBaseColumn> ConvertToMondayDriverBaseColumn(IReadOnlyList<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values> value)
+    public List<MondayDriverBaseColumn> ConvertToMondayDriverBaseColumn(IReadOnlyList<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values> value)
     {
         if (value == null)
         {
@@ -50,7 +50,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
         return columns;
     }
 
-    public static MondayDriverBaseColumn ConvertToMondayDriverBaseColumn(IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values value)
+    public MondayDriverBaseColumn ConvertToMondayDriverBaseColumn(IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values value)
     {
 
         if (value == null)
@@ -66,7 +66,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
         return MondayDriverBaseColumn.Create(value.Id, value.Text, value.Type, value.__typename, value.Value.ToString(), columnData);
     }
 
-    public static MondayDriverBaseColumnData ConvertToMondayDriverBaseColumnData(ColumnType type, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values val)
+    public MondayDriverBaseColumnData ConvertToMondayDriverBaseColumnData(ColumnType type, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values val)
     {
         try
         {
@@ -175,7 +175,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
         return tasks;
     }
 
-    public static MondayDriverBaseTask ConvertToMondayDriverBaseTask(IGetBoardItemsByCursor_NextPage_Next_items_page_Items value)
+    public MondayDriverBaseTask ConvertToMondayDriverBaseTask(IGetBoardItemsByCursor_NextPage_Next_items_page_Items value)
     {
 
         if (value == null)
