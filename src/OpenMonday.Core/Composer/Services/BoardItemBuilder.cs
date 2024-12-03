@@ -36,25 +36,25 @@ public class BoardItemBuilder : IBoardItemBuilder
             if (taskColumn == null) throw new ApplicationException($"Column {taskColumn} not found");
 
             Board_Column_Base col;
-            if (map.TemplateColumn.BoardColumnType == typeof(Board_Column_People))
+            if (map.DestinationBoardType == typeof(Board_Column_People))
             {
                 col = Build_Board_Column_People(taskColumn);
             }
-            else if (map.TemplateColumn.BoardColumnType == typeof(Board_Column_Timeline))
+            else if (map.DestinationBoardType == typeof(Board_Column_Timeline))
             {
                 col = Build_Board_Column_Timeline(taskColumn);
             }
-            else if (map.TemplateColumn.BoardColumnType == typeof(Board_Column_Status))
+            else if (map.DestinationBoardType == typeof(Board_Column_Status))
             {
                 col = Build_Board_Column_Status(taskColumn);
             }
-            else if (map.TemplateColumn.BoardColumnType == typeof(Board_Column_String_Value))
+            else if (map.DestinationBoardType == typeof(Board_Column_String_Value))
             {
                 col = Build_Board_Column_String_Value(taskColumn);
             }
             else
             {
-                throw new ApplicationException($"Type {map.TemplateColumn.BoardColumnType.Name} not supported");
+                throw new ApplicationException($"Type {map.DestinationBoardType.Name} not supported");
             }
 
             builded.Add((map.TemplateColumn.ColumnReferenceName, col));
