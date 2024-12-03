@@ -290,7 +290,7 @@ public class BoardItemBuilder : IBoardItemBuilder
             }
 
             // Made enum convertion
-            var kind = EnumHelper.ConvertEnum<MondayDriverPeopleKindEnum, BoardPeopleKindEnum>(peopleEntity.kind);
+            var kind = EnumHelper.ConvertEnum<MondayDriverPeopleKindEnum, BoardPeopleKindEnum>(peopleEntity.Kind);
 
             var people = Board_People.Create(peopleEntity.Id, kind);
 

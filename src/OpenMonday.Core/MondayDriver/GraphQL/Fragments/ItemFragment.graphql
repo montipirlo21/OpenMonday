@@ -8,6 +8,14 @@ fragment ItemFragment on Item {
     text
     __typename
 
+    ... on PeopleValue {
+      updated_at
+      persons_and_teams {
+        id
+        kind
+      }
+    }
+
     ... on StatusValue {
       index
       is_done
@@ -15,16 +23,8 @@ fragment ItemFragment on Item {
       updated_at
     }
 
-    ... on MirrorValue {      
+    ... on MirrorValue {
       display_value
-    }
-
-    ... on PeopleValue {
-      updated_at
-      persons_and_teams {
-        id
-        kind
-      }
     }
   }
 }

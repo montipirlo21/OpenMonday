@@ -5,7 +5,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
 {
     public List<MondayDriverBaseTask> Convert_GetBoardItemsByCursor_MondayDriverBaseTask(IReadOnlyList<IGetBoardItemsByCursor_Boards_Items_page_Items> value)
     {
-         if (value == null)
+        if (value == null)
         {
             throw new NullReferenceException("value has to be not null");
         }
@@ -20,7 +20,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
         return tasks;
     }
 
-     public MondayDriverBaseTask ConvertToMondayDriverBaseTask(IGetBoardItemsByCursor_Boards_Items_page_Items value)
+    public MondayDriverBaseTask ConvertToMondayDriverBaseTask(IGetBoardItemsByCursor_Boards_Items_page_Items value)
     {
 
         if (value == null)
@@ -77,12 +77,24 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
             {
                 case ColumnType.People:
                     {
-                        if (val.Value == null || val.Value.Value.Equals(string.Empty))
+                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue)val;
+                        List<MondayDriverPeopleEntity> peopleEntities = [];
+                        if (v.Persons_and_teams != null)
                         {
-                            return result;
+                            foreach (var p in v.Persons_and_teams)
+                            {
+                                if (p.Kind is not null)
+                                {
+                                    var c = MondayDriverPeopleEntity.Create(p.Id, EnumHelper.ConvertEnum<Kind, MondayDriverPeopleKindEnum>(p.Kind.Value));
+                                    peopleEntities.Add(c);
+                                }
+                                else
+                                {
+                                    LoggerHelper.LogError($"Person without kind: {p.Id}");
+                                }
+                            }
                         }
-                        string sValue = val.Value.Value.ToString();
-                        result = JsonHelper.Deserialize<MondayDriverPeopleColumnData>(sValue);
+                        result = MondayDriverPeopleColumnData.Create(v.Updated_at, peopleEntities);
                         break;
                     }
                 case ColumnType.Timeline:
@@ -122,7 +134,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                 case ColumnType.Date:
                     {
                         IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue)val;
-                       if (val.Value == null || val.Value.Value.Equals(string.Empty))
+                        if (val.Value == null || val.Value.Value.Equals(string.Empty))
                         {
                             return result;
                         }
@@ -136,7 +148,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                         result = MondayDriverFormulaColumnData.Create(v.Text);
                         break;
                     }
-                 case ColumnType.Link:
+                case ColumnType.Link:
                     {
                         IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue)val;
                         result = MondayDriverLinkColumnData.Create(v.Text);

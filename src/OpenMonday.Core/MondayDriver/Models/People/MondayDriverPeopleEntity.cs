@@ -3,19 +3,17 @@ using System.Text.Json.Serialization;
 
 public class MondayDriverPeopleEntity
 {
-    [JsonPropertyName("id")]
-    public int Id { get; set; }
+    public string Id { get; set; }
 
-    [JsonPropertyName("kind")]
-    public MondayDriverPeopleKindEnum kind { get; set; }
+    public MondayDriverPeopleKindEnum Kind { get; set; }
 
-    public MondayDriverPeopleEntity(int id, MondayDriverPeopleKindEnum kind)
+    public MondayDriverPeopleEntity(string id, MondayDriverPeopleKindEnum kind)
     {
         Id = id;
-        this.kind = kind;
+        Kind = kind;
     }
 
-    public static MondayDriverPeopleEntity Create(int id, MondayDriverPeopleKindEnum kind)
+    public static MondayDriverPeopleEntity Create(string id, MondayDriverPeopleKindEnum kind)
     {
         return new MondayDriverPeopleEntity(id, kind);
     }
