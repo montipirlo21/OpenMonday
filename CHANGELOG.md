@@ -2,6 +2,20 @@
 ## [Unreleased]
 
 
+<a name="v1.0.5"></a>
+## [v1.0.5] - 2024-12-03
+### Feat
+- **composer:** simplified composer BuildBoard service
+- **template:** removed the type for the template board
+
+### Fix
+- **RetrieveAndBuildBoard:** Add try catch exceptions
+
+### Pull Requests
+- Merge pull request [#37](https://github.com/montipirlo21/OpenMonday/issues/37) from montipirlo21/36-add-id-information-to-items-for-future-mutations
+- Merge pull request [#33](https://github.com/montipirlo21/OpenMonday/issues/33) from montipirlo21/32-api-reference-boardservicesretrieveandbuildboard
+
+
 <a name="v1.0.4"></a>
 ## [v1.0.4] - 2024-12-02
 ### Feat
@@ -61,7 +75,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.5...HEAD
+[v1.0.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.1...v1.0.2
