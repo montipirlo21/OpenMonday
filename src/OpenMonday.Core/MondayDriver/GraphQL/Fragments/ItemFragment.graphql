@@ -14,8 +14,17 @@ fragment ItemFragment on Item {
       update_id
       updated_at
     }
-    ... on MirrorValue {
+
+    ... on MirrorValue {      
       display_value
+    }
+
+    ... on PeopleValue {
+      updated_at
+      persons_and_teams {
+        id
+        kind
+      }
     }
   }
 }
