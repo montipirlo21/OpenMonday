@@ -1,8 +1,18 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.0.6"></a>
+## [v1.0.6] - 2024-12-03
+### Feat
+- **Board_Column_People:** Added Updatet_At field
+- **PeopleValue:** Big refactoring of peoplevalue converter
+
 ### Fix
-- **StrawberryShake:** Back to main version 14.2.0, now support net core 9
+- **documentation:** removed type from template
+
+### Pull Requests
+- Merge pull request [#40](https://github.com/montipirlo21/OpenMonday/issues/40) from montipirlo21/39-strawberryshakeserver-to-main-version=1420
 
 
 <a name="v1.0.5"></a>
@@ -13,6 +23,7 @@
 
 ### Fix
 - **RetrieveAndBuildBoard:** Add try catch exceptions
+- **StrawberryShake:** Back to main version 14.2.0, now support net core 9
 
 ### Pull Requests
 - Merge pull request [#38](https://github.com/montipirlo21/OpenMonday/issues/38) from montipirlo21/34-simplify-template-structure-using-refelction-insted-of-typeof-column
@@ -79,7 +90,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.6...HEAD
+[v1.0.6]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.2...v1.0.3

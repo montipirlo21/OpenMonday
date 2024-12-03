@@ -1,22 +1,15 @@
-using System.Text.Json.Serialization;
-
-
-
 public class MondayDriverPeopleColumnData : MondayDriverBaseColumnData
 {
-    [JsonPropertyName("changed_at")]
-    public DateTime Changed_At { get; set; }
-
-    [JsonPropertyName("personsAndTeams")]
+    public DateTime? Updated_at { get; set; }
     public List<MondayDriverPeopleEntity> PersonsAndTeams { get; set; }
 
-    public MondayDriverPeopleColumnData(DateTime changed_At, List<MondayDriverPeopleEntity> personsAndTeams) : base()
+    public MondayDriverPeopleColumnData(DateTime? updated_at, List<MondayDriverPeopleEntity> personsAndTeams) : base()
     {
-        Changed_At = changed_At;
+        Updated_at = updated_at;
         PersonsAndTeams = personsAndTeams;
     }
-    public static MondayDriverPeopleColumnData Create(DateTime changed_At, List<MondayDriverPeopleEntity> personsAndTeams)
+    public static MondayDriverPeopleColumnData Create(DateTime? updated_at, List<MondayDriverPeopleEntity> personsAndTeams)
     {
-        return new MondayDriverPeopleColumnData(changed_At, personsAndTeams);
+        return new MondayDriverPeopleColumnData(updated_at, personsAndTeams);
     }
 }

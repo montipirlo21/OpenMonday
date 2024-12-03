@@ -165,6 +165,8 @@ public class BoardItemBuilder : IBoardItemBuilder
                         var p1 = Build_Board_Column_People_Board_People(p);
                         people.Add(p1);
                     }
+
+                    return Board_Column_People.Create(data.Updated_at, people);
                 }
                 else
                 {
@@ -176,7 +178,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 throw new ApplicationException($"The type of the data column is not compatible with Board_Column_People {column.ColumnData.GetType()}");
             }
 
-            return Board_Column_People.Create(people);
+
         }
         catch (Exception ex)
         {
@@ -290,7 +292,7 @@ public class BoardItemBuilder : IBoardItemBuilder
             }
 
             // Made enum convertion
-            var kind = EnumHelper.ConvertEnum<MondayDriverPeopleKindEnum, BoardPeopleKindEnum>(peopleEntity.kind);
+            var kind = EnumHelper.ConvertEnum<MondayDriverPeopleKindEnum, BoardPeopleKindEnum>(peopleEntity.Kind);
 
             var people = Board_People.Create(peopleEntity.Id, kind);
 
