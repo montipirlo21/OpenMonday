@@ -15,11 +15,28 @@ public class BoardServices : IBoardServices
     public async Task<ServiceResult<T>> RetrieveAndBuildBoard<T, TItem>(string board_id, TemplateBoard template)
      where T : Board, new() where TItem : Board_Item, new()
     {
-        var boards = await _mondayDriverService.GetBoardsStructureById(board_id);
-        var items = await _mondayDriverService.GetBoardItemsByCursor(board_id);
+        try
+        {
+            var boards = await _mondayDriverService.GetBoardsStructureById(board_id);
+            var items = await _mondayDriverService.GetBoardItemsByCursor(board_id);
 
-        var boardBuilded = await _boardBuilder.BuildBoard<T, TItem>(boards.Data, items.Data, template);
+            if (boards == null || boards.Data == null)
+            {
+                return ServiceResult<T>.Failure("Cannot get Board structure");
+            }
 
-        return boardBuilded;
+            if (items == null || items.Data == null)
+            {
+                return ServiceResult<T>.Failure("Cannot get Board Data");
+            }
+
+            var boardBuilded = await _boardBuilder.BuildBoard<T, TItem>(boards.Data, items.Data, template);
+            return boardBuilded;
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            return ServiceResult<T>.Failure("Exception not cached");
+        }
     }
 }

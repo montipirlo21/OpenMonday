@@ -20,7 +20,7 @@ public class BoardBuilders : IBoardBuilder
             }
 
             // Retrieve the mapping for row parsing
-            var columnMapping = await MapTemplateColumnNameToBoardColumnId(schema, template);
+            var columnMapping = await MapTemplateColumnNameToBoardColumnId<TItem>(schema, template);
             if (columnMapping.IsFailure)
             {
                 return ServiceResult<T>.Failure(columnMapping.ErrorMessage);
@@ -62,7 +62,7 @@ public class BoardBuilders : IBoardBuilder
         }
     }
 
-    public async Task<ServiceResult<TemplateToBoardColumnMappings>> MapTemplateColumnNameToBoardColumnId(MondayDriverBoardStructure schema, TemplateBoard template)
+    public async Task<ServiceResult<TemplateToBoardColumnMappings>> MapTemplateColumnNameToBoardColumnId<TItem>(MondayDriverBoardStructure schema, TemplateBoard template)
     {
         try
         {
@@ -74,17 +74,17 @@ public class BoardBuilders : IBoardBuilder
             // Foreach column name i'll look into the board to find and get the current id
             foreach (var columnName in template.Columns)
             {
+                // Looking in the BoardStructure
                 var columnId = schema.FindColumnIdByNameOrStringEmpty(columnName.SearchingName);
-
-                if (!string.IsNullOrEmpty(columnId))
-                {
-                    var map = TemplateToBoardColumnMapping.Create(columnId, columnName);
-                    nameToId.Add(map);
-                }
-                else
+                if (string.IsNullOrEmpty(columnId))
                 {
                     return ServiceResult<TemplateToBoardColumnMappings>.Failure($"Mapping template to schema error: not found correspondency for: {string.Join(", ", columnName.SearchingName)}");
                 }
+
+                // Looking in the T Board
+                Type propertyType = ReflectionHelper.GetPropertyType<TItem>(columnName.ColumnReferenceName);
+                var map = TemplateToBoardColumnMapping.Create(columnId, columnName, propertyType);
+                    nameToId.Add(map);
             }
 
             var result = TemplateToBoardColumnMappings.Create(nameToId);
