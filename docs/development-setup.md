@@ -7,7 +7,7 @@ To install the necessary tools for working with **OpenMonday**, follow these ste
 To install the necessary tool for the project, run the following command in your terminal:
 
 ```bash
-dotnet tool install --global StrawberryShake.Tools --version 15.0.0-p.15
+dotnet tool install --global StrawberryShake.Tools --version 14.2.0
 ```
 
 ### 2. Set Environment Variable for Monday Token
