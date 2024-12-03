@@ -1,20 +1,22 @@
 public class Board_Column_People : Board_Column_Base
 {
+    public DateTime? UpdatedAt { get; set; }
     public List<Board_People> Peoples { get; set; }
 
-    public Board_Column_People(BoardColumnFillStatus fillStatus, List<Board_People> peoples) : base(fillStatus)
+    public Board_Column_People(BoardColumnFillStatus fillStatus, DateTime? updatedAt, List<Board_People> peoples) : base(fillStatus)
     {
-        this.Peoples = peoples;
+        UpdatedAt = updatedAt;
+        Peoples = peoples;
     }
 
-    public static Board_Column_People Create(List<Board_People> peoples)
+    public static Board_Column_People Create( DateTime? updatedAt, List<Board_People> peoples)
     {
-        return new Board_Column_People(BoardColumnFillStatus.Filled, peoples);
+        return new Board_Column_People(BoardColumnFillStatus.Filled,updatedAt, peoples);
     }
 
     public static Board_Column_People Create_Unfilled()
     {
-        return new Board_Column_People(BoardColumnFillStatus.UnFilled, new List<Board_People>());
+        return new Board_Column_People(BoardColumnFillStatus.UnFilled, null, []);
     }
 
     public bool CointainsPeopleId(string peopleId)
