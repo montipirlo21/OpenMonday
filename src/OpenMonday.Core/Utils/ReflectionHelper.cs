@@ -8,16 +8,16 @@ public static class ReflectionHelper
     {
         if (item == null) throw new ArgumentNullException(nameof(item));
 
-        // Ottieni le proprietà pubbliche dell'oggetto tramite reflection
+        // Find the property with the specified name
         var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
         foreach (var kvp in buildedDict)
         {
-            // Cerca una proprietà con un nome che corrisponde al nome del TemplateBoardColumnTypeEnum
+            // Find property by name
             var property = properties.FirstOrDefault(p => string.Equals(p.Name, kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (property != null && property.CanWrite)
             {
-                // Setta il valore della proprietà
+                // Set the property value
                 property.SetValue(item, kvp.Value);
             }
         }

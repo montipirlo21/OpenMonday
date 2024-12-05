@@ -17,11 +17,19 @@ public class ExposeController : ControllerBase
     /// </summary>
     /// <param name="board_id"></param>
     /// <returns></returns>
-    [HttpGet("BuildBoard")]
-    public async Task<ActionResult<string>> BuildBoard([FromQuery] string board_id)
+    [HttpGet("RetrieveAndBuildBoard")]
+    public async Task<ActionResult<string>> RetrieveAndBuildBoard([FromQuery] string board_id)
     {
-        var template = Board_StandardProject.GetBoardTemplate();      
-        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id,template);
+        var boardMapping = Board_StandardProject.GetBoardMapping();      
+        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id,boardMapping);
+        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
+    }   
+
+
+     [HttpGet("RetrieveAndBuildBoardWithMappingAttribute")]
+    public async Task<ActionResult<string>> RetrieveAndBuildBoardWithMappingAttribute([FromQuery] string board_id)
+    {   
+        var boardBuilded = await _boardServices.RetrieveAndBuildBoardWithMappingAttribute<Board_StandardProject, Board_StandardProject_Item >(board_id);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
     }   
 }

@@ -3,7 +3,7 @@ using OpenMonday.Core.strawberryShake;
 
 public class BoardItemBuilder : IBoardItemBuilder
 {
-    public Dictionary<string, Board_Column_Base> GenericItemBuilders(TemplateToBoardColumnMappings columnMapping, MondayDriverBaseTask task)
+    public Dictionary<string, Board_Column_Base> GenericItemBuilders(MondayColumnsToBoardMappings columnMapping, MondayDriverBaseTask task)
     {
         if (columnMapping == null || task == null)
         {
@@ -26,7 +26,7 @@ public class BoardItemBuilder : IBoardItemBuilder
         }
     }
 
-    private List<(string, Board_Column_Base)> GenericItemBuilder(TemplateToBoardColumnMappings columnMapping, MondayDriverBaseTask tasks)
+    private List<(string, Board_Column_Base)> GenericItemBuilder(MondayColumnsToBoardMappings columnMapping, MondayDriverBaseTask tasks)
     {
         // Scripted logic, reword needed here
         List<(string, Board_Column_Base)> builded = new List<(string, Board_Column_Base)>();
@@ -57,7 +57,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 throw new ApplicationException($"Type {map.DestinationBoardType.Name} not supported");
             }
 
-            builded.Add((map.TemplateColumn.ColumnReferenceName, col));
+            builded.Add((map.ColumnMapping.ColumnReferenceName, col));
         }
 
         return builded;

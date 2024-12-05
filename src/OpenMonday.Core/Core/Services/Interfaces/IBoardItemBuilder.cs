@@ -1,7 +1,7 @@
 
 public interface IBoardItemBuilder
 {
-    Dictionary<string, Board_Column_Base> GenericItemBuilders(TemplateToBoardColumnMappings columnMapping, MondayDriverBaseTask task);
+    Dictionary<string, Board_Column_Base> GenericItemBuilders(MondayColumnsToBoardMappings columnMapping, MondayDriverBaseTask task);
 
     Board_Column_People Build_Board_Column_People(MondayDriverBaseColumn column);
 

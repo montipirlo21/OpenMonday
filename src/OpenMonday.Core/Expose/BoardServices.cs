@@ -13,27 +13,27 @@ public class BoardServices : IBoardServices
         _boardBuilder = boardBuilder;
     }
 
-    public async Task<ServiceResult<T>> RetrieveAndBuildBoardWithAttribute<T, TItem>(string board_id) where T : Board, new() where TItem : Board_Item, new()
+    public async Task<ServiceResult<T>> RetrieveAndBuildBoardWithMappingAttribute<T, TItem>(string board_id) where T : Board, new() where TItem : Board_Item, new()
     {
-        // Buildo the template from the attributes
-        var columnNames = new List<TemplateBoardColumn>();
+        // Buildo the boardMapping from the attributes
+        var columnNames = new List<BoardColumnMapping>();
         var properties = typeof(TItem).GetProperties();
         foreach (var property in properties)
         {
             var attribute = property.GetCustomAttribute<ColumnMappingAttribute>();
             if (attribute != null)
             {
-                columnNames.Add(new TemplateBoardColumn(property.Name, attribute.SearchingNames));
+                columnNames.Add(new BoardColumnMapping(property.Name, attribute.SearchingNames));
             }
         }
 
-        var template = TemplateBoard.Create(columnNames);
+        var boardMapping = BoardMapping.Create(columnNames);
 
-        return await RetrieveAndBuildBoard<T, TItem>(board_id, template);
+        return await RetrieveAndBuildBoard<T, TItem>(board_id, boardMapping);
     }
 
 
-    public async Task<ServiceResult<T>> RetrieveAndBuildBoard<T, TItem>(string board_id, TemplateBoard template)
+    public async Task<ServiceResult<T>> RetrieveAndBuildBoard<T, TItem>(string board_id, BoardMapping boardMapping)
      where T : Board, new() where TItem : Board_Item, new()
     {
         try
@@ -51,7 +51,7 @@ public class BoardServices : IBoardServices
                 return ServiceResult<T>.Failure("Cannot get Board Data");
             }
 
-            var boardBuilded = await _boardBuilder.BuildBoard<T, TItem>(boards.Data, items.Data, template);
+            var boardBuilded = await _boardBuilder.BuildBoard<T, TItem>(boards.Data, items.Data, boardMapping);
             return boardBuilded;
         }
         catch (Exception ex)
