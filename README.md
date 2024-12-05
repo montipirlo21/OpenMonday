@@ -11,8 +11,8 @@
 
 ---
 
-1. [Development Setup](docs/development-setup.md)  
-2. [Quickstart](docs/quickstart.md)  
-3. [API References](docs/api-references.md)
-3.1 [Retrieve and Build Board](docs/api-references.md#retrieveandbuildboardt-titemstring-board_id)
-3.2 [Retrieve and Build Board with Maping](docs/api-references.md#retrieveandbuildboardt-titemstring-board_id-mappingboard-mappingboard))
+- [Development Setup](docs/development-setup.md)  
+- [Quickstart](docs/quickstart.md)  
+- [API References](docs/api-references.md)
+    1. [Retrieve and Build Board](docs/api-references.md#retrieveandbuildboardt-titemstring-board_id)
+    2. [Retrieve and Build Board with Maping](docs/api-references.md#retrieveandbuildboardt-titemstring-board_id-mappingboard-mappingboard))
