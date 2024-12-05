@@ -17,17 +17,4 @@ public class Board_StandardProject : Board
     {
         return new Board_StandardProject(id, name, items);
     }
-
-    public static new TemplateBoard GetBoardTemplate(){
-        
-        string title = "Standard Project Board Template";
-        string description = "Template structure for standard project board";
-        List<TemplateBoardColumn> columnNames = new List<TemplateBoardColumn>(){
-            new TemplateBoardColumn("Owner",["Owner"] ),
-            new TemplateBoardColumn("Status",["Status", "Stato" ]),
-            new TemplateBoardColumn("Timeline",["Timeline", "Pianificazione"]) 
-        };
-
-        return new TemplateBoard(title, description,  columnNames);
-    }
 }

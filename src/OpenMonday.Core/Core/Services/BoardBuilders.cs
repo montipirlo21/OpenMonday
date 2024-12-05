@@ -10,17 +10,17 @@ public class BoardBuilders : IBoardBuilder
     }
 
     public async Task<ServiceResult<T>> BuildBoard<T, TItem>(MondayDriverBoardStructure schema, List<MondayDriverBaseTask> tasks,
-    TemplateBoard template) where T : Board, new() where TItem : Board_Item, new()
+    BoardMapping boardMapping) where T : Board, new() where TItem : Board_Item, new()
     {
         try
         {
-            if (schema == null || tasks == null || template == null)
+            if (schema == null || tasks == null || boardMapping == null)
             {
-                return ServiceResult<T>.Failure("schema == null || tasks == null || template == null");
+                return ServiceResult<T>.Failure("schema == null || tasks == null || boardMapping == null");
             }
 
             // Retrieve the mapping for row parsing
-            var columnMapping = await MapTemplateColumnNameToBoardColumnId<TItem>(schema, template);
+            var columnMapping = await MapMondayColumnsToBoardMapping<TItem>(schema, boardMapping);
             if (columnMapping.IsFailure)
             {
                 return ServiceResult<T>.Failure(columnMapping.ErrorMessage);
@@ -62,33 +62,33 @@ public class BoardBuilders : IBoardBuilder
         }
     }
 
-    public async Task<ServiceResult<TemplateToBoardColumnMappings>> MapTemplateColumnNameToBoardColumnId<TItem>(MondayDriverBoardStructure schema, TemplateBoard template)
+    public async Task<ServiceResult<MondayColumnsToBoardMappings>> MapMondayColumnsToBoardMapping<TItem>(MondayDriverBoardStructure schema, BoardMapping boardMapping)
     {
         try
         {
-            if (schema == null || template == null)
-                return ServiceResult<TemplateToBoardColumnMappings>.Failure("schema == null || template == null");
+            if (schema == null || boardMapping == null)
+                return ServiceResult<MondayColumnsToBoardMappings>.Failure("schema == null || boardMapping == null");
 
-            List<TemplateToBoardColumnMapping> nameToId = new List<TemplateToBoardColumnMapping>();
+            List<MondayColumnsToBoardMapping> nameToId = new List<MondayColumnsToBoardMapping>();
 
             // Foreach column name i'll look into the board to find and get the current id
-            foreach (var columnName in template.Columns)
+            foreach (var columnName in boardMapping.Columns)
             {
                 // Looking in the BoardStructure
                 var columnId = schema.FindColumnIdByNameOrStringEmpty(columnName.SearchingName);
                 if (string.IsNullOrEmpty(columnId))
                 {
-                    return ServiceResult<TemplateToBoardColumnMappings>.Failure($"Mapping template to schema error: not found correspondency for: {string.Join(", ", columnName.SearchingName)}");
+                    return ServiceResult<MondayColumnsToBoardMappings>.Failure($"Mapping boardMapping to schema error: not found correspondency for: {string.Join(", ", columnName.SearchingName)}");
                 }
 
                 // Looking in the T Board
                 Type propertyType = ReflectionHelper.GetPropertyType<TItem>(columnName.ColumnReferenceName);
-                var map = TemplateToBoardColumnMapping.Create(columnId, columnName, propertyType);
+                var map = MondayColumnsToBoardMapping.Create(columnId, columnName, propertyType);
                     nameToId.Add(map);
             }
 
-            var result = TemplateToBoardColumnMappings.Create(nameToId);
-            return ServiceResult<TemplateToBoardColumnMappings>.Success(result);
+            var result = MondayColumnsToBoardMappings.Create(nameToId);
+            return ServiceResult<MondayColumnsToBoardMappings>.Success(result);
 
         }
         catch (Exception e)
