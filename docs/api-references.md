@@ -50,7 +50,7 @@ public class Board_StandardProject_Item : Board_Item
 }
 
 // Define your board and the mapping template
-// TemplateBoard is a mapper
+// BoardMapping is a mapper
 // First parameter is the property of the item to assign an object of class typeof(T) [third parameter], the second parameter is the name of the column of the board.
 
 public class Board_StandardProject : Board

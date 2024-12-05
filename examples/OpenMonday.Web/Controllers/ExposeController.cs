@@ -13,23 +13,33 @@ public class ExposeController : ControllerBase
         _boardServices = boardServices;
     }
 
+
+    [HttpGet("RetrieveAndBuildBoard")]
+    public async Task<ActionResult<string>> RetrieveAndBuildBoard([FromQuery] string board_id)
+    {   
+        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id);
+        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
+    }   
+
     /// <summary>
     /// </summary>
     /// <param name="board_id"></param>
     /// <returns></returns>
-    [HttpGet("RetrieveAndBuildBoard")]
-    public async Task<ActionResult<string>> RetrieveAndBuildBoard([FromQuery] string board_id)
+    [HttpGet("RetrieveAndBuildBoardWithBoardMapping")]
+    public async Task<ActionResult<string>> RetrieveAndBuildBoardWithBoardMapping([FromQuery] string board_id)
     {
-        var boardMapping = Board_StandardProject.GetBoardMapping();      
+        // Create a board mapping for the entity
+         List<BoardColumnMapping> columnNames = new List<BoardColumnMapping>(){
+            new BoardColumnMapping("Owner",["Owner"] ),
+            new BoardColumnMapping("Status",["Status", "Stato" ]),
+            new BoardColumnMapping("Timeline",["Timeline", "Pianificazione"]) 
+        };
+        var boardMapping =  new BoardMapping(columnNames);
+  
         var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id,boardMapping);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
     }   
 
 
-     [HttpGet("RetrieveAndBuildBoardWithMappingAttribute")]
-    public async Task<ActionResult<string>> RetrieveAndBuildBoardWithMappingAttribute([FromQuery] string board_id)
-    {   
-        var boardBuilded = await _boardServices.RetrieveAndBuildBoardWithMappingAttribute<Board_StandardProject, Board_StandardProject_Item >(board_id);
-        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
-    }   
+
 }

@@ -13,7 +13,7 @@ public class BoardServices : IBoardServices
         _boardBuilder = boardBuilder;
     }
 
-    public async Task<ServiceResult<T>> RetrieveAndBuildBoardWithMappingAttribute<T, TItem>(string board_id) where T : Board, new() where TItem : Board_Item, new()
+    public async Task<ServiceResult<T>> RetrieveAndBuildBoard<T, TItem>(string board_id) where T : Board, new() where TItem : Board_Item, new()
     {
         // Buildo the boardMapping from the attributes
         var columnNames = new List<BoardColumnMapping>();
