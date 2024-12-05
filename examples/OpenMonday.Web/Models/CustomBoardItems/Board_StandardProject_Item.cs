@@ -1,10 +1,13 @@
 public class Board_StandardProject_Item : Board_Item
 {
+    [ColumnMapping(searchingNames: ["Owner"] )]
     public Board_Column_People Owner { get; set; }
+    [ColumnMapping(searchingNames: ["Status", "Stato"])]
     public Board_Column_Status Status { get; set; }
+    [ColumnMapping(searchingNames: ["Timeline", "Pianificazione"])]
     public Board_Column_Timeline Timeline { get; set; }
 
-    public Board_StandardProject_Item(){}
+    public Board_StandardProject_Item() { }
 
     public Board_StandardProject_Item(string id, string name, Board_Column_People owner, Board_Column_Status status, Board_Column_Timeline timeline) : base(id, name)
     {
