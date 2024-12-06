@@ -12,7 +12,7 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
 
         var columns = ConvertToMondayDriverColumnSchema(mondayBoard.Columns);
 
-        return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, columns);
+        return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, mondayBoard.Items_count, columns);
     }
 
     private List<MondayDriverColumnSchema> ConvertToMondayDriverColumnSchema(IReadOnlyList<IGetBoardsStructureById_Boards_Columns?> columns)
