@@ -54,6 +54,7 @@ namespace OpenMonday.Tests.MondayDriver
             // ACT       
             var result = await _mondayDriverService.Object.GetBoardsStructureById(boardId);
 
+
             // ASSERT
             Assert.NotNull(result);
             Assert.True(result.IsSuccess);
