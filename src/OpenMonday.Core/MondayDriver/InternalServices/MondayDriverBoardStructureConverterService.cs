@@ -17,7 +17,7 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
         return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, mondayBoard.Items_count, columns);
     }
 
-    private List<MondayDriverColumnSchema> ConvertToMondayDriverColumnSchema(IReadOnlyList<IGetBoardsStructureById_Boards_Columns?> columns)
+    public List<MondayDriverColumnSchema> ConvertToMondayDriverColumnSchema(IReadOnlyList<IGetBoardsStructureById_Boards_Columns?> columns)
     {
         if (columns == null)
         {
@@ -34,7 +34,7 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
         return columnsAsList;
     }
 
-    private MondayDriverColumnSchema ConvertToColumnSchema(IGetBoardsStructureById_Boards_Columns? column)
+    public MondayDriverColumnSchema ConvertToColumnSchema(IGetBoardsStructureById_Boards_Columns? column)
     {
         if (column == null)
         {
@@ -46,7 +46,7 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
         return MondayDriverColumnSchema.Create(column.Id, column.Title, column.Type.ToString(), settings);
     }
 
-    private MondayDriverColumnSettingSchema ConvertToColumnSettingSchema(ColumnType columnType, string settings)
+    public static MondayDriverColumnSettingSchema? ConvertToColumnSettingSchema(ColumnType columnType, string settings)
     {
         if (settings == null)
         {
