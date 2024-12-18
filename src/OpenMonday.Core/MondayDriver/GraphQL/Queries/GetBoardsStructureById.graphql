@@ -1,6 +1,6 @@
-query GetBoardsStructureById($ids: [ID!]!){
+query GetBoardsStructureById($ids: [ID!]!) {
   boards(ids: $ids) {
-    id 
+    id
     name
     items_count
     columns {
@@ -8,6 +8,10 @@ query GetBoardsStructureById($ids: [ID!]!){
       title
       type
       settings_str
+    }
+    groups {
+      title
+      id
     }
   }
 }

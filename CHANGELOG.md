@@ -1,6 +1,23 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Feat
+- **boardStructure:** update query end models for new fields
+- **status:** Completed parsing of status settings
+- **structure:** add groups informations to structure
+
+
+<a name="v1.0.7"></a>
+## [v1.0.7] - 2024-12-05
+### Feat
+- **BoardMapping:** rename all templates to board mappings
+
+### Fix
+- **controller:** refactoring controller
+
+### Pull Requests
+- Merge pull request [#42](https://github.com/montipirlo21/OpenMonday/issues/42) from montipirlo21/41-enhance-driver-and-compose-peoplevalue-column
+
 
 <a name="v1.0.6"></a>
 ## [v1.0.6] - 2024-12-03
@@ -90,7 +107,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.7...HEAD
+[v1.0.7]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.3...v1.0.4

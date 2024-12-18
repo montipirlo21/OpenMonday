@@ -12,9 +12,43 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
             throw new NullReferenceException("mondayBoard has to be not null");
         }
 
+        // Convert the columns schema
         var columns = ConvertToMondayDriverColumnSchema(mondayBoard.Columns);
 
-        return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, mondayBoard.Items_count, columns);
+        // Convert the groups informations
+        var groups = ConvertToMondayDriverGroupsInformation(mondayBoard.Groups);
+
+        return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, mondayBoard.Items_count, columns, groups);
+    }
+
+    public List<MondayDriverGroupInformation> ConvertToMondayDriverGroupsInformation(IReadOnlyList<IGetBoardsStructureById_Boards_Groups?> groups)
+    {
+        var list = new List<MondayDriverGroupInformation>();
+        if (groups == null)
+        {
+            return list;
+        }
+
+        foreach (var g in groups)
+        {
+            var group = ConvertToMondayDriverGroupInformation(g);
+            if (group != null)
+            {
+                list.Add(group);
+            }
+        }
+
+        return list;
+    }
+
+    public MondayDriverGroupInformation? ConvertToMondayDriverGroupInformation(IGetBoardsStructureById_Boards_Groups? group)
+    {
+        if (group == null)
+        {
+            return null;
+        }
+
+        return MondayDriverGroupInformation.Create(group.Id, group.Title);
     }
 
     public List<MondayDriverColumnSchema> ConvertToMondayDriverColumnSchema(IReadOnlyList<IGetBoardsStructureById_Boards_Columns?> columns)

@@ -23,9 +23,14 @@ public class TestDataBuilders_MondayDriverBoardStructure
             new("timeline__1", "Timeline",ColumnType.Timeline,"{\"hide_footer\":false,\"show_set_as_milestone\":false}")
         };
 
+        var groups = new List<GetBoardsStructureById_Boards_Groups_Group>(){
+            new GetBoardsStructureById_Boards_Groups_Group("Group 1","11111111111"),            
+            new GetBoardsStructureById_Boards_Groups_Group("Group 2","22222222222")
+        };
+
         IGetBoardsStructureByIdResult data = new GetBoardsStructureByIdResult(new List<GetBoardsStructureById_Boards_Board>()
         {
-            new(boardId, boardName, item_count, listColumn)
+            new(boardId, boardName, item_count, listColumn, groups)
         });
 
         var operationResult = new OperationResult<IGetBoardsStructureByIdResult>(data, null, null, null, null, null);
