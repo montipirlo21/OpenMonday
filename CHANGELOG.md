@@ -1,10 +1,24 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.0.9"></a>
+## [v1.0.9] - 2024-12-18
+### Feat
+- **item:** add groupid to items
+
+
+<a name="v1.0.8"></a>
+## [v1.0.8] - 2024-12-18
 ### Feat
 - **boardStructure:** update query end models for new fields
 - **status:** Completed parsing of status settings
 - **structure:** add groups informations to structure
+
+### Pull Requests
+- Merge pull request [#49](https://github.com/montipirlo21/OpenMonday/issues/49) from montipirlo21/44-add-group-id-and-name-to-items
+- Merge pull request [#47](https://github.com/montipirlo21/OpenMonday/issues/47) from montipirlo21/46-enchance-column-definition
+- Merge pull request [#45](https://github.com/montipirlo21/OpenMonday/issues/45) from montipirlo21/43-build-a-method-buildwithouttemplate
 
 
 <a name="v1.0.7"></a>
@@ -107,7 +121,9 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.7...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.9...HEAD
+[v1.0.9]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.8...v1.0.9
+[v1.0.8]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.4...v1.0.5
