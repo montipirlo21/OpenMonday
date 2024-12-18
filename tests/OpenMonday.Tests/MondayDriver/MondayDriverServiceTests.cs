@@ -58,7 +58,8 @@ namespace OpenMonday.Tests.MondayDriver
             Assert.True(result.IsSuccess);
             Assert.NotNull(result.Data);
             Assert.Equal(result.Data.BoardId, boardId);
-            Assert.Equal(result.Data.BoardName, boardName);
+            Assert.Equal(result.Data.BoardName, boardName);            
+            Assert.Equal(result.Data.ItemsCount, 10);
             Assert.Equal(simulatedBoard.Data.Boards.First().Columns.Count, result.Data.BoardColumns.Count);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.ElementAt(0).Id, result.Data.BoardColumns.ElementAt(0).Id);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.ElementAt(0).Title, result.Data.BoardColumns.ElementAt(0).Title);
@@ -91,6 +92,7 @@ namespace OpenMonday.Tests.MondayDriver
             Assert.True(result.IsSuccess);
             Assert.Equal(result.Data.BoardId, boardId);
             Assert.NotEqual(result.Data.BoardName, boardName);
+            Assert.Equal(result.Data.ItemsCount, 10);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.Count, result.Data.BoardColumns.Count);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.ElementAt(0).Id, result.Data.BoardColumns.ElementAt(0).Id);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.ElementAt(0).Title, result.Data.BoardColumns.ElementAt(0).Title);

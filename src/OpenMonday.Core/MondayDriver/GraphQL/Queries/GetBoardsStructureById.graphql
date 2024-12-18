@@ -2,9 +2,11 @@ query GetBoardsStructureById($ids: [ID!]!){
   boards(ids: $ids) {
     id 
     name
+    items_count
     columns {
       id
       title
+      type
       settings_str
     }
   }
