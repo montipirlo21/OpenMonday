@@ -28,9 +28,15 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
             throw new NullReferenceException("value has to be not null");
         }
 
-        List<MondayDriverBaseColumn> baseColumns = ConvertToMondayDriverBaseColumn(value.Column_values);
+        // Check the group value
+        if (value.Group == null)
+        {
+            throw new NullReferenceException("value.Group");
+        }
 
-        return MondayDriverBaseTask.Create(value.Id, value.Name, baseColumns);
+        // Build the columns
+        List<MondayDriverBaseColumn> baseColumns = ConvertToMondayDriverBaseColumn(value.Column_values);
+        return MondayDriverBaseTask.Create(value.Id, value.Name, value.Group.Id, baseColumns);
     }
 
     public List<MondayDriverBaseColumn> ConvertToMondayDriverBaseColumn(IReadOnlyList<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values> value)
@@ -195,9 +201,15 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
             throw new NullReferenceException("value has to be not null");
         }
 
-        List<MondayDriverBaseColumn> baseColumns = ConvertToMondayDriverBaseColumn(value.Column_values);
+        // Check the group value
+        if (value.Group == null)
+        {
+            throw new NullReferenceException("value.Group");
+        }
 
-        return MondayDriverBaseTask.Create(value.Id, value.Name, baseColumns);
+        // Build the Columns
+        List<MondayDriverBaseColumn> baseColumns = ConvertToMondayDriverBaseColumn(value.Column_values);
+        return MondayDriverBaseTask.Create(value.Id, value.Name, value.Group.Id, baseColumns);
     }
 
     #endregion

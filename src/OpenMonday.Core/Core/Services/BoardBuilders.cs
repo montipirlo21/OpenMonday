@@ -35,7 +35,7 @@ public class BoardBuilders : IBoardBuilder
             {
                 // Run generic item builders
                 var item = new TItem();
-                item.SetItemIdAndName(task.Id, item.Name);
+                item.SetItemIdAndNameAndGroup(task.Id, task.Name, task.GroupId);
 
                 var dic = _boardItemBuilder.GenericItemBuilders(columnMapping.Data, task);               
 

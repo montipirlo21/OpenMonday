@@ -1,6 +1,9 @@
 fragment ItemFragment on Item {
   id
   name
+  group {
+    id
+  }
   column_values {
     id
     value
