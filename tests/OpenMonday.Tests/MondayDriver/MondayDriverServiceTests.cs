@@ -55,6 +55,7 @@ namespace OpenMonday.Tests.MondayDriver
             var result = await _mondayDriverService.Object.GetBoardsStructureById(boardId);
 
             // ASSERT
+            Assert.NotNull(result);
             Assert.True(result.IsSuccess);
             Assert.NotNull(result.Data);
             Assert.Equal(result.Data.BoardId, boardId);
@@ -63,8 +64,9 @@ namespace OpenMonday.Tests.MondayDriver
             Assert.Equal(simulatedBoard.Data.Boards.First().Columns.Count, result.Data.BoardColumns.Count);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.ElementAt(0).Id, result.Data.BoardColumns.ElementAt(0).Id);
             Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Columns.ElementAt(0).Title, result.Data.BoardColumns.ElementAt(0).Title);
-            Assert.NotNull(result);
 
+            // Check groups
+            Assert.Equal(simulatedBoard.Data.Boards.ElementAt(0).Groups.Count, result.Data.Groups.Count);
         }
 
         [Fact]
