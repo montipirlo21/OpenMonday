@@ -9,15 +9,16 @@ public class Board_StandardProject_Item : Board_Item
 
     public Board_StandardProject_Item() { }
 
-    public Board_StandardProject_Item(string id, string name, Board_Column_People owner, Board_Column_Status status, Board_Column_Timeline timeline) : base(id, name)
+    public Board_StandardProject_Item(string id, string name, string groupid, Board_Column_People owner, Board_Column_Status status, Board_Column_Timeline timeline) : 
+    base(id, name, groupid)
     {
         Owner = owner;
         Status = status;
         Timeline = timeline;
     }
 
-    public static Board_StandardProject_Item Create(string id, string name, Board_Column_People owner, Board_Column_Status status, Board_Column_Timeline timeline)
+    public static Board_StandardProject_Item Create(string id, string name,string groupid, Board_Column_People owner, Board_Column_Status status, Board_Column_Timeline timeline)
     {
-        return new Board_StandardProject_Item(id, name, owner, status, timeline);
+        return new Board_StandardProject_Item(id, name,groupid, owner, status, timeline);
     }
 }
