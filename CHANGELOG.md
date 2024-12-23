@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v1.0.10"></a>
+## [v1.0.10] - 2024-12-23
+### Feat
+- **driver:** completed driver team retrieve
+
+### Fix
+- **driver:** renamed monday driver service and created mondaydriverteamservice
+
+### Pull Requests
+- Merge pull request [#51](https://github.com/montipirlo21/OpenMonday/issues/51) from montipirlo21/50-fix-add-groupid-to-board_item
+
+
 <a name="v1.0.9"></a>
 ## [v1.0.9] - 2024-12-18
 ### Feat
@@ -121,7 +133,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.9...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.10...HEAD
+[v1.0.10]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.9...v1.0.10
 [v1.0.9]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.8...v1.0.9
 [v1.0.8]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.6...v1.0.7

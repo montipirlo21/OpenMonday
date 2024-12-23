@@ -4,12 +4,12 @@ using OpenMonday.Core.MondayDriver.Interfaces;
 
 public class BoardServices : IBoardServices
 {
-    private IMondayDriverService _mondayDriverService;
+    private IMondayBoardDriverService _mondayBoardDriverService;
     private IBoardBuilder _boardBuilder;
 
-    public BoardServices(IMondayDriverService mondayDriverService, IBoardBuilder boardBuilder)
+    public BoardServices(IMondayBoardDriverService mondayBoardDriverService, IBoardBuilder boardBuilder)
     {
-        _mondayDriverService = mondayDriverService;
+        _mondayBoardDriverService = mondayBoardDriverService;
         _boardBuilder = boardBuilder;
     }
 
@@ -38,8 +38,8 @@ public class BoardServices : IBoardServices
     {
         try
         {
-            var boards = await _mondayDriverService.GetBoardsStructureById(board_id);
-            var items = await _mondayDriverService.GetBoardItemsByCursor(board_id);
+            var boards = await _mondayBoardDriverService.GetBoardsStructureById(board_id);
+            var items = await _mondayBoardDriverService.GetBoardItemsByCursor(board_id);
 
             if (boards == null || boards.Data == null)
             {

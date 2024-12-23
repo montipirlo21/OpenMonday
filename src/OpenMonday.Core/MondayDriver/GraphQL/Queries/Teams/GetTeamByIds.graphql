@@ -1,0 +1,14 @@
+query GetTeamsByIds($ids: [ID!]!) {
+  teams(ids: $ids) {
+    id
+    name
+    owners {
+      id
+      name
+    }
+    users {
+      id
+      name
+    }
+  }
+}

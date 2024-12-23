@@ -11,7 +11,7 @@ namespace OpenMonday.Tests.MondayDriver
     public class MondayDriverServiceTests
     {
         private readonly Mock<IMondayClient> _mondayClientMock;
-        private readonly Mock<MondayDriverService> _mondayDriverService;
+        private readonly Mock<MondayBoardDriverService> _mondayDriverService;
         private readonly Mock<MondayDriverBoardStructureConverterService> _mondayBoardStructureConverterService;
         private readonly Mock<MondayDriverBoardItemsConverterService> _mondayDriverBoardItemsConverterService;
 
@@ -24,7 +24,7 @@ namespace OpenMonday.Tests.MondayDriver
             _mondayDriverBoardItemsConverterService = new Mock<MondayDriverBoardItemsConverterService>();
 
             // Moq MondayDriverService
-            _mondayDriverService = new Mock<MondayDriverService>(_mondayClientMock.Object, _mondayBoardStructureConverterService.Object, _mondayDriverBoardItemsConverterService.Object)
+            _mondayDriverService = new Mock<MondayBoardDriverService>(_mondayClientMock.Object, _mondayBoardStructureConverterService.Object, _mondayDriverBoardItemsConverterService.Object)
             {
                 // Base call where it is not mocked
                 CallBase = true

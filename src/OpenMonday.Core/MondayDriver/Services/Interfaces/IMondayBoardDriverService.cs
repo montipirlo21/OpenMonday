@@ -1,6 +1,6 @@
 namespace OpenMonday.Core.MondayDriver.Interfaces;
 
-public interface IMondayDriverService
+public interface IMondayBoardDriverService
 {
     Task<MondayDriverResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId);
 

@@ -1,0 +1,14 @@
+query GetTeams {
+  teams {
+    id
+    name
+    owners {
+      id
+      name
+    }
+    users {
+       id
+    	name
+    }
+  }
+}

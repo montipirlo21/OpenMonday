@@ -5,13 +5,13 @@ using StrawberryShake;
 
 namespace OpenMonday.Core.MondayDriver.Services;
 
-public class MondayDriverService : IMondayDriverService
+public class MondayBoardDriverService : IMondayBoardDriverService
 {
     private readonly IMondayClient _mondayClient;
     private readonly IMondayDriverBoardStructureConverterService _mondayBoardStructureConverterService;    
     private readonly IMondayDriverBoardItemsConverterService _mondayDriverBoardItemsConverterService;
 
-    public MondayDriverService(IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService, 
+    public MondayBoardDriverService(IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService, 
     IMondayDriverBoardItemsConverterService mondayDriverBoardItemsConverterService)
     {
         _mondayClient = mondayClient;
