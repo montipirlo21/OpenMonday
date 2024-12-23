@@ -5,25 +5,17 @@ using OpenMonday.Core.MondayDriver.Services;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddOpenMondayServices(this IServiceCollection services, Action<OpenMondayDriverOptions> configureOptions)
+    public static IServiceCollection AddOpenMondayServices(this IServiceCollection services, Func<OpenMondayDriverOptions> configureOptions)
     {
         if (configureOptions == null)
         {
             throw new ArgumentNullException(nameof(configureOptions));
         }
 
-        var options = new OpenMondayDriverOptions();
-        configureOptions(options);
-
-        if (options.MondayWebApiUrl == null)
-        {
-            throw new ArgumentNullException("MondayWebApiUrl must be not null");
-        }
-
         // Add Monday Client
-        services.AddMondayClient()
-          .ConfigureHttpClient(client =>
+        services.AddMondayClient().ConfigureHttpClient(client =>
           {
+              var options = configureOptions.Invoke();
               client.BaseAddress = new Uri(options.MondayWebApiUrl);
               client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
           }
@@ -33,7 +25,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMondayDriverBoardStructureConverterService, MondayDriverBoardStructureConverterService>();
         services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();
         services.AddScoped<IMondayBoardDriverService, MondayBoardDriverService>();
-        
+
         services.AddScoped<IMondayDriverTeamConverterService, MondayDriverTeamConverterService>();
         services.AddScoped<IMondayTeamDriverService, MondayTeamDriverService>();
 
