@@ -129,7 +129,7 @@ public class BoardItemBuilder : IBoardItemBuilder
             }
             else
             {
-                return Board_Column_String_Value.Create(value);
+                return Board_Column_String_Value.Create(column.Text, value);
             }
         }
         catch (Exception ex)
@@ -166,7 +166,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                         people.Add(p1);
                     }
 
-                    return Board_Column_People.Create(data.Updated_at, people);
+                    return Board_Column_People.Create(column.Text,data.Updated_at, people);
                 }
                 else
                 {
@@ -211,7 +211,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                     DateTime to = data.To;
                     DateTime changet_at = data.Changed_At;
                     string? visualization_type = data.VisualizationType;
-                    return Board_Column_Timeline.Create(from, to, changet_at, visualization_type);
+                    return Board_Column_Timeline.Create(column.Text, from, to, changet_at, visualization_type);
                 }
                 else
                 {
@@ -254,7 +254,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                     var isDone = data.IsDone.HasValue ? data.IsDone.Value : false;
                     var updatedAt = data.UpdatedAt.HasValue ? data.UpdatedAt.Value : DateTime.MinValue;
                     var updateId = data.UpdatedId != null ? data.UpdatedId : "0";
-                    return Board_Column_Status.Create(index, isDone, updatedAt, updateId);
+                    return Board_Column_Status.Create(column.Text, index, isDone, updatedAt, updateId);
                 }
                 else
                 {

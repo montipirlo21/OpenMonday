@@ -5,7 +5,7 @@ public class Board_Column_Timeline : Board_Column_Base
     public DateTime? ChangedAt { get; set; }
     public string? VisualizationType { get; set; }
 
-    public Board_Column_Timeline(BoardColumnFillStatus fillStatus, DateTime? from, DateTime? to, DateTime? changedAt, string? visualizationType) : base(fillStatus)
+    public Board_Column_Timeline(BoardColumnFillStatus fillStatus, string displayedValue, DateTime? from, DateTime? to, DateTime? changedAt, string? visualizationType) : base(fillStatus, displayedValue)
     {
         From = from;
         To = to;
@@ -13,14 +13,14 @@ public class Board_Column_Timeline : Board_Column_Base
         VisualizationType = visualizationType;
     }
 
-    public static Board_Column_Timeline Create(DateTime from, DateTime to, DateTime changedAt, string? visualizationType)
+    public static Board_Column_Timeline Create(string displayedValue, DateTime from, DateTime to, DateTime changedAt, string? visualizationType)
     {
-        return new Board_Column_Timeline(BoardColumnFillStatus.Filled, from, to, changedAt, visualizationType);
+        return new Board_Column_Timeline(BoardColumnFillStatus.Filled, displayedValue, from, to, changedAt, visualizationType);
     }
 
     public static Board_Column_Timeline Create_Unfilled()
     {
-        return new Board_Column_Timeline(BoardColumnFillStatus.UnFilled, null, null, null, null);
+        return new Board_Column_Timeline(BoardColumnFillStatus.UnFilled, string.Empty, null, null, null, null);
     }
 
     public bool ScheduledOnThisTimeRanged(DateTime start, DateTime end)
