@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.0.12"></a>
+## [v1.0.12] - 2024-12-23
+### Feat
+- **column value:** Add display value to all columns
+
+### Pull Requests
+- Merge pull request [#55](https://github.com/montipirlo21/OpenMonday/issues/55) from montipirlo21/54-update-addopenmondayservices-for-dependency-injection-service
+
+
 <a name="v1.0.11"></a>
 ## [v1.0.11] - 2024-12-23
 ### Pull Requests
@@ -139,7 +148,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.11...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.12...HEAD
+[v1.0.12]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.10...v1.0.11
 [v1.0.10]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.9...v1.0.10
 [v1.0.9]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.8...v1.0.9
