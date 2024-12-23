@@ -7,11 +7,11 @@ using OpenMonday.Core.MondayDriver.Interfaces;
 [ApiController]
 public class MondayDriverController : ControllerBase
 {
-    private readonly IMondayDriverService _mondayDriverService;
+    private readonly IMondayBoardDriverService _mondayBoardDriverService;
 
-    public MondayDriverController(IMondayDriverService mondayDriverService)
+    public MondayDriverController(IMondayBoardDriverService mondayBoardDriverService)
     {
-        _mondayDriverService = mondayDriverService;
+        _mondayBoardDriverService = mondayBoardDriverService;
     }
 
     /// <summary>
@@ -21,7 +21,7 @@ public class MondayDriverController : ControllerBase
     [HttpGet("GetBoardsStructureById")]
     public async Task<ActionResult<string>> GetBoardsStructureById([FromQuery] string boardId)
     {
-        var result = await _mondayDriverService.GetBoardsStructureById(boardId);
+        var result = await _mondayBoardDriverService.GetBoardsStructureById(boardId);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
 
@@ -32,7 +32,7 @@ public class MondayDriverController : ControllerBase
     [HttpGet("GetBoardItemsByCursor")]
     public async Task<ActionResult<string>> GetBoardItemsByCursor([FromQuery] string boardId)
     {
-        var result = await _mondayDriverService.GetBoardItemsByCursor(boardId);
+        var result = await _mondayBoardDriverService.GetBoardItemsByCursor(boardId);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
 }
