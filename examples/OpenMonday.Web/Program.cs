@@ -1,16 +1,18 @@
+using static ServiceCollectionExtensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Retrieve the configuration from app.settings or env
-builder.Services.Configure<OpenMondayConfiguration>(builder.Configuration.GetSection("OpenMondayConfiguration"));
-var openMondayConfiguration = new OpenMondayConfiguration();
-builder.Configuration.GetSection("OpenMondayConfiguration").Bind(openMondayConfiguration);
-
-
 // AddOpenMondayServices 
-builder.Services.AddOpenMondayServices(options =>
+builder.Services.AddOpenMondayServices(() =>
 {
-    options.MondayWebApiUrl = openMondayConfiguration.MondayWebApiUrl;
-    options.MondayToken = openMondayConfiguration.MondayToken;
+    var currentOptions = new OpenMondayConfiguration();
+    builder.Configuration.GetSection("OpenMondayConfiguration").Bind(currentOptions);
+
+    return new OpenMondayDriverOptions
+    {
+        MondayWebApiUrl = currentOptions.MondayWebApiUrl,
+        MondayToken = currentOptions.MondayToken
+    };
 });
 
 // Simulation AREA
