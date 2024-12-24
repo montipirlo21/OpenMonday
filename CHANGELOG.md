@@ -1,8 +1,14 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.0.14"></a>
+## [v1.0.14] - 2024-12-24
 ### Feat
 - **driver:** Completed refactoring parsing timeline column data
+
+### Pull Requests
+- Merge pull request [#59](https://github.com/montipirlo21/OpenMonday/issues/59) from montipirlo21/58-add-getboardsstructurebyid-to-boardservice
 
 
 <a name="v1.0.13"></a>
@@ -160,7 +166,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.13...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.14...HEAD
+[v1.0.14]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.13...v1.0.14
 [v1.0.13]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.12...v1.0.13
 [v1.0.12]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.10...v1.0.11
