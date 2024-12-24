@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Feat
+- **driver:** Completed refactoring parsing timeline column data
+
 
 <a name="v1.0.13"></a>
 ## [v1.0.13] - 2024-12-24
