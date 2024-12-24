@@ -29,5 +29,12 @@ fragment ItemFragment on Item {
     ... on MirrorValue {
       display_value
     }
+
+     ... on TimelineValue {
+      from
+      to
+      updated_at
+      visualization_type
+     }      
   }
 }

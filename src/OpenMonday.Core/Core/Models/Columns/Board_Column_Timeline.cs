@@ -13,7 +13,7 @@ public class Board_Column_Timeline : Board_Column_Base
         VisualizationType = visualizationType;
     }
 
-    public static Board_Column_Timeline Create(string displayedValue, DateTime from, DateTime to, DateTime changedAt, string? visualizationType)
+    public static Board_Column_Timeline Create(string displayedValue, DateTime? from, DateTime? to, DateTime? changedAt, string? visualizationType)
     {
         return new Board_Column_Timeline(BoardColumnFillStatus.Filled, displayedValue, from, to, changedAt, visualizationType);
     }
