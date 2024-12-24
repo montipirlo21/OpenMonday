@@ -105,12 +105,8 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                     }
                 case ColumnType.Timeline:
                     {
-                        if (val.Value == null || val.Value.Value.Equals(string.Empty))
-                        {
-                            return result;
-                        }
-                        string sValue = val.Value.Value.ToString();
-                        result = JsonHelper.Deserialize<MondayDriverTimeLineColumnData>(sValue);
+                        IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue)val;
+                        result = MondayDriverTimeLineColumnData.Create(v.From, v.To, v.Updated_at, v.Visualization_type);
                         break;
                     }
                 case ColumnType.Status:

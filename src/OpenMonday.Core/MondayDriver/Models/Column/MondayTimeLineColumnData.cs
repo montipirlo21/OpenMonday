@@ -1,29 +1,21 @@
-using System.Text.Json.Serialization;
-
 public class MondayDriverTimeLineColumnData : MondayDriverBaseColumnData
 {
-
-    [JsonPropertyName("from")]
-    public DateTime From { get; set; }
-    [JsonPropertyName("to")]
-    public DateTime To { get; set; }
-    [JsonPropertyName("changed_at")]
-    public DateTime Changed_At { get; set; }
-
-    [JsonPropertyName("visualization_type")]
+    public DateTime? From { get; set; }
+    public DateTime? To { get; set; }
+    public DateTime? UpdatedAt { get; set; }
     public string? VisualizationType { get; set; }
 
-    public MondayDriverTimeLineColumnData(DateTime from, DateTime to, DateTime changed_At, string? visualizationType) : base()
+    public MondayDriverTimeLineColumnData(DateTime? from, DateTime? to, DateTime? updatedAt, string? visualizationType) : base()
     {
         From = from;
         To = to;
-        Changed_At = changed_At;
+        UpdatedAt = updatedAt;
         VisualizationType = visualizationType;
     }
 
-    public static MondayDriverTimeLineColumnData Create(DateTime from, DateTime to, DateTime changed_At, string? visualizationType)
+    public static MondayDriverTimeLineColumnData Create(DateTime? from, DateTime? to, DateTime? updatedAt, string? visualizationType)
     {
-        return new MondayDriverTimeLineColumnData(from, to, changed_At, visualizationType);
+        return new MondayDriverTimeLineColumnData(from, to, updatedAt, visualizationType);
     }
 
 

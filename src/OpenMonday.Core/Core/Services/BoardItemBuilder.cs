@@ -207,9 +207,9 @@ public class BoardItemBuilder : IBoardItemBuilder
             {
                 if (column.ColumnData is MondayDriverTimeLineColumnData data)
                 {
-                    DateTime from = data.From;
-                    DateTime to = data.To;
-                    DateTime changet_at = data.Changed_At;
+                    DateTime? from = data.From;
+                    DateTime? to = data.To;
+                    DateTime? changet_at = data.UpdatedAt;
                     string? visualization_type = data.VisualizationType;
                     return Board_Column_Timeline.Create(column.Text, from, to, changet_at, visualization_type);
                 }
