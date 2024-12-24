@@ -60,4 +60,23 @@ public class BoardServices : IBoardServices
             return ServiceResult<T>.Failure("Exception not cached");
         }
     }
+
+    public async Task<ServiceResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId){
+         try
+        {
+            var boards = await _mondayBoardDriverService.GetBoardsStructureById(boardId);
+
+            if (boards == null || !boards.IsSuccess || boards.Data == null)
+            {
+                return ServiceResult<MondayDriverBoardStructure>.Failure("Cannot get Board structure");
+            }
+       
+            return ServiceResult<MondayDriverBoardStructure>.Success(boards.Data);
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            return ServiceResult<MondayDriverBoardStructure>.Failure("Exception not cached");
+        }
+    }
 }

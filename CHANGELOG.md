@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.0.13"></a>
+## [v1.0.13] - 2024-12-24
+### Feat
+- **BoardService:** retrieve board structure
+
+### Pull Requests
+- Merge pull request [#57](https://github.com/montipirlo21/OpenMonday/issues/57) from montipirlo21/56-add-display-name-to-board-columns
+
+
 <a name="v1.0.12"></a>
 ## [v1.0.12] - 2024-12-23
 ### Feat
@@ -148,7 +157,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.12...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.13...HEAD
+[v1.0.13]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.12...v1.0.13
 [v1.0.12]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.10...v1.0.11
 [v1.0.10]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.9...v1.0.10

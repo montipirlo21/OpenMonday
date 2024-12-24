@@ -39,7 +39,15 @@ public class ExposeController : ControllerBase
         var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id,boardMapping);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
     }   
-
-
-
+    
+    /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("GetBoardsStructureById")]
+    public async Task<ActionResult<string>> GetBoardsStructureById([FromQuery] string board_id)
+    {
+        var boardBuilded = await _boardServices.GetBoardsStructureById(board_id);
+        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
+    }  
 }
