@@ -35,4 +35,15 @@ public class MondayBoardDriverController : ControllerBase
         var result = await _mondayBoardDriverService.GetBoardItemsByCursor(boardId);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
+
+     /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("GetActivityLogs")]
+    public async Task<ActionResult<string>> GetActivityLogs([FromQuery] string boardId, DateTime from, DateTime to)
+    {
+        var result = await _mondayBoardDriverService.GetActivityLogs(boardId, from, to);
+        return Ok($"{JsonSerializer.Serialize(result)}");
+    }
 }
