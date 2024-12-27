@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.0.16"></a>
+## [v1.0.16] - 2024-12-27
+### Feat
+- **ActivityLogs:** read Activity logs
+
+### Pull Requests
+- Merge pull request [#63](https://github.com/montipirlo21/OpenMonday/issues/63) from montipirlo21/62-add-monday-users-information
+
+
 <a name="v1.0.15"></a>
 ## [v1.0.15] - 2024-12-27
 ### Feat
@@ -175,7 +184,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.15...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.16...HEAD
+[v1.0.16]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.15...v1.0.16
 [v1.0.15]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.14...v1.0.15
 [v1.0.14]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.13...v1.0.14
 [v1.0.13]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.12...v1.0.13

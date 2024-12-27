@@ -6,8 +6,6 @@ using StrawberryShake;
 
 namespace OpenMonday.Tests.MondayDriver
 {
-
-
     public class MondayDriverServiceTests
     {
         private readonly Mock<IMondayClient> _mondayClientMock;
@@ -210,6 +208,71 @@ namespace OpenMonday.Tests.MondayDriver
             Assert.True(result.IsSuccess);
             Assert.Equal(6, result.Data.Count());
             
+        }
+
+        [Fact]
+        public async Task GetActivityLogs_ValidBoardId_Success()
+        {
+            // ARRANGE
+            var simulatedLogs = TestDataBuilders_MondayDriverActivityLogs.GenerateActivityLogsResult();
+            string boardId = "validBoardId";
+            DateTime from = DateTime.UtcNow.AddDays(-7);
+            DateTime to = DateTime.UtcNow;
+
+            var mockIGetActivityLogQuery = new Mock<IGetActivityLogQuery>();
+            mockIGetActivityLogQuery
+                .Setup(x => x.ExecuteAsync(It.IsAny<IReadOnlyList<string>>(), It.IsAny<string>(), It.IsAny<string>(), CancellationToken.None))
+                .ReturnsAsync(simulatedLogs);
+
+            _mondayClientMock
+                .Setup(x => x.GetActivityLog)
+                .Returns(mockIGetActivityLogQuery.Object);
+
+            // ACT
+            var result = await _mondayDriverService.Object.GetActivityLogs(boardId, from, to);
+
+            // ASSERT
+            Assert.NotNull(result);
+            Assert.True(result.IsSuccess);
+            Assert.NotNull(result.Data);
+            Assert.Equal(simulatedLogs.Data.Boards.First().Activity_logs.Count, result.Data.Count);
+
+            var expectedLogs = simulatedLogs.Data.Boards.First().Activity_logs;
+            for (int i = 0; i < expectedLogs.Count; i++)
+            {
+                Assert.Equal(expectedLogs[i].Id, result.Data[i].Id);
+                Assert.Equal(expectedLogs[i].User_id, result.Data[i].User_id);
+                Assert.Equal(expectedLogs[i].Event, result.Data[i].EventType);
+                Assert.Equal(expectedLogs[i].Created_at, result.Data[i].CreatedAt);
+            }
+        }
+
+        [Fact]
+        public async Task GetActivityLogs_EmptyActivityLogs_Success()
+        {
+            // ARRANGE
+            var simulatedLogs = TestDataBuilders_MondayDriverActivityLogs.GenerateEmptyActivityLogsResult();
+            string boardId = "validBoardId";
+            DateTime from = DateTime.UtcNow.AddDays(-7);
+            DateTime to = DateTime.UtcNow;
+
+            var mockIGetActivityLogQuery = new Mock<IGetActivityLogQuery>();
+            mockIGetActivityLogQuery
+                .Setup(x => x.ExecuteAsync(It.IsAny<IReadOnlyList<string>>(), It.IsAny<string>(), It.IsAny<string>(), CancellationToken.None))
+                .ReturnsAsync(simulatedLogs);
+
+            _mondayClientMock
+                .Setup(x => x.GetActivityLog)
+                .Returns(mockIGetActivityLogQuery.Object);
+
+            // ACT
+            var result = await _mondayDriverService.Object.GetActivityLogs(boardId, from, to);
+
+            // ASSERT
+            Assert.NotNull(result);
+            Assert.True(result.IsSuccess);
+            Assert.NotNull(result.Data);
+            Assert.Empty(result.Data);
         }
     }
 }
