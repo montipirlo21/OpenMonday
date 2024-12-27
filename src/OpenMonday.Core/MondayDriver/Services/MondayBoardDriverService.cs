@@ -127,4 +127,52 @@ public class MondayBoardDriverService : IMondayBoardDriverService
             throw;
         }
     }
+
+     public async Task<MondayDriverResult<List<MondayDriverActivityLog>>> GetActivityLogs(string board_id, DateTime from, DateTime to)
+    {
+        try
+        {
+            List<MondayDriverActivityLog> items = new List<MondayDriverActivityLog>();
+
+            var isoFrom = DateTimeConverter.ConvertToISO8601DateTimeString(from);
+            var isoTo = DateTimeConverter.ConvertToISO8601DateTimeString(to);
+
+            var boards = await _mondayClient.GetActivityLog.ExecuteAsync([board_id], isoFrom, isoTo);
+            IGetActivityLog_Boards? board;
+            if (boards == null || boards.Data == null || boards.Data.Boards == null)
+            {
+                return MondayDriverResult<List<MondayDriverActivityLog>>.Failure("Error: boards == null || boards.Data == null || boards.Data.Boards == null");
+            }
+
+            if (boards.Data.Boards.Count == 0)
+            {
+                return MondayDriverResult<List<MondayDriverActivityLog>>.Failure("No board found");
+            }
+
+            if (boards.Data.Boards.Count > 1)
+            {
+                return MondayDriverResult<List<MondayDriverActivityLog>>.Failure($"Too many boards found {boards.Data.Boards.Count}");
+            }
+
+            board = boards.Data.Boards[0];
+
+            if (board == null || board.Activity_logs == null)
+            {
+                return MondayDriverResult<List<MondayDriverActivityLog>>.Failure($"board == null || board.Activity_logs == null");
+            }
+
+            foreach (var log in board.Activity_logs)
+            {
+                items.Add( MondayDriverActivityLog.Create(log.Id, log.User_id, log.Event, log.Created_at));
+            }         
+
+            // Do the conversion
+            return MondayDriverResult<List<MondayDriverActivityLog>>.Success(items);
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            throw;
+        }
+    }
 }
