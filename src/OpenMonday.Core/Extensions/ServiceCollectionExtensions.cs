@@ -23,11 +23,14 @@ public static class ServiceCollectionExtensions
 
         // Register custom service
         services.AddScoped<IMondayDriverBoardStructureConverterService, MondayDriverBoardStructureConverterService>();
-        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();
+        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();        
         services.AddScoped<IMondayBoardDriverService, MondayBoardDriverService>();
 
         services.AddScoped<IMondayDriverTeamConverterService, MondayDriverTeamConverterService>();
         services.AddScoped<IMondayTeamDriverService, MondayTeamDriverService>();
+
+        services.AddScoped<IMondayDriverUserConverterService, MondayDriverUserConverterService>();
+        services.AddScoped<IMondayUserDriverService, MondayUserDriverService>();
 
         services.AddScoped<IBoardBuilder, BoardBuilders>();
         services.AddScoped<IBoardItemBuilder, BoardItemBuilder>();

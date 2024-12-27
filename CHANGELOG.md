@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.0.15"></a>
+## [v1.0.15] - 2024-12-27
+### Feat
+- **Users:** Retrieve user base information
+
+### Pull Requests
+- Merge pull request [#61](https://github.com/montipirlo21/OpenMonday/issues/61) from montipirlo21/60-timelinevalue-stop-parsing-json-and-refine-graphql-query
+
+
 <a name="v1.0.14"></a>
 ## [v1.0.14] - 2024-12-24
 ### Feat
@@ -166,7 +175,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.14...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.15...HEAD
+[v1.0.15]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.14...v1.0.15
 [v1.0.14]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.13...v1.0.14
 [v1.0.13]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.12...v1.0.13
 [v1.0.12]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.11...v1.0.12
