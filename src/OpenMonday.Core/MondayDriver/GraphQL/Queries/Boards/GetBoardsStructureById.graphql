@@ -2,6 +2,7 @@ query GetBoardsStructureById($ids: [ID!]!) {
   boards(ids: $ids) {
     id
     name
+    updated_at
     items_count
     columns {
       id

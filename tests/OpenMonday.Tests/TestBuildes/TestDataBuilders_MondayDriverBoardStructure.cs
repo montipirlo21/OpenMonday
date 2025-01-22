@@ -30,7 +30,7 @@ public class TestDataBuilders_MondayDriverBoardStructure
 
         IGetBoardsStructureByIdResult data = new GetBoardsStructureByIdResult(new List<GetBoardsStructureById_Boards_Board>()
         {
-            new(boardId, boardName, item_count, listColumn, groups)
+            new(boardId, boardName, "2025-01-22T08:03:58Z", item_count, listColumn, groups)
         });
 
         var operationResult = new OperationResult<IGetBoardsStructureByIdResult>(data, null, null, null, null, null);

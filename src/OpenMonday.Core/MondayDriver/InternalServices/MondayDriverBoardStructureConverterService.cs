@@ -12,13 +12,15 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
             throw new NullReferenceException("mondayBoard has to be not null");
         }
 
+        DateTime? updatedAt= DateTimeConverter.ConvertFromStringToISO8601DateTime(mondayBoard.Updated_at);
+
         // Convert the columns schema
         var columns = ConvertToMondayDriverColumnSchema(mondayBoard.Columns);
 
         // Convert the groups informations
         var groups = ConvertToMondayDriverGroupsInformation(mondayBoard.Groups);
 
-        return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, mondayBoard.Items_count, columns, groups);
+        return MondayDriverBoardStructure.Create(mondayBoard.Id, mondayBoard.Name, mondayBoard.Items_count, updatedAt, columns, groups);
     }
 
     public List<MondayDriverGroupInformation> ConvertToMondayDriverGroupsInformation(IReadOnlyList<IGetBoardsStructureById_Boards_Groups?> groups)

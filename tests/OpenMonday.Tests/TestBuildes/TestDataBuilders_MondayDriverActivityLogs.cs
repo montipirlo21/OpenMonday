@@ -13,7 +13,7 @@ public static class TestDataBuilders_MondayDriverActivityLogs
 
         var boards = new List<IGetActivityLog_Boards>
             {
-                new GetActivityLog_Boards_Board(activityLogs)              
+                new GetActivityLog_Boards_Board("2025-01-22T08:03:58Z", activityLogs)              
             };
 
         var data = new GetActivityLogResult(boards);
@@ -29,7 +29,7 @@ public static class TestDataBuilders_MondayDriverActivityLogs
 
         var boards = new List<IGetActivityLog_Boards>
             {
-                new GetActivityLog_Boards_Board(activityLogs)              
+                new GetActivityLog_Boards_Board("2025-01-22T08:03:58Z", activityLogs)              
             };
 
         var data = new GetActivityLogResult(boards);
