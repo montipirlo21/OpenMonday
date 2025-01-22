@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.0.17"></a>
+## [v1.0.17] - 2025-01-22
+### Feat
+- **updated_at:** add updated_at information to GetBoardsStructureById and GetActivityLog
+
+### Pull Requests
+- Merge pull request [#66](https://github.com/montipirlo21/OpenMonday/issues/66) from montipirlo21/64-read-activity-logs
+
+
 <a name="v1.0.16"></a>
 ## [v1.0.16] - 2024-12-27
 ### Feat
@@ -184,7 +193,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.16...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.17...HEAD
+[v1.0.17]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.16...v1.0.17
 [v1.0.16]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.15...v1.0.16
 [v1.0.15]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.14...v1.0.15
 [v1.0.14]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.13...v1.0.14
