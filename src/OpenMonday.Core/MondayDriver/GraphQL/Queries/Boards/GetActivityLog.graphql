@@ -1,5 +1,6 @@
 query GetActivityLog($ids: [ID!], $from: ISO8601DateTime, $to: ISO8601DateTime) {
   boards (ids: $ids) {
+    updated_at
     activity_logs (from: $from, to: $to) {
       id
       user_id
