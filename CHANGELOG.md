@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.0.18"></a>
+## [v1.0.18] - 2025-02-07
+### Fix
+- **board:** cleaned BuildBoard method
+
+### Pull Requests
+- Merge pull request [#69](https://github.com/montipirlo21/OpenMonday/issues/69) from montipirlo21/68-add-updated_at-the-last-time-the-board-was-updated-to-board-information
+
+
 <a name="v1.0.17"></a>
 ## [v1.0.17] - 2025-01-22
 ### Feat
@@ -193,7 +202,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.17...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.18...HEAD
+[v1.0.18]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.17...v1.0.18
 [v1.0.17]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.16...v1.0.17
 [v1.0.16]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.15...v1.0.16
 [v1.0.15]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.14...v1.0.15
