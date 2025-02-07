@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>OpenMonday</PackageId>
-    <Version>1.0.17</Version>
+    <Version>1.0.18</Version>
     <Authors>Davide Monticelli</Authors>
     <Description>An open-source library designed to simplify interactions with the monday.com API,
       providing tools to manage projects, teams, and workflows intuitively and efficiently</Description>
