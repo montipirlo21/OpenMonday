@@ -68,12 +68,14 @@ public class BoardItemBuilder : IBoardItemBuilder
         try
         {
             string value = string.Empty;
+            string text = string.Empty;
 
             if (column.Type == ColumnType.Mirror)
             {
                 if (column.ColumnData is MondayDriverMirrorValueColumnData data)
                 {
                     value = data.DisplayValue;
+                    text = data.DisplayValue;
                 }
             }
             else if (column.Type == ColumnType.Dropdown)
@@ -81,6 +83,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 if (column.ColumnData is MondayDriverDropDownColumnData data)
                 {
                     value = data.Text;
+                    text = column.Text;
                 }
             }
             else if (column.Type == ColumnType.Text)
@@ -88,6 +91,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 if (column.ColumnData is MondayDriverTextColumnData data)
                 {
                     value = data.Text;
+                    text = column.Text;
                 }
             }
             else if (column.Type == ColumnType.Date)
@@ -95,6 +99,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 if (column.ColumnData is MondayDriverDateColumnData data)
                 {
                     value = data.Date.ToString();
+                    text = column.Text;
                 }
             }
             else if (column.Type == ColumnType.Formula)
@@ -102,6 +107,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 if (column.ColumnData is MondayDriverFormulaColumnData data)
                 {
                     value = data.Text.ToString();
+                    text = column.Text;
                 }
             }
             else if (column.Type == ColumnType.Status)
@@ -109,6 +115,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 if (column.ColumnData is MondayDriverStatusValueColumnData data)
                 {
                     value = StringHelper.ToStringOrStringEmpty(data.Text);
+                    text = column.Text;
                 }
             }
             else if (column.Type == ColumnType.Link)
@@ -116,6 +123,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                 if (column.ColumnData is MondayDriverLinkColumnData data)
                 {
                     value = StringHelper.ToStringOrStringEmpty(data.Text);
+                    text = column.Text;
                 }
             }
             else
