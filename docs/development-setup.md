@@ -42,3 +42,8 @@ git tag -a v1.1.0 -m "Versione 1.1.0"
 git-chglog -o CHANGELOG.md
 git push origin --tags
 ```
+
+### update monday schema ####
+```bash
+ dotnet graphql update --token $env:OpenMondayConfiguration__MondayToken
+ ```

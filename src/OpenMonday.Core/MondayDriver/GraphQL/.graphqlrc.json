@@ -1,5 +1,5 @@
 {
-  "schema": "Schemas/schema_2024-10.graphql",
+  "schema": "Schemas/schema_2025-01.graphql",
   "documents": "**/*.graphql",
   "extensions": {
     "strawberryShake": {
@@ -20,3 +20,7 @@
     }
   }
 }
+
+
+// update schema with this command
+// dotnet graphql update --token $env:OpenMondayConfiguration__MondayToken
