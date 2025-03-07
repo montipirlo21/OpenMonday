@@ -41,4 +41,25 @@ public static class ReflectionHelper
         // Return the type of the property
         return property.PropertyType;
     }
+
+    public static bool IsExplicitNullable(PropertyInfo property)
+    {
+        bool isExplicitlyNullable = false;
+        if (Nullable.GetUnderlyingType(property.PropertyType) != null)
+        {
+            isExplicitlyNullable = true;
+        }
+        else
+        {
+            // Controllo per i tipi riferimento con nullability annotations
+            var nullabilityInfoContext = new NullabilityInfoContext();
+            var nullabilityInfo = nullabilityInfoContext.Create(property);
+            if (nullabilityInfo.ReadState == NullabilityState.Nullable)
+            {
+                isExplicitlyNullable = true;
+            }
+        }
+
+        return isExplicitlyNullable;
+    }
 }

@@ -33,6 +33,8 @@ public class BoardItemBuilder : IBoardItemBuilder
         foreach (var map in columnMapping.Mapping)
         {
             var taskColumn = tasks.GetColumnById(map.BoardColumnId);
+            
+            if (taskColumn == null && map.ColumnMapping.IsExplicitNullable) continue;
             if (taskColumn == null) throw new ApplicationException($"Column {taskColumn} not found");
 
             Board_Column_Base col;

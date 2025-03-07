@@ -23,7 +23,8 @@ public class BoardServices : IBoardServices
             var attribute = property.GetCustomAttribute<ColumnMappingAttribute>();
             if (attribute != null)
             {
-                columnNames.Add(new BoardColumnMapping(property.Name, attribute.SearchingNames));
+                bool isExplicitlyNullable = ReflectionHelper.IsExplicitNullable(property);
+                columnNames.Add(new BoardColumnMapping(property.Name, attribute.SearchingNames, isExplicitlyNullable));
             }
         }
 
