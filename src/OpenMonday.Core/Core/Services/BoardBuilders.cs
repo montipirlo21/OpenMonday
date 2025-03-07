@@ -90,7 +90,7 @@ public class BoardBuilders : IBoardBuilder
             {
                 // Looking in the BoardStructure
                 var columnId = schema.FindColumnIdByNameOrStringEmpty(columnName.SearchingName);
-                if (string.IsNullOrEmpty(columnId))
+                if (string.IsNullOrEmpty(columnId) && !columnName.IsExplicitNullable)
                 {
                     return Task.FromResult(ServiceResult<MondayColumnsToBoardMappings>.Failure($"Mapping boardMapping to schema error: not found correspondency for: {string.Join(", ", columnName.SearchingName)}"));
                 }

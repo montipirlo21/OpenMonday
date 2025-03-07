@@ -30,9 +30,9 @@ public class ExposeController : ControllerBase
     {
         // Create a board mapping for the entity
          List<BoardColumnMapping> columnNames = new List<BoardColumnMapping>(){
-            new BoardColumnMapping("Owner",["Owner"] ),
-            new BoardColumnMapping("Status",["Status", "Stato" ]),
-            new BoardColumnMapping("Timeline",["Timeline", "Pianificazione"]) 
+            new BoardColumnMapping("Owner",["Owner"], true ),
+            new BoardColumnMapping("Status",["Status", "Stato" ], true),
+            new BoardColumnMapping("Timeline",["Timeline", "Pianificazione"], true) 
         };
         var boardMapping =  new BoardMapping(columnNames);
   
