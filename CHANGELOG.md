@@ -1,9 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.1.0"></a>
+## [v1.1.0] - 2025-03-07
 ### Feat
 - **nullable:** mapping nullable column
 - **reflection:** Add non nullable reflection support for  columns
+
+### Pull Requests
+- Merge pull request [#72](https://github.com/montipirlo21/OpenMonday/issues/72) from montipirlo21/71-migrate-to-monday-api-2025-01
 
 
 <a name="v1.0.19"></a>
@@ -216,7 +222,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.19...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.19...v1.1.0
 [v1.0.19]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.18...v1.0.19
 [v1.0.18]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.17...v1.0.18
 [v1.0.17]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.16...v1.0.17
