@@ -34,6 +34,7 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IBoardBuilder, BoardBuilders>();
         services.AddScoped<IBoardItemBuilder, BoardItemBuilder>();
+        services.AddScoped<IBoardStructureBuilder, BoardStructureBuilder>();
 
         services.AddScoped<IBoardServices, BoardServices>();
 
