@@ -44,10 +44,22 @@ public class ExposeController : ControllerBase
     /// </summary>
     /// <param name="board_id"></param>
     /// <returns></returns>
+    [Obsolete("Use RetrieveBoardStructure"  )]
     [HttpGet("GetBoardsStructureById")]
     public async Task<ActionResult<string>> GetBoardsStructureById([FromQuery] string board_id)
     {
         var boardBuilded = await _boardServices.GetBoardsStructureById(board_id);
+        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
+    }  
+
+    /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("RetrieveBoardStructure")]
+    public async Task<ActionResult<string>> RetrieveBoardStructure([FromQuery] string board_id)
+    {
+        var boardBuilded = await _boardServices.RetrieveBoardStructure(board_id);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
     }  
 }

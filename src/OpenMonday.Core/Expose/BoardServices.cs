@@ -64,6 +64,7 @@ public class BoardServices : IBoardServices
         }
     }
 
+    [Obsolete("Use RetrieveBoardStructure instead")]
     public async Task<ServiceResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId)
     {
         try
@@ -84,7 +85,7 @@ public class BoardServices : IBoardServices
         }
     }
 
-    public async Task<ServiceResult<BoardStructure>> RetrieveBoardStructureById(string boardId)
+    public async Task<ServiceResult<BoardStructure>> RetrieveBoardStructure(string boardId)
     {
         try
         {
