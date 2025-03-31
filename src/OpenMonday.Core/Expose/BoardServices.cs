@@ -6,11 +6,13 @@ public class BoardServices : IBoardServices
 {
     private IMondayBoardDriverService _mondayBoardDriverService;
     private IBoardBuilder _boardBuilder;
+    private IBoardStructureBuilder _boardStructureBuilder;
 
-    public BoardServices(IMondayBoardDriverService mondayBoardDriverService, IBoardBuilder boardBuilder)
+    public BoardServices(IMondayBoardDriverService mondayBoardDriverService, IBoardBuilder boardBuilder, IBoardStructureBuilder boardStructureBuilder)
     {
         _mondayBoardDriverService = mondayBoardDriverService;
         _boardBuilder = boardBuilder;
+        _boardStructureBuilder = boardStructureBuilder;
     }
 
     public async Task<ServiceResult<T>> RetrieveAndBuildBoard<T, TItem>(string board_id) where T : Board, new() where TItem : Board_Item, new()
@@ -62,8 +64,10 @@ public class BoardServices : IBoardServices
         }
     }
 
-    public async Task<ServiceResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId){
-         try
+    [Obsolete("Use RetrieveBoardStructure instead")]
+    public async Task<ServiceResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId)
+    {
+        try
         {
             var boards = await _mondayBoardDriverService.GetBoardsStructureById(boardId);
 
@@ -71,7 +75,7 @@ public class BoardServices : IBoardServices
             {
                 return ServiceResult<MondayDriverBoardStructure>.Failure("Cannot get Board structure");
             }
-       
+
             return ServiceResult<MondayDriverBoardStructure>.Success(boards.Data);
         }
         catch (Exception ex)
@@ -79,5 +83,27 @@ public class BoardServices : IBoardServices
             LoggerHelper.LogException(ex);
             return ServiceResult<MondayDriverBoardStructure>.Failure("Exception not cached");
         }
+    }
+
+    public async Task<ServiceResult<BoardStructure>> RetrieveBoardStructure(string boardId)
+    {
+        try
+        {
+            var boards = await _mondayBoardDriverService.GetBoardsStructureById(boardId);
+
+            if (boards == null || !boards.IsSuccess || boards.Data == null)
+            {
+                return ServiceResult<BoardStructure>.Failure("Cannot get Board structure");
+            }
+
+            var result = await _boardStructureBuilder.BuildBoardStructure(boards.Data);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            return ServiceResult<BoardStructure>.Failure("Exception not cached");
+        }
+
     }
 }

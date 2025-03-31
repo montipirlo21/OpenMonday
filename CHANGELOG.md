@@ -2,6 +2,17 @@
 ## [Unreleased]
 
 
+<a name="v1.1.1"></a>
+## [v1.1.1] - 2025-03-31
+### Feat
+- **RetrieveBoardStructure:** add api on controller
+- **boardstructure:** add board structure models
+- **boardstructurebuilder:** add service for board structure building
+
+### Pull Requests
+- Merge pull request [#74](https://github.com/montipirlo21/OpenMonday/issues/74) from montipirlo21/73-handle-columns-with-nullable-modificator
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0] - 2025-03-07
 ### Feat
@@ -222,7 +233,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.1...HEAD
+[v1.1.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.19...v1.1.0
 [v1.0.19]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.18...v1.0.19
 [v1.0.18]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.17...v1.0.18

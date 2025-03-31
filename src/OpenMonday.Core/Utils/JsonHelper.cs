@@ -4,12 +4,9 @@ public static class JsonHelper
 {
 
     private static readonly JsonSerializerOptions _options = new JsonSerializerOptions
-    {
-        WriteIndented = true,
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+    {     
         Converters = { new JsonStringEnumConverter() }
     };
-
 
     public static string Serialize<T>(T obj)
     {
