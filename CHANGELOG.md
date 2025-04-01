@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v1.2.0"></a>
+## [v1.2.0] - 2025-04-01
+### Feat
+- **formula:** fixed Formula column entity and reading
+- **item:** add FormulaValue to item fragment
+
+### Pull Requests
+- Merge pull request [#76](https://github.com/montipirlo21/OpenMonday/issues/76) from montipirlo21/75-create-models-for-board-structure
+
+
 <a name="v1.1.1"></a>
 ## [v1.1.1] - 2025-03-31
 ### Feat
@@ -233,7 +243,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.0...HEAD
+[v1.2.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.19...v1.1.0
 [v1.0.19]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.18...v1.0.19
