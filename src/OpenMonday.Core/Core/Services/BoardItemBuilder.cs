@@ -33,7 +33,7 @@ public class BoardItemBuilder : IBoardItemBuilder
         foreach (var map in columnMapping.Mapping)
         {
             var taskColumn = tasks.GetColumnById(map.BoardColumnId);
-            
+
             if (taskColumn == null && map.ColumnMapping.IsExplicitNullable) continue;
             if (taskColumn == null) throw new ApplicationException($"Column {taskColumn} not found");
 
@@ -108,8 +108,8 @@ public class BoardItemBuilder : IBoardItemBuilder
             {
                 if (column.ColumnData is MondayDriverFormulaColumnData data)
                 {
-                    value = data.Text.ToString();
-                    text = column.Text;
+                    value = data.DisplayValue;
+                    text = data.DisplayValue;
                 }
             }
             else if (column.Type == ColumnType.Status)
@@ -176,7 +176,7 @@ public class BoardItemBuilder : IBoardItemBuilder
                         people.Add(p1);
                     }
 
-                    return Board_Column_People.Create(column.Text,data.Updated_at, people);
+                    return Board_Column_People.Create(column.Text, data.Updated_at, people);
                 }
                 else
                 {

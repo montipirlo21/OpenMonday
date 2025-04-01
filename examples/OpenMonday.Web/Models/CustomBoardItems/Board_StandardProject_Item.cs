@@ -8,6 +8,8 @@ public class Board_StandardProject_Item : Board_Item
     public Board_Column_Timeline Timeline { get; set; }
     [ColumnMapping(searchingNames: ["Priority"])]
     public Board_Column_String_Value? Priority { get; set; }
+    [ColumnMapping(searchingNames: ["Formula"])]
+    public Board_Column_String_Value? Formula { get; set; }
 
     public Board_StandardProject_Item() { }
 
