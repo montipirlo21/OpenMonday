@@ -147,7 +147,7 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                 case ColumnType.Formula:
                     {
                         IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue)val;
-                        result = MondayDriverFormulaColumnData.Create(v.Text);
+                        result = MondayDriverFormulaColumnData.Create(v.Display_value);
                         break;
                     }
                 case ColumnType.Link:

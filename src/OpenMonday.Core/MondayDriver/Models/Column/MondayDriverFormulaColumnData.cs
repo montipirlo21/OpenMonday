@@ -1,14 +1,14 @@
 public class MondayDriverFormulaColumnData : MondayDriverBaseColumnData
 {
-    public string? Text { get; set; }
+    public string DisplayValue { get; set; }
 
-    public MondayDriverFormulaColumnData(string? text)
+    public MondayDriverFormulaColumnData(string displayValue)
     {
-        Text = text;
+        DisplayValue = displayValue;
     }
 
-    public static MondayDriverFormulaColumnData Create(string? text)
+    public static MondayDriverFormulaColumnData Create(string displayValue)
     {
-        return new MondayDriverFormulaColumnData(text);
+        return new MondayDriverFormulaColumnData(displayValue);
     }
 }
