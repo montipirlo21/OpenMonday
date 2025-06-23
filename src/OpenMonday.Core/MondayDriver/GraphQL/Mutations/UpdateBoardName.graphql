@@ -1,0 +1,11 @@
+mutation UpdateBoardAttribute(
+  $ids: ID!
+  $board_attribute: BoardAttributes!
+  $new_value: String!
+) {
+  update_board(
+    board_id: $ids
+    board_attribute: $board_attribute
+    new_value: $new_value
+  )
+}

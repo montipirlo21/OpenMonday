@@ -36,7 +36,7 @@ public class MondayBoardDriverController : ControllerBase
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
 
-     /// <summary>
+    /// <summary>
     /// </summary>
     /// <param name="board_id"></param>
     /// <returns></returns>
@@ -44,6 +44,17 @@ public class MondayBoardDriverController : ControllerBase
     public async Task<ActionResult<string>> GetActivityLogs([FromQuery] string boardId, DateTime from, DateTime to)
     {
         var result = await _mondayBoardDriverService.GetActivityLogs(boardId, from, to);
+        return Ok($"{JsonSerializer.Serialize(result)}");
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="boardId"></param>
+    /// <returns></returns>
+    [HttpGet("UpdateBoardName")]
+    public async Task<ActionResult<string>> UpdateBoardName([FromQuery] string boardId, string newName)
+    {
+        var result = await _mondayBoardDriverService.UpdateBoardName(boardId, newName);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
 }
