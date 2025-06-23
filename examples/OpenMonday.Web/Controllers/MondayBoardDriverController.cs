@@ -57,4 +57,5 @@ public class MondayBoardDriverController : ControllerBase
         var result = await _mondayBoardDriverService.UpdateBoardName(boardId, newName);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
+    
 }

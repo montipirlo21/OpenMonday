@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Feat
+- **update_table:** update table name feature
+
 
 <a name="v1.2.1"></a>
 ## [v1.2.1] - 2025-06-23
