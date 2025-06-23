@@ -16,7 +16,8 @@
           "default": "Http",
           "subscription": "WebSocket"
         }
-      ]
+      ],
+       "watch": false
     }
   }
 }

@@ -47,3 +47,9 @@ git push origin --tags
 ```bash
  dotnet graphql update --token $env:OpenMondayConfiguration__MondayToken
  ```
+
+### regenerate strawberryshake client  ####
+
+```bash
+dotnet graphql generate
+ ```
