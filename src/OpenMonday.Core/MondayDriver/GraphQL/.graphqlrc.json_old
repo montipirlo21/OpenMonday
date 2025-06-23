@@ -16,11 +16,8 @@
           "default": "Http",
           "subscription": "WebSocket"
         }
-      ]
+      ],
+       "watch": false
     }
   }
 }
-
-
-// update schema with this command
-// dotnet graphql update --token $env:OpenMondayConfiguration__MondayToken
