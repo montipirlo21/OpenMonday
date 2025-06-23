@@ -5,7 +5,7 @@ name: .NET
 
 on:
   push:
-    branches: [ "main", "81-fix-pipeline-builder" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
