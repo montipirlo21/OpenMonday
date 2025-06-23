@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v1.2.1"></a>
+## [v1.2.1] - 2025-06-23
+### Pull Requests
+- Merge pull request [#78](https://github.com/montipirlo21/OpenMonday/issues/78) from montipirlo21/77-formulavalue---enhance-value-readings-couse-2025-01-api-support-display-value
+
+
 <a name="v1.2.0"></a>
 ## [v1.2.0] - 2025-04-01
 ### Feat
@@ -243,7 +249,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.1...HEAD
+[v1.2.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.0...v1.2.1
 [v1.2.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.0.19...v1.1.0

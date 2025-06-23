@@ -8,10 +8,10 @@ namespace OpenMonday.Core.MondayDriver.Services;
 public class MondayBoardDriverService : IMondayBoardDriverService
 {
     private readonly IMondayClient _mondayClient;
-    private readonly IMondayDriverBoardStructureConverterService _mondayBoardStructureConverterService;    
+    private readonly IMondayDriverBoardStructureConverterService _mondayBoardStructureConverterService;
     private readonly IMondayDriverBoardItemsConverterService _mondayDriverBoardItemsConverterService;
 
-    public MondayBoardDriverService(IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService, 
+    public MondayBoardDriverService(IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService,
     IMondayDriverBoardItemsConverterService mondayDriverBoardItemsConverterService)
     {
         _mondayClient = mondayClient;
@@ -128,7 +128,7 @@ public class MondayBoardDriverService : IMondayBoardDriverService
         }
     }
 
-     public async Task<MondayDriverResult<List<MondayDriverActivityLog>>> GetActivityLogs(string board_id, DateTime from, DateTime to)
+    public async Task<MondayDriverResult<List<MondayDriverActivityLog>>> GetActivityLogs(string board_id, DateTime from, DateTime to)
     {
         try
         {
@@ -163,8 +163,8 @@ public class MondayBoardDriverService : IMondayBoardDriverService
 
             foreach (var log in board.Activity_logs)
             {
-                items.Add( MondayDriverActivityLog.Create(log.Id, log.User_id, log.Event, log.Created_at));
-            }         
+                items.Add(MondayDriverActivityLog.Create(log.Id, log.User_id, log.Event, log.Created_at));
+            }
 
             // Do the conversion
             return MondayDriverResult<List<MondayDriverActivityLog>>.Success(items);
@@ -175,4 +175,29 @@ public class MondayBoardDriverService : IMondayBoardDriverService
             throw;
         }
     }
+
+    public async Task<MondayDriverResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string newName)
+    {
+        try
+        {
+            var result = await _mondayClient.UpdateBoardAttribute.ExecuteAsync(board_id, BoardAttributes.Name, newName);
+            if (result.IsErrorResult())
+            {
+                string error = $"Message {result.Errors[0].Message} Code {result.Errors[0].Code}";
+                return MondayDriverResult<MondayMutationBaseModel>.Failure(error);
+            }
+            else
+            {
+                string json = result.Data.Update_board != null ? result.Data.Update_board.ToString() : string.Empty;
+                MondayMutationBaseModel mb = MondayMutationBaseModel.Create(json);
+                return MondayDriverResult<MondayMutationBaseModel>.Success(mb);
+            }
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            throw;
+        }
+    }
+
 }
