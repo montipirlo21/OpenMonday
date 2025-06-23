@@ -44,12 +44,19 @@ git push origin --tags
 ```
 
 ### update monday schema ####
+rename .graphqlrc.json_old for configuration
+
 ```bash
  dotnet graphql update --token $env:OpenMondayConfiguration__MondayToken
  ```
 
+remove barry folder in bin/obj 
+
 ### regenerate strawberryshake client  ####
+rename .graphqlrc.json_old for configuration
 
 ```bash
 dotnet graphql generate
  ```
+
+remove barry folder in bin/obj
