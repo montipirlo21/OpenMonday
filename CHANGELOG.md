@@ -1,8 +1,24 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.2.3"></a>
+## [v1.2.3] - 2025-06-25
+### Fix
+- **UpdateBoardName:** exposed
+- **UpdateBoardName:** inserted into IBoardService
+
+### Pull Requests
+- Merge pull request [#84](https://github.com/montipirlo21/OpenMonday/issues/84) from montipirlo21/83-update_board_name-fuction
+
+
+<a name="v1.2.2"></a>
+## [v1.2.2] - 2025-06-23
 ### Feat
 - **update_table:** update table name feature
+
+### Pull Requests
+- Merge pull request [#80](https://github.com/montipirlo21/OpenMonday/issues/80) from montipirlo21/79-update_board-function
 
 
 <a name="v1.2.1"></a>
@@ -252,7 +268,9 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.3...HEAD
+[v1.2.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.2...v1.2.3
+[v1.2.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.1...v1.2.2
 [v1.2.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.0...v1.2.1
 [v1.2.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.1.0...v1.1.1
