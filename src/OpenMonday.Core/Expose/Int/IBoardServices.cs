@@ -8,4 +8,6 @@ public interface IBoardServices
 
     [Obsolete("This method is deprecated, use RetrieveBoardStructure")]
     Task<ServiceResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId);
+
+    Task<ServiceResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string newName);
 }

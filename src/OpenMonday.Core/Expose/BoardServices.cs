@@ -106,4 +106,25 @@ public class BoardServices : IBoardServices
         }
 
     }
+
+    public async Task<ServiceResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string newName)
+    {
+        try
+        {
+            var mondayResult = await _mondayBoardDriverService.UpdateBoardName(board_id, newName);
+
+            if (mondayResult == null || !mondayResult.IsSuccess || mondayResult.Data == null)
+            {
+                return ServiceResult<MondayMutationBaseModel>.Failure("Cannot update the board name");
+            }
+
+            return ServiceResult<MondayMutationBaseModel>.Success(mondayResult.Data);
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            return ServiceResult<MondayMutationBaseModel>.Failure("Exception not cached");
+        }
+
+    }
 }
