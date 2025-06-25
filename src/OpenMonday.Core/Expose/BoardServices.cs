@@ -64,27 +64,6 @@ public class BoardServices : IBoardServices
         }
     }
 
-    [Obsolete("Use RetrieveBoardStructure instead")]
-    public async Task<ServiceResult<MondayDriverBoardStructure>> GetBoardsStructureById(string boardId)
-    {
-        try
-        {
-            var boards = await _mondayBoardDriverService.GetBoardsStructureById(boardId);
-
-            if (boards == null || !boards.IsSuccess || boards.Data == null)
-            {
-                return ServiceResult<MondayDriverBoardStructure>.Failure("Cannot get Board structure");
-            }
-
-            return ServiceResult<MondayDriverBoardStructure>.Success(boards.Data);
-        }
-        catch (Exception ex)
-        {
-            LoggerHelper.LogException(ex);
-            return ServiceResult<MondayDriverBoardStructure>.Failure("Exception not cached");
-        }
-    }
-
     public async Task<ServiceResult<BoardStructure>> RetrieveBoardStructure(string boardId)
     {
         try
@@ -103,6 +82,27 @@ public class BoardServices : IBoardServices
         {
             LoggerHelper.LogException(ex);
             return ServiceResult<BoardStructure>.Failure("Exception not cached");
+        }
+
+    }
+
+    public async Task<ServiceResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string newName)
+    {
+        try
+        {
+            var mondayResult = await _mondayBoardDriverService.UpdateBoardName(board_id, newName);
+
+            if (mondayResult == null || !mondayResult.IsSuccess || mondayResult.Data == null)
+            {
+                return ServiceResult<MondayMutationBaseModel>.Failure("Cannot update the board name");
+            }
+
+            return ServiceResult<MondayMutationBaseModel>.Success(mondayResult.Data);
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            return ServiceResult<MondayMutationBaseModel>.Failure("Exception not cached");
         }
 
     }

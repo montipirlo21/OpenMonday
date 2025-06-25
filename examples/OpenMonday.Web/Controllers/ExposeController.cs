@@ -16,10 +16,10 @@ public class ExposeController : ControllerBase
 
     [HttpGet("RetrieveAndBuildBoard")]
     public async Task<ActionResult<string>> RetrieveAndBuildBoard([FromQuery] string board_id)
-    {   
-        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id);
+    {
+        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item>(board_id);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
-    }   
+    }
 
     /// <summary>
     /// </summary>
@@ -29,28 +29,17 @@ public class ExposeController : ControllerBase
     public async Task<ActionResult<string>> RetrieveAndBuildBoardWithBoardMapping([FromQuery] string board_id)
     {
         // Create a board mapping for the entity
-         List<BoardColumnMapping> columnNames = new List<BoardColumnMapping>(){
+        List<BoardColumnMapping> columnNames = new List<BoardColumnMapping>(){
             new BoardColumnMapping("Owner",["Owner"], true ),
             new BoardColumnMapping("Status",["Status", "Stato" ], true),
-            new BoardColumnMapping("Timeline",["Timeline", "Pianificazione"], true) 
+            new BoardColumnMapping("Timeline",["Timeline", "Pianificazione"], true)
         };
-        var boardMapping =  new BoardMapping(columnNames);
-  
-        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item >(board_id,boardMapping);
+        var boardMapping = new BoardMapping(columnNames);
+
+        var boardBuilded = await _boardServices.RetrieveAndBuildBoard<Board_StandardProject, Board_StandardProject_Item>(board_id, boardMapping);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
-    }   
-    
-    /// <summary>
-    /// </summary>
-    /// <param name="board_id"></param>
-    /// <returns></returns>
-    [Obsolete("Use RetrieveBoardStructure"  )]
-    [HttpGet("GetBoardsStructureById")]
-    public async Task<ActionResult<string>> GetBoardsStructureById([FromQuery] string board_id)
-    {
-        var boardBuilded = await _boardServices.GetBoardsStructureById(board_id);
-        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
-    }  
+    }
+
 
     /// <summary>
     /// </summary>
@@ -60,6 +49,18 @@ public class ExposeController : ControllerBase
     public async Task<ActionResult<string>> RetrieveBoardStructure([FromQuery] string board_id)
     {
         var boardBuilded = await _boardServices.RetrieveBoardStructure(board_id);
+        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
+    }  
+    
+
+    /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("UpdateBoardName")]
+    public async Task<ActionResult<string>> UpdateBoardName([FromQuery] string board_id, string newName)
+    {
+        var boardBuilded = await _boardServices.UpdateBoardName(board_id, newName);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
     }  
 }
