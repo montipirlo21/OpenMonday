@@ -16,7 +16,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::OpenMonday.Core.strawberryShake.State.MondayClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetActivityLogQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursorQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_NextPageQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
@@ -24,6 +23,8 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetTeamsByIdsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetTeamsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetUsersQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.MondayClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IMondayClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::OpenMonday.Core.strawberryShake.State.MondayClientStoreAccessor>("MondayClient", services, serviceCollection);
@@ -38,9 +39,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 var clientFactory = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Net.Http.IHttpClientFactory>(parentServices);
                 return new global::StrawberryShake.Transport.Http.HttpConnection(() => clientFactory.CreateClient("MondayClient"));
             });
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::OpenMonday.Core.strawberryShake.BoardAttributesSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::OpenMonday.Core.strawberryShake.ColumnTypeSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::OpenMonday.Core.strawberryShake.KindSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::OpenMonday.Core.strawberryShake.BoardAttributesSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteSerializer>(services);
@@ -60,14 +61,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.JsonSerializer("JSON"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer>(services, new global::StrawberryShake.Serialization.StringSerializer("ISO8601DateTime"));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>, global::OpenMonday.Core.strawberryShake.State.UpdateBoardAttributeResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>, global::OpenMonday.Core.strawberryShake.State.UpdateBoardAttributeBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>, global::StrawberryShake.Json.JsonResultPatcher>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IGetActivityLogResult>, global::OpenMonday.Core.strawberryShake.State.GetActivityLogResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IGetActivityLogResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery>(sp));
@@ -124,6 +117,22 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>, global::StrawberryShake.Json.JsonResultPatcher>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.GetUsersQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.IGetUsersQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.GetUsersQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>, global::OpenMonday.Core.strawberryShake.State.UpdateBoardAttributeResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>, global::OpenMonday.Core.strawberryShake.State.UpdateBoardAttributeBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>, global::StrawberryShake.Json.JsonResultPatcher>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>, global::OpenMonday.Core.strawberryShake.State.UpdateChangeSimpleColumnValueResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>, global::OpenMonday.Core.strawberryShake.State.UpdateChangeSimpleColumnValueBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IResultPatcher<global::System.Text.Json.JsonDocument>, global::StrawberryShake.Json.JsonResultPatcher>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueMutation>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueMutation>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityIdSerializer, global::OpenMonday.Core.strawberryShake.State.MondayClientEntityIdFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.MondayClient>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::OpenMonday.Core.strawberryShake.IMondayClient>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.MondayClient>(sp));
@@ -156,89 +165,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
 namespace OpenMonday.Core.strawberryShake
 {
-    /// <summary>
-    /// Update your monday.com data.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class UpdateBoardAttributeResult : global::System.IEquatable<UpdateBoardAttributeResult>, IUpdateBoardAttributeResult
-    {
-        public UpdateBoardAttributeResult(global::System.Text.Json.JsonElement? update_Board)
-        {
-            Update_board = update_Board;
-        }
-
-        /// <summary>
-        /// Update Board attribute.
-        /// </summary>
-        public global::System.Text.Json.JsonElement? Update_board { get; }
-
-        public virtual global::System.Boolean Equals(UpdateBoardAttributeResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (global::System.Object.Equals(Update_board, other.Update_board));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((UpdateBoardAttributeResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                if (Update_board != null)
-                {
-                    hash ^= 397 * Update_board.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Update your monday.com data.
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial interface IUpdateBoardAttributeResult
-    {
-        /// <summary>
-        /// Update Board attribute.
-        /// </summary>
-        public global::System.Text.Json.JsonElement? Update_board { get; }
-    }
-
     /// <summary>
     /// Get your data from monday.com
     /// </summary>
@@ -11165,49 +11091,256 @@ namespace OpenMonday.Core.strawberryShake
     }
 
     /// <summary>
-    /// The board attributes available.
+    /// Update your monday.com data.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public enum BoardAttributes
+    public partial class UpdateBoardAttributeResult : global::System.IEquatable<UpdateBoardAttributeResult>, IUpdateBoardAttributeResult
     {
+        public UpdateBoardAttributeResult(global::System.Text.Json.JsonElement? update_Board)
+        {
+            Update_board = update_Board;
+        }
+
         /// <summary>
-        /// Object that contains available Video conferences on the board.
+        /// Update Board attribute.
         /// </summary>
-        Communication,
-        /// <summary>
-        /// Board description.
-        /// </summary>
-        Description,
-        /// <summary>
-        /// Board name.
-        /// </summary>
-        Name
+        public global::System.Text.Json.JsonElement? Update_board { get; }
+
+        public virtual global::System.Boolean Equals(UpdateBoardAttributeResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::System.Object.Equals(Update_board, other.Update_board));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((UpdateBoardAttributeResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Update_board != null)
+                {
+                    hash ^= 397 * Update_board.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
     }
 
+    /// <summary>
+    /// Update your monday.com data.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class BoardAttributesSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, BoardAttributes>
+    public partial interface IUpdateBoardAttributeResult
     {
-        public global::System.String TypeName => "BoardAttributes";
+        /// <summary>
+        /// Update Board attribute.
+        /// </summary>
+        public global::System.Text.Json.JsonElement? Update_board { get; }
+    }
 
-        public BoardAttributes Parse(global::System.String serializedValue)
+    /// <summary>
+    /// Update your monday.com data.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValueResult : global::System.IEquatable<UpdateChangeSimpleColumnValueResult>, IUpdateChangeSimpleColumnValueResult
+    {
+        public UpdateChangeSimpleColumnValueResult(global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValue_Change_simple_column_value? change_Simple_Column_Value)
         {
-            return serializedValue switch
-            {
-                "communication" => BoardAttributes.Communication,
-                "description" => BoardAttributes.Description,
-                "name" => BoardAttributes.Name,
-                _ => throw new global::StrawberryShake.GraphQLClientException($"String value '{serializedValue}' can't be converted to enum BoardAttributes")};
+            Change_simple_column_value = change_Simple_Column_Value;
         }
 
-        public global::System.Object Format(global::System.Object? runtimeValue)
+        /// <summary>
+        /// Change an item's column with simple value.
+        /// </summary>
+        public global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValue_Change_simple_column_value? Change_simple_column_value { get; }
+
+        public virtual global::System.Boolean Equals(UpdateChangeSimpleColumnValueResult? other)
         {
-            return runtimeValue switch
+            if (ReferenceEquals(null, other))
             {
-                BoardAttributes.Communication => "communication",
-                BoardAttributes.Description => "description",
-                BoardAttributes.Name => "name",
-                _ => throw new global::StrawberryShake.GraphQLClientException($"Enum BoardAttributes value '{runtimeValue}' can't be converted to string")};
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (((Change_simple_column_value is null && other.Change_simple_column_value is null) || Change_simple_column_value != null && Change_simple_column_value.Equals(other.Change_simple_column_value)));
         }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((UpdateChangeSimpleColumnValueResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                if (Change_simple_column_value != null)
+                {
+                    hash ^= 397 * Change_simple_column_value.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// An item (table row).
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValue_Change_simple_column_value_Item : global::System.IEquatable<UpdateChangeSimpleColumnValue_Change_simple_column_value_Item>, IUpdateChangeSimpleColumnValue_Change_simple_column_value_Item
+    {
+        public UpdateChangeSimpleColumnValue_Change_simple_column_value_Item(global::System.String id)
+        {
+            Id = id;
+        }
+
+        /// <summary>
+        /// The item's unique identifier.
+        /// </summary>
+        public global::System.String Id { get; }
+
+        public virtual global::System.Boolean Equals(UpdateChangeSimpleColumnValue_Change_simple_column_value_Item? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((UpdateChangeSimpleColumnValue_Change_simple_column_value_Item)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Update your monday.com data.
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial interface IUpdateChangeSimpleColumnValueResult
+    {
+        /// <summary>
+        /// Change an item's column with simple value.
+        /// </summary>
+        public global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValue_Change_simple_column_value? Change_simple_column_value { get; }
+    }
+
+    /// <summary>
+    /// An item (table row).
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial interface IUpdateChangeSimpleColumnValue_Change_simple_column_value
+    {
+        /// <summary>
+        /// The item's unique identifier.
+        /// </summary>
+        public global::System.String Id { get; }
+    }
+
+    /// <summary>
+    /// An item (table row).
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial interface IUpdateChangeSimpleColumnValue_Change_simple_column_value_Item : IUpdateChangeSimpleColumnValue_Change_simple_column_value
+    {
     }
 
     /// <summary>
@@ -11528,320 +11661,49 @@ namespace OpenMonday.Core.strawberryShake
     }
 
     /// <summary>
-    /// Represents the operation service of the UpdateBoardAttribute GraphQL operation
-    /// <code>
-    /// mutation UpdateBoardAttribute($ids: ID!, $board_attribute: BoardAttributes!, $new_value: String!) {
-    ///   update_board(board_id: $ids, board_attribute: $board_attribute, new_value: $new_value)
-    /// }
-    /// </code>
+    /// The board attributes available.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class UpdateBoardAttributeMutationDocument : global::StrawberryShake.IDocument
+    public enum BoardAttributes
     {
-        private UpdateBoardAttributeMutationDocument()
-        {
-        }
-
-        public static UpdateBoardAttributeMutationDocument Instance { get; } = new UpdateBoardAttributeMutationDocument();
-        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Mutation;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]
-        {
-            0x6d,
-            0x75,
-            0x74,
-            0x61,
-            0x74,
-            0x69,
-            0x6f,
-            0x6e,
-            0x20,
-            0x55,
-            0x70,
-            0x64,
-            0x61,
-            0x74,
-            0x65,
-            0x42,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x41,
-            0x74,
-            0x74,
-            0x72,
-            0x69,
-            0x62,
-            0x75,
-            0x74,
-            0x65,
-            0x28,
-            0x24,
-            0x69,
-            0x64,
-            0x73,
-            0x3a,
-            0x20,
-            0x49,
-            0x44,
-            0x21,
-            0x2c,
-            0x20,
-            0x24,
-            0x62,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x5f,
-            0x61,
-            0x74,
-            0x74,
-            0x72,
-            0x69,
-            0x62,
-            0x75,
-            0x74,
-            0x65,
-            0x3a,
-            0x20,
-            0x42,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x41,
-            0x74,
-            0x74,
-            0x72,
-            0x69,
-            0x62,
-            0x75,
-            0x74,
-            0x65,
-            0x73,
-            0x21,
-            0x2c,
-            0x20,
-            0x24,
-            0x6e,
-            0x65,
-            0x77,
-            0x5f,
-            0x76,
-            0x61,
-            0x6c,
-            0x75,
-            0x65,
-            0x3a,
-            0x20,
-            0x53,
-            0x74,
-            0x72,
-            0x69,
-            0x6e,
-            0x67,
-            0x21,
-            0x29,
-            0x20,
-            0x7b,
-            0x20,
-            0x75,
-            0x70,
-            0x64,
-            0x61,
-            0x74,
-            0x65,
-            0x5f,
-            0x62,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x28,
-            0x62,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x5f,
-            0x69,
-            0x64,
-            0x3a,
-            0x20,
-            0x24,
-            0x69,
-            0x64,
-            0x73,
-            0x2c,
-            0x20,
-            0x62,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x5f,
-            0x61,
-            0x74,
-            0x74,
-            0x72,
-            0x69,
-            0x62,
-            0x75,
-            0x74,
-            0x65,
-            0x3a,
-            0x20,
-            0x24,
-            0x62,
-            0x6f,
-            0x61,
-            0x72,
-            0x64,
-            0x5f,
-            0x61,
-            0x74,
-            0x74,
-            0x72,
-            0x69,
-            0x62,
-            0x75,
-            0x74,
-            0x65,
-            0x2c,
-            0x20,
-            0x6e,
-            0x65,
-            0x77,
-            0x5f,
-            0x76,
-            0x61,
-            0x6c,
-            0x75,
-            0x65,
-            0x3a,
-            0x20,
-            0x24,
-            0x6e,
-            0x65,
-            0x77,
-            0x5f,
-            0x76,
-            0x61,
-            0x6c,
-            0x75,
-            0x65,
-            0x29,
-            0x20,
-            0x7d
-        };
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "a273aca40ed212a4345cc8d88e38999e");
-
-        public override global::System.String ToString()
-        {
-#if NETCOREAPP3_1_OR_GREATER
-        return global::System.Text.Encoding.UTF8.GetString(Body);
-#else
-            return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
-#endif
-        }
+        /// <summary>
+        /// Object that contains available Video conferences on the board.
+        /// </summary>
+        Communication,
+        /// <summary>
+        /// Board description.
+        /// </summary>
+        Description,
+        /// <summary>
+        /// Board name.
+        /// </summary>
+        Name
     }
 
-    /// <summary>
-    /// Represents the operation service of the UpdateBoardAttribute GraphQL operation
-    /// <code>
-    /// mutation UpdateBoardAttribute($ids: ID!, $board_attribute: BoardAttributes!, $new_value: String!) {
-    ///   update_board(board_id: $ids, board_attribute: $board_attribute, new_value: $new_value)
-    /// }
-    /// </code>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class UpdateBoardAttributeMutation : global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation
+    public partial class BoardAttributesSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, BoardAttributes>
     {
-        private readonly global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> _operationExecutor;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _boardAttributesFormatter;
-        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
-        public UpdateBoardAttributeMutation(global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
-        {
-            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
-            _iDFormatter = serializerResolver.GetInputValueFormatter("ID");
-            _boardAttributesFormatter = serializerResolver.GetInputValueFormatter("BoardAttributes");
-            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
-        }
+        public global::System.String TypeName => "BoardAttributes";
 
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IUpdateBoardAttributeResult);
-
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> ExecuteAsync(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::System.Threading.CancellationToken cancellationToken = default)
+        public BoardAttributes Parse(global::System.String serializedValue)
         {
-            var request = CreateRequest(ids, board_Attribute, new_Value);
-            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
-        }
-
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> Watch(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::StrawberryShake.ExecutionStrategy? strategy = null)
-        {
-            var request = CreateRequest(ids, board_Attribute, new_Value);
-            return _operationExecutor.Watch(request, strategy);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value)
-        {
-            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
-            variables.Add("ids", FormatIds(ids));
-            variables.Add("board_attribute", FormatBoard_attribute(board_Attribute));
-            variables.Add("new_value", FormatNew_value(new_Value));
-            return CreateRequest(variables);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return new global::StrawberryShake.OperationRequest(id: UpdateBoardAttributeMutationDocument.Instance.Hash.Value, name: "UpdateBoardAttribute", document: UpdateBoardAttributeMutationDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
-        }
-
-        private global::System.Object? FormatIds(global::System.String value)
-        {
-            if (value is null)
+            return serializedValue switch
             {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _iDFormatter.Format(value);
+                "communication" => BoardAttributes.Communication,
+                "description" => BoardAttributes.Description,
+                "name" => BoardAttributes.Name,
+                _ => throw new global::StrawberryShake.GraphQLClientException($"String value '{serializedValue}' can't be converted to enum BoardAttributes")};
         }
 
-        private global::System.Object? FormatBoard_attribute(global::OpenMonday.Core.strawberryShake.BoardAttributes value)
+        public global::System.Object Format(global::System.Object? runtimeValue)
         {
-            return _boardAttributesFormatter.Format(value);
-        }
-
-        private global::System.Object? FormatNew_value(global::System.String value)
-        {
-            if (value is null)
+            return runtimeValue switch
             {
-                throw new global::System.ArgumentNullException(nameof(value));
-            }
-
-            return _stringFormatter.Format(value);
+                BoardAttributes.Communication => "communication",
+                BoardAttributes.Description => "description",
+                BoardAttributes.Name => "name",
+                _ => throw new global::StrawberryShake.GraphQLClientException($"Enum BoardAttributes value '{runtimeValue}' can't be converted to string")};
         }
-
-        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return CreateRequest(variables!);
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the UpdateBoardAttribute GraphQL operation
-    /// <code>
-    /// mutation UpdateBoardAttribute($ids: ID!, $board_attribute: BoardAttributes!, $new_value: String!) {
-    ///   update_board(board_id: $ids, board_attribute: $board_attribute, new_value: $new_value)
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial interface IUpdateBoardAttributeMutation : global::StrawberryShake.IOperationRequestFactory
-    {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> ExecuteAsync(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> Watch(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -14910,12 +14772,716 @@ namespace OpenMonday.Core.strawberryShake
     }
 
     /// <summary>
+    /// Represents the operation service of the UpdateBoardAttribute GraphQL operation
+    /// <code>
+    /// mutation UpdateBoardAttribute($ids: ID!, $board_attribute: BoardAttributes!, $new_value: String!) {
+    ///   update_board(board_id: $ids, board_attribute: $board_attribute, new_value: $new_value)
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateBoardAttributeMutationDocument : global::StrawberryShake.IDocument
+    {
+        private UpdateBoardAttributeMutationDocument()
+        {
+        }
+
+        public static UpdateBoardAttributeMutationDocument Instance { get; } = new UpdateBoardAttributeMutationDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Mutation;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]
+        {
+            0x6d,
+            0x75,
+            0x74,
+            0x61,
+            0x74,
+            0x69,
+            0x6f,
+            0x6e,
+            0x20,
+            0x55,
+            0x70,
+            0x64,
+            0x61,
+            0x74,
+            0x65,
+            0x42,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x41,
+            0x74,
+            0x74,
+            0x72,
+            0x69,
+            0x62,
+            0x75,
+            0x74,
+            0x65,
+            0x28,
+            0x24,
+            0x69,
+            0x64,
+            0x73,
+            0x3a,
+            0x20,
+            0x49,
+            0x44,
+            0x21,
+            0x2c,
+            0x20,
+            0x24,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x61,
+            0x74,
+            0x74,
+            0x72,
+            0x69,
+            0x62,
+            0x75,
+            0x74,
+            0x65,
+            0x3a,
+            0x20,
+            0x42,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x41,
+            0x74,
+            0x74,
+            0x72,
+            0x69,
+            0x62,
+            0x75,
+            0x74,
+            0x65,
+            0x73,
+            0x21,
+            0x2c,
+            0x20,
+            0x24,
+            0x6e,
+            0x65,
+            0x77,
+            0x5f,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x3a,
+            0x20,
+            0x53,
+            0x74,
+            0x72,
+            0x69,
+            0x6e,
+            0x67,
+            0x21,
+            0x29,
+            0x20,
+            0x7b,
+            0x20,
+            0x75,
+            0x70,
+            0x64,
+            0x61,
+            0x74,
+            0x65,
+            0x5f,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x28,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x24,
+            0x69,
+            0x64,
+            0x73,
+            0x2c,
+            0x20,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x61,
+            0x74,
+            0x74,
+            0x72,
+            0x69,
+            0x62,
+            0x75,
+            0x74,
+            0x65,
+            0x3a,
+            0x20,
+            0x24,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x61,
+            0x74,
+            0x74,
+            0x72,
+            0x69,
+            0x62,
+            0x75,
+            0x74,
+            0x65,
+            0x2c,
+            0x20,
+            0x6e,
+            0x65,
+            0x77,
+            0x5f,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x3a,
+            0x20,
+            0x24,
+            0x6e,
+            0x65,
+            0x77,
+            0x5f,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x29,
+            0x20,
+            0x7d
+        };
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "a273aca40ed212a4345cc8d88e38999e");
+
+        public override global::System.String ToString()
+        {
+#if NETCOREAPP3_1_OR_GREATER
+        return global::System.Text.Encoding.UTF8.GetString(Body);
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the UpdateBoardAttribute GraphQL operation
+    /// <code>
+    /// mutation UpdateBoardAttribute($ids: ID!, $board_attribute: BoardAttributes!, $new_value: String!) {
+    ///   update_board(board_id: $ids, board_attribute: $board_attribute, new_value: $new_value)
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateBoardAttributeMutation : global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _boardAttributesFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public UpdateBoardAttributeMutation(global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _iDFormatter = serializerResolver.GetInputValueFormatter("ID");
+            _boardAttributesFormatter = serializerResolver.GetInputValueFormatter("BoardAttributes");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IUpdateBoardAttributeResult);
+
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> ExecuteAsync(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(ids, board_Attribute, new_Value);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> Watch(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(ids, board_Attribute, new_Value);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("ids", FormatIds(ids));
+            variables.Add("board_attribute", FormatBoard_attribute(board_Attribute));
+            variables.Add("new_value", FormatNew_value(new_Value));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: UpdateBoardAttributeMutationDocument.Instance.Hash.Value, name: "UpdateBoardAttribute", document: UpdateBoardAttributeMutationDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatIds(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _iDFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatBoard_attribute(global::OpenMonday.Core.strawberryShake.BoardAttributes value)
+        {
+            return _boardAttributesFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatNew_value(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the UpdateBoardAttribute GraphQL operation
+    /// <code>
+    /// mutation UpdateBoardAttribute($ids: ID!, $board_attribute: BoardAttributes!, $new_value: String!) {
+    ///   update_board(board_id: $ids, board_attribute: $board_attribute, new_value: $new_value)
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial interface IUpdateBoardAttributeMutation : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> ExecuteAsync(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> Watch(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
+    /// Represents the operation service of the UpdateChangeSimpleColumnValue GraphQL operation
+    /// <code>
+    /// mutation UpdateChangeSimpleColumnValue($board_id: ID!, $item_id: ID, $column_id: String!, $value: String) {
+    ///   change_simple_column_value(board_id: $board_id, item_id: $item_id, column_id: $column_id, value: $value) {
+    ///     __typename
+    ///     id
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValueMutationDocument : global::StrawberryShake.IDocument
+    {
+        private UpdateChangeSimpleColumnValueMutationDocument()
+        {
+        }
+
+        public static UpdateChangeSimpleColumnValueMutationDocument Instance { get; } = new UpdateChangeSimpleColumnValueMutationDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Mutation;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]
+        {
+            0x6d,
+            0x75,
+            0x74,
+            0x61,
+            0x74,
+            0x69,
+            0x6f,
+            0x6e,
+            0x20,
+            0x55,
+            0x70,
+            0x64,
+            0x61,
+            0x74,
+            0x65,
+            0x43,
+            0x68,
+            0x61,
+            0x6e,
+            0x67,
+            0x65,
+            0x53,
+            0x69,
+            0x6d,
+            0x70,
+            0x6c,
+            0x65,
+            0x43,
+            0x6f,
+            0x6c,
+            0x75,
+            0x6d,
+            0x6e,
+            0x56,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x28,
+            0x24,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x49,
+            0x44,
+            0x21,
+            0x2c,
+            0x20,
+            0x24,
+            0x69,
+            0x74,
+            0x65,
+            0x6d,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x49,
+            0x44,
+            0x2c,
+            0x20,
+            0x24,
+            0x63,
+            0x6f,
+            0x6c,
+            0x75,
+            0x6d,
+            0x6e,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x53,
+            0x74,
+            0x72,
+            0x69,
+            0x6e,
+            0x67,
+            0x21,
+            0x2c,
+            0x20,
+            0x24,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x3a,
+            0x20,
+            0x53,
+            0x74,
+            0x72,
+            0x69,
+            0x6e,
+            0x67,
+            0x29,
+            0x20,
+            0x7b,
+            0x20,
+            0x63,
+            0x68,
+            0x61,
+            0x6e,
+            0x67,
+            0x65,
+            0x5f,
+            0x73,
+            0x69,
+            0x6d,
+            0x70,
+            0x6c,
+            0x65,
+            0x5f,
+            0x63,
+            0x6f,
+            0x6c,
+            0x75,
+            0x6d,
+            0x6e,
+            0x5f,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x28,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x24,
+            0x62,
+            0x6f,
+            0x61,
+            0x72,
+            0x64,
+            0x5f,
+            0x69,
+            0x64,
+            0x2c,
+            0x20,
+            0x69,
+            0x74,
+            0x65,
+            0x6d,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x24,
+            0x69,
+            0x74,
+            0x65,
+            0x6d,
+            0x5f,
+            0x69,
+            0x64,
+            0x2c,
+            0x20,
+            0x63,
+            0x6f,
+            0x6c,
+            0x75,
+            0x6d,
+            0x6e,
+            0x5f,
+            0x69,
+            0x64,
+            0x3a,
+            0x20,
+            0x24,
+            0x63,
+            0x6f,
+            0x6c,
+            0x75,
+            0x6d,
+            0x6e,
+            0x5f,
+            0x69,
+            0x64,
+            0x2c,
+            0x20,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x3a,
+            0x20,
+            0x24,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x29,
+            0x20,
+            0x7b,
+            0x20,
+            0x5f,
+            0x5f,
+            0x74,
+            0x79,
+            0x70,
+            0x65,
+            0x6e,
+            0x61,
+            0x6d,
+            0x65,
+            0x20,
+            0x69,
+            0x64,
+            0x20,
+            0x7d,
+            0x20,
+            0x7d
+        };
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "d31a7b613cfb272944e706c77258e7b1");
+
+        public override global::System.String ToString()
+        {
+#if NETCOREAPP3_1_OR_GREATER
+        return global::System.Text.Encoding.UTF8.GetString(Body);
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the UpdateChangeSimpleColumnValue GraphQL operation
+    /// <code>
+    /// mutation UpdateChangeSimpleColumnValue($board_id: ID!, $item_id: ID, $column_id: String!, $value: String) {
+    ///   change_simple_column_value(board_id: $board_id, item_id: $item_id, column_id: $column_id, value: $value) {
+    ///     __typename
+    ///     id
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValueMutation : global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<IUpdateChangeSimpleColumnValueResult> _operationExecutor;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
+        private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        public UpdateChangeSimpleColumnValueMutation(global::StrawberryShake.IOperationExecutor<IUpdateChangeSimpleColumnValueResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+            _iDFormatter = serializerResolver.GetInputValueFormatter("ID");
+            _stringFormatter = serializerResolver.GetInputValueFormatter("String");
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IUpdateChangeSimpleColumnValueResult);
+
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> ExecuteAsync(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var request = CreateRequest(board_Id, item_Id, column_Id, @value);
+            return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> Watch(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest(board_Id, item_Id, column_Id, @value);
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value)
+        {
+            var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
+            variables.Add("board_id", FormatBoard_id(board_Id));
+            variables.Add("item_id", FormatItem_id(item_Id));
+            variables.Add("column_id", FormatColumn_id(column_Id));
+            variables.Add("value", FormatValue(@value));
+            return CreateRequest(variables);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: UpdateChangeSimpleColumnValueMutationDocument.Instance.Hash.Value, name: "UpdateChangeSimpleColumnValue", document: UpdateChangeSimpleColumnValueMutationDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+        }
+
+        private global::System.Object? FormatBoard_id(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _iDFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatItem_id(global::System.String? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _iDFormatter.Format(value);
+            }
+        }
+
+        private global::System.Object? FormatColumn_id(global::System.String value)
+        {
+            if (value is null)
+            {
+                throw new global::System.ArgumentNullException(nameof(value));
+            }
+
+            return _stringFormatter.Format(value);
+        }
+
+        private global::System.Object? FormatValue(global::System.String? value)
+        {
+            if (value is null)
+            {
+                return value;
+            }
+            else
+            {
+                return _stringFormatter.Format(value);
+            }
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest(variables!);
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the UpdateChangeSimpleColumnValue GraphQL operation
+    /// <code>
+    /// mutation UpdateChangeSimpleColumnValue($board_id: ID!, $item_id: ID, $column_id: String!, $value: String) {
+    ///   change_simple_column_value(board_id: $board_id, item_id: $item_id, column_id: $column_id, value: $value) {
+    ///     __typename
+    ///     id
+    ///   }
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial interface IUpdateChangeSimpleColumnValueMutation : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> ExecuteAsync(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> Watch(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the MondayClient GraphQL client
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
     public partial class MondayClient : global::OpenMonday.Core.strawberryShake.IMondayClient
     {
-        private readonly global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation _updateBoardAttribute;
         private readonly global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery _getActivityLog;
         private readonly global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery _getBoardItemsByCursor;
         private readonly global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery _getBoardItemsByCursor_NextPage;
@@ -14923,9 +15489,10 @@ namespace OpenMonday.Core.strawberryShake
         private readonly global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery _getTeamsByIds;
         private readonly global::OpenMonday.Core.strawberryShake.IGetTeamsQuery _getTeams;
         private readonly global::OpenMonday.Core.strawberryShake.IGetUsersQuery _getUsers;
-        public MondayClient(global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation updateBoardAttribute, global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery getActivityLog, global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery getBoardItemsByCursor, global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery getBoardItemsByCursor_NextPage, global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery getBoardsStructureById, global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery getTeamsByIds, global::OpenMonday.Core.strawberryShake.IGetTeamsQuery getTeams, global::OpenMonday.Core.strawberryShake.IGetUsersQuery getUsers)
+        private readonly global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation _updateBoardAttribute;
+        private readonly global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation _updateChangeSimpleColumnValue;
+        public MondayClient(global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery getActivityLog, global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery getBoardItemsByCursor, global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery getBoardItemsByCursor_NextPage, global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery getBoardsStructureById, global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery getTeamsByIds, global::OpenMonday.Core.strawberryShake.IGetTeamsQuery getTeams, global::OpenMonday.Core.strawberryShake.IGetUsersQuery getUsers, global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation updateBoardAttribute, global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation updateChangeSimpleColumnValue)
         {
-            _updateBoardAttribute = updateBoardAttribute ?? throw new global::System.ArgumentNullException(nameof(updateBoardAttribute));
             _getActivityLog = getActivityLog ?? throw new global::System.ArgumentNullException(nameof(getActivityLog));
             _getBoardItemsByCursor = getBoardItemsByCursor ?? throw new global::System.ArgumentNullException(nameof(getBoardItemsByCursor));
             _getBoardItemsByCursor_NextPage = getBoardItemsByCursor_NextPage ?? throw new global::System.ArgumentNullException(nameof(getBoardItemsByCursor_NextPage));
@@ -14933,10 +15500,11 @@ namespace OpenMonday.Core.strawberryShake
             _getTeamsByIds = getTeamsByIds ?? throw new global::System.ArgumentNullException(nameof(getTeamsByIds));
             _getTeams = getTeams ?? throw new global::System.ArgumentNullException(nameof(getTeams));
             _getUsers = getUsers ?? throw new global::System.ArgumentNullException(nameof(getUsers));
+            _updateBoardAttribute = updateBoardAttribute ?? throw new global::System.ArgumentNullException(nameof(updateBoardAttribute));
+            _updateChangeSimpleColumnValue = updateChangeSimpleColumnValue ?? throw new global::System.ArgumentNullException(nameof(updateChangeSimpleColumnValue));
         }
 
         public static global::System.String ClientName => "MondayClient";
-        public global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation UpdateBoardAttribute => _updateBoardAttribute;
         public global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery GetActivityLog => _getActivityLog;
         public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery GetBoardItemsByCursor => _getBoardItemsByCursor;
         public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery GetBoardItemsByCursor_NextPage => _getBoardItemsByCursor_NextPage;
@@ -14944,6 +15512,8 @@ namespace OpenMonday.Core.strawberryShake
         public global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery GetTeamsByIds => _getTeamsByIds;
         public global::OpenMonday.Core.strawberryShake.IGetTeamsQuery GetTeams => _getTeams;
         public global::OpenMonday.Core.strawberryShake.IGetUsersQuery GetUsers => _getUsers;
+        public global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation UpdateBoardAttribute => _updateBoardAttribute;
+        public global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation UpdateChangeSimpleColumnValue => _updateChangeSimpleColumnValue;
     }
 
     /// <summary>
@@ -14952,8 +15522,6 @@ namespace OpenMonday.Core.strawberryShake
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
     public partial interface IMondayClient
     {
-        global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation UpdateBoardAttribute { get; }
-
         global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery GetActivityLog { get; }
 
         global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery GetBoardItemsByCursor { get; }
@@ -14967,68 +15535,15 @@ namespace OpenMonday.Core.strawberryShake
         global::OpenMonday.Core.strawberryShake.IGetTeamsQuery GetTeams { get; }
 
         global::OpenMonday.Core.strawberryShake.IGetUsersQuery GetUsers { get; }
+
+        global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation UpdateBoardAttribute { get; }
+
+        global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation UpdateChangeSimpleColumnValue { get; }
     }
 }
 
 namespace OpenMonday.Core.strawberryShake.State
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class UpdateBoardAttributeResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public UpdateBoardAttributeResultFactory(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult);
-
-        public UpdateBoardAttributeResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is UpdateBoardAttributeResultInfo info)
-            {
-                return new UpdateBoardAttributeResult(info.Update_board);
-            }
-
-            throw new global::System.ArgumentException("UpdateBoardAttributeResultInfo expected.");
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class UpdateBoardAttributeResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public UpdateBoardAttributeResultInfo(global::System.Text.Json.JsonElement? update_Board, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            Update_board = update_Board;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        /// <summary>
-        /// Update Board attribute.
-        /// </summary>
-        public global::System.Text.Json.JsonElement? Update_board { get; }
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new UpdateBoardAttributeResultInfo(Update_board, _entityIds, version);
-        }
-    }
-
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
     public partial class GetActivityLogResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetActivityLogResult>
     {
@@ -16837,51 +17352,136 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
-    public partial class UpdateBoardAttributeBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>
+    public partial class UpdateBoardAttributeResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::OpenMonday.Core.strawberryShake.BoardAttributes> _boardAttributesParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _iDParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement> _jSONParser;
-        public UpdateBoardAttributeBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        public UpdateBoardAttributeResultFactory(global::StrawberryShake.IEntityStore entityStore)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            ResultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _boardAttributesParser = serializerResolver.GetLeafValueParser<global::System.String, global::OpenMonday.Core.strawberryShake.BoardAttributes>("BoardAttributes") ?? throw new global::System.ArgumentException("No serializer for type `BoardAttributes` found.");
-            _iDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ID") ?? throw new global::System.ArgumentException("No serializer for type `ID` found.");
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
-            _jSONParser = serializerResolver.GetLeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
         }
 
-        protected override global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult> ResultDataFactory { get; }
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult);
 
-        protected override global::StrawberryShake.IOperationResultDataInfo BuildData(global::System.Text.Json.JsonElement obj)
+        public UpdateBoardAttributeResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            _entityStore.Update(session =>
+            if (snapshot is null)
             {
-                snapshot = session.CurrentSnapshot;
-            });
-            return new UpdateBoardAttributeResultInfo(Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "update_board")), entityIds, snapshot.Version);
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is UpdateBoardAttributeResultInfo info)
+            {
+                return new UpdateBoardAttributeResult(info.Update_board);
+            }
+
+            throw new global::System.ArgumentException("UpdateBoardAttributeResultInfo expected.");
         }
 
-        private global::System.Text.Json.JsonElement? Deserialize_JsonElement(global::System.Text.Json.JsonElement? obj)
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
         {
-            if (!obj.HasValue)
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateBoardAttributeResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public UpdateBoardAttributeResultInfo(global::System.Text.Json.JsonElement? update_Board, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            Update_board = update_Board;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Update Board attribute.
+        /// </summary>
+        public global::System.Text.Json.JsonElement? Update_board { get; }
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new UpdateBoardAttributeResultInfo(Update_board, _entityIds, version);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValueResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public UpdateChangeSimpleColumnValueResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult);
+
+        public UpdateChangeSimpleColumnValueResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            if (dataInfo is UpdateChangeSimpleColumnValueResultInfo info)
+            {
+                return new UpdateChangeSimpleColumnValueResult(MapIUpdateChangeSimpleColumnValue_Change_simple_column_value(info.Change_simple_column_value, snapshot));
+            }
+
+            throw new global::System.ArgumentException("UpdateChangeSimpleColumnValueResultInfo expected.");
+        }
+
+        private global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValue_Change_simple_column_value? MapIUpdateChangeSimpleColumnValue_Change_simple_column_value(global::OpenMonday.Core.strawberryShake.State.ItemData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (data is null)
             {
                 return null;
             }
 
-            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            IUpdateChangeSimpleColumnValue_Change_simple_column_value returnValue = default !;
+            if (data?.__typename.Equals("Item", global::System.StringComparison.Ordinal) ?? false)
             {
-                return null;
+                returnValue = new UpdateChangeSimpleColumnValue_Change_simple_column_value_Item(data.Id ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
             }
 
-            return _jSONParser.Parse(obj.Value!);
+            return returnValue;
+        }
+
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
+        {
+            return Create(dataInfo, snapshot);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValueResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public UpdateChangeSimpleColumnValueResultInfo(global::OpenMonday.Core.strawberryShake.State.ItemData? change_Simple_Column_Value, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            Change_simple_column_value = change_Simple_Column_Value;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
+        }
+
+        /// <summary>
+        /// Change an item's column with simple value.
+        /// </summary>
+        public global::OpenMonday.Core.strawberryShake.State.ItemData? Change_simple_column_value { get; }
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
+        {
+            return new UpdateChangeSimpleColumnValueResultInfo(Change_simple_column_value, _entityIds, version);
         }
     }
 
@@ -18743,6 +19343,121 @@ namespace OpenMonday.Core.strawberryShake.State
             if (typename?.Equals("User", global::System.StringComparison.Ordinal) ?? false)
             {
                 return new global::OpenMonday.Core.strawberryShake.State.UserData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), name: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String Deserialize_NonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _iDParser.Parse(obj.Value.GetString()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateBoardAttributeBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::OpenMonday.Core.strawberryShake.BoardAttributes> _boardAttributesParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _iDParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement> _jSONParser;
+        public UpdateBoardAttributeBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            ResultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _boardAttributesParser = serializerResolver.GetLeafValueParser<global::System.String, global::OpenMonday.Core.strawberryShake.BoardAttributes>("BoardAttributes") ?? throw new global::System.ArgumentException("No serializer for type `BoardAttributes` found.");
+            _iDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ID") ?? throw new global::System.ArgumentException("No serializer for type `ID` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+            _jSONParser = serializerResolver.GetLeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
+        }
+
+        protected override global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult> ResultDataFactory { get; }
+
+        protected override global::StrawberryShake.IOperationResultDataInfo BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            return new UpdateBoardAttributeResultInfo(Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "update_board")), entityIds, snapshot.Version);
+        }
+
+        private global::System.Text.Json.JsonElement? Deserialize_JsonElement(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                return null;
+            }
+
+            return _jSONParser.Parse(obj.Value!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    public partial class UpdateChangeSimpleColumnValueBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _iDParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        public UpdateChangeSimpleColumnValueBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            ResultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _iDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ID") ?? throw new global::System.ArgumentException("No serializer for type `ID` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+        }
+
+        protected override global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult> ResultDataFactory { get; }
+
+        protected override global::StrawberryShake.IOperationResultDataInfo BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            return new UpdateChangeSimpleColumnValueResultInfo(Deserialize_IUpdateChangeSimpleColumnValue_Change_simple_column_value(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "change_simple_column_value")), entityIds, snapshot.Version);
+        }
+
+        private global::OpenMonday.Core.strawberryShake.State.ItemData? Deserialize_IUpdateChangeSimpleColumnValue_Change_simple_column_value(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                return null;
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("Item", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::OpenMonday.Core.strawberryShake.State.ItemData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")));
             }
 
             throw new global::System.NotSupportedException();
