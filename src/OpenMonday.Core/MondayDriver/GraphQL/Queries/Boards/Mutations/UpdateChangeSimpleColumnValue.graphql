@@ -1,0 +1,10 @@
+mutation UpdateChangeSimpleColumnValue($board_id: ID!, $item_id: ID, $column_id: String!,$value: String ){
+  change_simple_column_value  (
+    board_id: $board_id,
+    item_id: $item_id,
+    column_id: $column_id,
+    value: $value    
+  ){
+    id
+  }
+}

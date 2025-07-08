@@ -200,4 +200,27 @@ public class MondayBoardDriverService : IMondayBoardDriverService
         }
     }
 
+    public async Task<MondayDriverResult<MondayMutationBaseModel>> UpdateItemName(string board_id, string item_id, string newName)
+    {
+         try
+        {
+            var result = await _mondayClient.UpdateChangeSimpleColumnValue.ExecuteAsync(board_id, item_id, AppConstants.Board_FirstColumn_Id, newName);
+            if (result.IsErrorResult())
+            {
+                string error = $"Message {result.Errors[0].Message} Code {result.Errors[0].Code}";
+                return MondayDriverResult<MondayMutationBaseModel>.Failure(error);
+            }
+            else
+            {
+                string json = result.Data.Change_simple_column_value != null ? result.Data.Change_simple_column_value.ToString() : string.Empty;
+                MondayMutationBaseModel mb = MondayMutationBaseModel.Create(json);
+                return MondayDriverResult<MondayMutationBaseModel>.Success(mb);
+            }
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            throw;
+        }
+    }
 }

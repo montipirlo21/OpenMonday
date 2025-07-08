@@ -9,4 +9,6 @@ public interface IMondayBoardDriverService
     Task<MondayDriverResult<List<MondayDriverActivityLog>>> GetActivityLogs(string board_id, DateTime from, DateTime to);
 
     Task<MondayDriverResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string name);
+
+    Task<MondayDriverResult<MondayMutationBaseModel>> UpdateItemName(string board_id, string item_id, string newName);
 }
