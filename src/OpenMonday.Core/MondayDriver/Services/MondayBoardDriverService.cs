@@ -204,7 +204,7 @@ public class MondayBoardDriverService : IMondayBoardDriverService
     {
          try
         {
-            var result = await _mondayClient.UpdateChangeSimpleColumnValue.ExecuteAsync(board_id, item_id, "name", newName);
+            var result = await _mondayClient.UpdateChangeSimpleColumnValue.ExecuteAsync(board_id, item_id, AppConstants.Board_FirstColumn_Id, newName);
             if (result.IsErrorResult())
             {
                 string error = $"Message {result.Errors[0].Message} Code {result.Errors[0].Code}";
