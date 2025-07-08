@@ -2,6 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v1.2.4"></a>
+## [v1.2.4] - 2025-07-08
+### Feat
+- **UpdateChangeSimpleColumnValue:** add method for change simple value
+- **UpdateItemName:** create new function for Board Service
+
+### Fix
+- **AppConstants:** created appp costant
+
+### Pull Requests
+- Merge pull request [#86](https://github.com/montipirlo21/OpenMonday/issues/86) from montipirlo21/85-add-updateboardname-to-boardservice-and-iboardservice
+
+
 <a name="v1.2.3"></a>
 ## [v1.2.3] - 2025-06-25
 ### Fix
@@ -268,7 +281,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.3...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.4...HEAD
+[v1.2.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.3...v1.2.4
 [v1.2.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.2...v1.2.3
 [v1.2.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.1...v1.2.2
 [v1.2.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.0...v1.2.1
