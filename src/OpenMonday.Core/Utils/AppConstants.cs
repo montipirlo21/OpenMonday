@@ -1,4 +1,5 @@
 public static class AppConstants
 {
-    public static readonly string Board_FirstColumn_Id = "Name";
+    // Id of the first column of all boards
+    public static readonly string Board_FirstColumn_Id = "name";
 }
