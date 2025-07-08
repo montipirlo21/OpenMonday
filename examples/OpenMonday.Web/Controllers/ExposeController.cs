@@ -50,8 +50,8 @@ public class ExposeController : ControllerBase
     {
         var boardBuilded = await _boardServices.RetrieveBoardStructure(board_id);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
-    }  
-    
+    }
+
 
     /// <summary>
     /// </summary>
@@ -61,6 +61,17 @@ public class ExposeController : ControllerBase
     public async Task<ActionResult<string>> UpdateBoardName([FromQuery] string board_id, string newName)
     {
         var boardBuilded = await _boardServices.UpdateBoardName(board_id, newName);
+        return Ok($"{JsonHelper.Serialize(boardBuilded)}");
+    }  
+    
+    /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("UpdateItemName")]
+    public async Task<ActionResult<string>> UpdateItemName([FromQuery] string board_id, string item_id, string newName)
+    {
+        var boardBuilded = await _boardServices.UpdateItemName(board_id, item_id, newName);
         return Ok($"{JsonHelper.Serialize(boardBuilded)}");
     }  
 }
