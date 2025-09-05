@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.3.0"></a>
+## [v1.3.0] - 2025-09-05
+### Fix
+- **version:** update to 1.3.0
+
+### Pull Requests
+- Merge pull request [#92](https://github.com/montipirlo21/OpenMonday/issues/92) from montipirlo21/91-update-monday-schema
+
+
 <a name="v1.2.6"></a>
 ## [v1.2.6] - 2025-09-05
 ### Feat
@@ -297,7 +306,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.6...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.3.0...HEAD
+[v1.3.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.6...v1.3.0
 [v1.2.6]: https://github.com/montipirlo21/OpenMonday/compare/v.1.2.5...v1.2.6
 [v.1.2.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.4...v.1.2.5
 [v1.2.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.3...v1.2.4
