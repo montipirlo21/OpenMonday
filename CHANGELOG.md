@@ -2,12 +2,19 @@
 ## [Unreleased]
 
 
-<a name="v1.2.5"></a>
-## [v1.2.5] - 2025-07-08
+<a name="v1.2.6"></a>
+## [v1.2.6] - 2025-09-05
+### Feat
+- **schema:** update monday schema
+
+
+<a name="v.1.2.5"></a>
+## [v.1.2.5] - 2025-07-08
 ### Fix
 - **AppConstants:** typo in Board_FirstColumn_Id
 
 ### Pull Requests
+- Merge pull request [#90](https://github.com/montipirlo21/OpenMonday/issues/90) from montipirlo21/89-fix-type-in-appconstants-board_firstcolumn_id
 - Merge pull request [#88](https://github.com/montipirlo21/OpenMonday/issues/88) from montipirlo21/87-create-mutation-updatechangesimplecolumnvalue
 
 
@@ -290,8 +297,9 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.5...HEAD
-[v1.2.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.4...v1.2.5
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.6...HEAD
+[v1.2.6]: https://github.com/montipirlo21/OpenMonday/compare/v.1.2.5...v1.2.6
+[v.1.2.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.4...v.1.2.5
 [v1.2.4]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.3...v1.2.4
 [v1.2.3]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.2...v1.2.3
 [v1.2.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.1...v1.2.2
