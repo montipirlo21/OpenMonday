@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using OpenMonday.Core.MondayDriver.Interfaces;
 using OpenMonday.Core.MondayDriver.InternalServices.Interfaces;
 using OpenMonday.Core.MondayDriver.Services;
@@ -8,31 +9,26 @@ public static class ServiceCollectionExtensions
 {
     private const string MONDAYHTTPCLIENTNAME = "MONDAY";
 
-    public static IServiceCollection AddOpenMondayServices(this IServiceCollection services, Func<OpenMondayDriverOptions> configureOptions)
+    public static IServiceCollection AddOpenMondayServices(this IServiceCollection services)
     {
-        if (configureOptions == null)
-        {
-            throw new ArgumentNullException(nameof(configureOptions));
-        }
-
         services.AddHttpClient(MONDAYHTTPCLIENTNAME, (sp, client) =>
         {
-             var options = configureOptions.Invoke();
+            var options = sp.GetRequiredService<IOptions<OpenMondayDriverOptions>>().Value;
 
-             client.BaseAddress = new Uri(options.MondayWebApiUrl); // /v2
-             client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
-         });
+            client.BaseAddress = new Uri(options.MondayWebApiUrl); // /v2
+            client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
+        });
 
         // Add Monday Client
         services.AddMondayClient().ConfigureHttpClient((sp, client) =>
           {
-            var factory = sp.GetRequiredService<IHttpClientFactory>();
-            var mondayClient = factory.CreateClient(MONDAYHTTPCLIENTNAME);
+              var factory = sp.GetRequiredService<IHttpClientFactory>();
+              var mondayClient = factory.CreateClient(MONDAYHTTPCLIENTNAME);
 
-            client.BaseAddress = mondayClient.BaseAddress;
+              client.BaseAddress = mondayClient.BaseAddress;
 
-            foreach (var header in mondayClient.DefaultRequestHeaders)
-                client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+              foreach (var header in mondayClient.DefaultRequestHeaders)
+                  client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
           });
 
         // Register file http service

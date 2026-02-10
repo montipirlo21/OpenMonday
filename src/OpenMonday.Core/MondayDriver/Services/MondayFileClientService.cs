@@ -46,7 +46,7 @@ public class MondayFileClientService : IMondayFileClientService
 
         form.Add(fileContent, "file", fileName);
 
-        var response = await _httpClient.PostAsync("file", form, ct);
+        var response = await _httpClient.PostAsync(_openMondayDriverOptions.MondayFileEndpoint, form, ct);
         var body = await response.Content.ReadAsStringAsync(ct);
 
         if (!response.IsSuccessStatusCode)

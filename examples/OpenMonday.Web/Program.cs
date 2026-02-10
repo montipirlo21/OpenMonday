@@ -1,20 +1,22 @@
+using Microsoft.Extensions.Options;
 using static ServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// AddOpenMondayServices 
-builder.Services.AddOpenMondayServices(() =>
-{
-    var currentOptions = new OpenMondayConfiguration();
-    builder.Configuration.GetSection("OpenMondayConfiguration").Bind(currentOptions);
+builder.Services.Configure<OpenMondayConfiguration>(
+    builder.Configuration.GetSection("OpenMondayConfiguration"));
 
-    return new OpenMondayDriverOptions
-    {
-        MondayWebApiUrl = currentOptions.MondayWebApiUrl,
-        MondayToken = currentOptions.MondayToken,
-        MondayFileEndpoint = currentOptions.MondayFileEndpoint
-    };
+builder.Services.AddOptions<OpenMondayDriverOptions>()
+.Configure<IOptions<OpenMondayConfiguration>>((driver, web) =>
+{
+    var cfg = web.Value;
+
+    driver.MondayWebApiUrl = cfg.MondayWebApiUrl;
+    driver.MondayToken = cfg.MondayToken;
+    driver.MondayFileEndpoint = cfg.MondayFileEndpoint;
 });
+
+builder.Services.AddOpenMondayServices();
 
 // Simulation AREA
 builder.Services.AddControllers();
@@ -23,7 +25,7 @@ builder.Services.AddOpenApiDocument(options =>
 {
     options.Title = "OpenMonday Api Examples";
     options.Version = "v1";
-    options.Description = "OpenMonday Api Examples";  
+    options.Description = "OpenMonday Api Examples";
 });
 
 var app = builder.Build();
