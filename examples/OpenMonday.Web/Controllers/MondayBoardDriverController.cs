@@ -57,5 +57,15 @@ public class MondayBoardDriverController : ControllerBase
         var result = await _mondayBoardDriverService.UpdateBoardName(boardId, newName);
         return Ok($"{JsonSerializer.Serialize(result)}");
     }
-    
+
+     /// <summary>
+    /// </summary>
+    /// <param name="board_id"></param>
+    /// <returns></returns>
+    [HttpGet("UploadFileToColumn")]
+    public async Task<ActionResult<string>> UploadFileToColumn([FromQuery] string boardId)
+    {
+        await _mondayBoardDriverService.UploadFileToColumn();
+        return "value";
+    }    
 }

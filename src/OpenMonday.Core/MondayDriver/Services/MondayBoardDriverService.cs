@@ -1,5 +1,7 @@
+using System.Text;
 using OpenMonday.Core.MondayDriver.Interfaces;
 using OpenMonday.Core.MondayDriver.InternalServices.Interfaces;
+using OpenMonday.Core.MondayDriver.Services.Interfaces;
 using OpenMonday.Core.strawberryShake;
 using StrawberryShake;
 
@@ -7,13 +9,15 @@ namespace OpenMonday.Core.MondayDriver.Services;
 
 public class MondayBoardDriverService : IMondayBoardDriverService
 {
+    private readonly IMondayFileClientService _mondayFileClientService;    
     private readonly IMondayClient _mondayClient;
     private readonly IMondayDriverBoardStructureConverterService _mondayBoardStructureConverterService;
     private readonly IMondayDriverBoardItemsConverterService _mondayDriverBoardItemsConverterService;
 
-    public MondayBoardDriverService(IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService,
+    public MondayBoardDriverService(IMondayFileClientService mondayFileClientService, IMondayClient mondayClient, IMondayDriverBoardStructureConverterService mondayBoardStructureConverterService,
     IMondayDriverBoardItemsConverterService mondayDriverBoardItemsConverterService)
     {
+        _mondayFileClientService = mondayFileClientService;
         _mondayClient = mondayClient;
         _mondayBoardStructureConverterService = mondayBoardStructureConverterService;
         _mondayDriverBoardItemsConverterService = mondayDriverBoardItemsConverterService;
@@ -223,4 +227,32 @@ public class MondayBoardDriverService : IMondayBoardDriverService
             throw;
         }
     }
+
+    public async Task UploadFileToColumn()
+    {
+        long itemId = 1692625927;
+        string columnId= "file_mm0etk1k";
+
+        var text = $"""
+    File generato in memoria
+    Data: {DateTime.UtcNow}
+    Applicazione: Monday integration
+    """;
+
+    // 1️⃣ Convertiamo il testo in byte[]
+    var bytes = Encoding.UTF8.GetBytes(text);
+
+    // 2️⃣ Creiamo uno stream in memoria
+    using var stream = new MemoryStream(bytes);
+
+    // 3️⃣ Chiamiamo il metodo di upload
+   var result = await _mondayFileClientService.UploadFileToColumnAsync(
+        itemId: itemId,
+        columnId: columnId,
+        fileStream: stream,
+        fileName: "test-upload.txt",
+        contentType: "text/plain");
+       
+    }
+
 }
