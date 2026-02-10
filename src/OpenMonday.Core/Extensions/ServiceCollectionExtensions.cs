@@ -45,5 +45,6 @@ public static class ServiceCollectionExtensions
     {
         public string? MondayWebApiUrl { get; set; }
         public string? MondayToken { get; set; }
+        public string? MondayFileEndpoint { get; set; }
     }
 }

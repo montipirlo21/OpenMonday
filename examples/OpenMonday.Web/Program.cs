@@ -11,7 +11,8 @@ builder.Services.AddOpenMondayServices(() =>
     return new OpenMondayDriverOptions
     {
         MondayWebApiUrl = currentOptions.MondayWebApiUrl,
-        MondayToken = currentOptions.MondayToken
+        MondayToken = currentOptions.MondayToken,
+        MondayFileEndpoint = currentOptions.MondayFileEndpoint
     };
 });
 
