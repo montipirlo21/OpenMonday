@@ -12,18 +12,29 @@ public static class ServiceCollectionExtensions
             throw new ArgumentNullException(nameof(configureOptions));
         }
 
+        services.AddHttpClient("Monday", (sp, client) =>
+        {
+             var options = configureOptions.Invoke();
+
+             client.BaseAddress = new Uri(options.MondayWebApiUrl); // /v2
+             client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
+         });
+
         // Add Monday Client
-        services.AddMondayClient().ConfigureHttpClient(client =>
+        services.AddMondayClient().ConfigureHttpClient((sp, client) =>
           {
-              var options = configureOptions.Invoke();
-              client.BaseAddress = new Uri(options.MondayWebApiUrl);
-              client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
-          }
-          );
+            var factory = sp.GetRequiredService<IHttpClientFactory>();
+            var mondayClient = factory.CreateClient("Monday");
+
+            client.BaseAddress = mondayClient.BaseAddress;
+
+            foreach (var header in mondayClient.DefaultRequestHeaders)
+                client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+          });
 
         // Register custom service
         services.AddScoped<IMondayDriverBoardStructureConverterService, MondayDriverBoardStructureConverterService>();
-        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();        
+        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();
         services.AddScoped<IMondayBoardDriverService, MondayBoardDriverService>();
 
         services.AddScoped<IMondayDriverTeamConverterService, MondayDriverTeamConverterService>();
