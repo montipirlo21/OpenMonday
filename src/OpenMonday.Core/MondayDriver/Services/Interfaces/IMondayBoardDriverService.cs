@@ -12,5 +12,4 @@ public interface IMondayBoardDriverService
 
     Task<MondayDriverResult<MondayMutationBaseModel>> UpdateItemName(string board_id, string item_id, string newName);
 
-    Task UploadFileToColumn();
 }
