@@ -31,16 +31,16 @@ public class MondayFileClientService : IMondayFileClientService
 
         using var form = new MultipartFormDataContent();
 
-        // ⚠️ monday vuole STRING CONTENT senza content-type json
+        // monday vuole STRING CONTENT senza content-type json
         form.Add(new StringContent(query), "query");
 
-        // ⚠️ MAP DEVE ESSERE STRINGA PURA (non application/json)
+        // MAP  string, not application/json
         form.Add(new StringContent("{\"file\":\"variables.file\"}"), "map");
 
-        // ⚠️ VARIABLES DEVE ESSERE STRINGA PURA
+        // VARIABLES string
         form.Add(new StringContent("{\"file\":null}"), "variables");
 
-        // FILE BINARIO
+        // FILE binary
         var fileContent = new StreamContent(fileStream);
         fileContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
 
