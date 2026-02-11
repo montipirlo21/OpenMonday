@@ -6,7 +6,7 @@ public interface IBoardServices
 
     Task<ServiceResult<BoardStructure>> RetrieveBoardStructure(string boardId);
 
-    Task<ServiceResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string newName);
+    Task<ServiceResult<MondayMutationResultBaseModel>> UpdateBoardName(string board_id, string newName);
 
-    Task<ServiceResult<MondayMutationBaseModel>> UpdateItemName(string board_id, string item_id, string newName);
+    Task<ServiceResult<MondayMutationResultBaseModel>> UpdateItemName(string board_id, string item_id, string newName);
 }
