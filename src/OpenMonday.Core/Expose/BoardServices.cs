@@ -86,7 +86,7 @@ public class BoardServices : IBoardServices
 
     }
 
-    public async Task<ServiceResult<MondayMutationBaseModel>> UpdateBoardName(string board_id, string newName)
+    public async Task<ServiceResult<MondayMutationResultBaseModel>> UpdateBoardName(string board_id, string newName)
     {
         try
         {
@@ -94,20 +94,20 @@ public class BoardServices : IBoardServices
 
             if (mondayResult == null || !mondayResult.IsSuccess || mondayResult.Data == null)
             {
-                return ServiceResult<MondayMutationBaseModel>.Failure("Cannot update the board name");
+                return ServiceResult<MondayMutationResultBaseModel>.Failure("Cannot update the board name");
             }
 
-            return ServiceResult<MondayMutationBaseModel>.Success(mondayResult.Data);
+            return ServiceResult<MondayMutationResultBaseModel>.Success(mondayResult.Data);
         }
         catch (Exception ex)
         {
             LoggerHelper.LogException(ex);
-            return ServiceResult<MondayMutationBaseModel>.Failure("Exception not cached");
+            return ServiceResult<MondayMutationResultBaseModel>.Failure("Exception not cached");
         }
 
     }
 
-    public async Task<ServiceResult<MondayMutationBaseModel>> UpdateItemName(string board_id, string item_id, string newName)
+    public async Task<ServiceResult<MondayMutationResultBaseModel>> UpdateItemName(string board_id, string item_id, string newName)
     {
         try
         {
@@ -115,15 +115,15 @@ public class BoardServices : IBoardServices
 
             if (mondayResult == null || !mondayResult.IsSuccess || mondayResult.Data == null)
             {
-                return ServiceResult<MondayMutationBaseModel>.Failure("Cannot update the item name");
+                return ServiceResult<MondayMutationResultBaseModel>.Failure("Cannot update the item name");
             }
 
-            return ServiceResult<MondayMutationBaseModel>.Success(mondayResult.Data);
+            return ServiceResult<MondayMutationResultBaseModel>.Success(mondayResult.Data);
         }
         catch (Exception ex)
         {
             LoggerHelper.LogException(ex);
-            return ServiceResult<MondayMutationBaseModel>.Failure("Exception not cached");
+            return ServiceResult<MondayMutationResultBaseModel>.Failure("Exception not cached");
         }
     }
 }

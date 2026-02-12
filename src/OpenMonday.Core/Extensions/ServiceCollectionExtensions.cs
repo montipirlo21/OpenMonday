@@ -1,29 +1,42 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using OpenMonday.Core.MondayDriver.Interfaces;
 using OpenMonday.Core.MondayDriver.InternalServices.Interfaces;
 using OpenMonday.Core.MondayDriver.Services;
+using OpenMonday.Core.MondayDriver.Services.Interfaces;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddOpenMondayServices(this IServiceCollection services, Func<OpenMondayDriverOptions> configureOptions)
+    private const string MONDAYHTTPCLIENTNAME = "MONDAY";
+
+    public static IServiceCollection AddOpenMondayServices(this IServiceCollection services)
     {
-        if (configureOptions == null)
+        services.AddHttpClient(MONDAYHTTPCLIENTNAME, (sp, client) =>
         {
-            throw new ArgumentNullException(nameof(configureOptions));
-        }
+            var options = sp.GetRequiredService<IOptions<OpenMondayDriverOptions>>().Value;
+
+            client.BaseAddress = new Uri(options.MondayWebApiUrl); // /v2
+            client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
+        });
 
         // Add Monday Client
-        services.AddMondayClient().ConfigureHttpClient(client =>
+        services.AddMondayClient().ConfigureHttpClient((sp, client) =>
           {
-              var options = configureOptions.Invoke();
-              client.BaseAddress = new Uri(options.MondayWebApiUrl);
-              client.DefaultRequestHeaders.Add("Authorization", options.MondayToken);
-          }
-          );
+              var factory = sp.GetRequiredService<IHttpClientFactory>();
+              var mondayClient = factory.CreateClient(MONDAYHTTPCLIENTNAME);
+
+              client.BaseAddress = mondayClient.BaseAddress;
+
+              foreach (var header in mondayClient.DefaultRequestHeaders)
+                  client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+          });
+
+        // Register file http service
+        services.AddHttpClient<IMondayFileClientService, MondayFileClientService>(MONDAYHTTPCLIENTNAME);
 
         // Register custom service
         services.AddScoped<IMondayDriverBoardStructureConverterService, MondayDriverBoardStructureConverterService>();
-        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();        
+        services.AddScoped<IMondayDriverBoardItemsConverterService, MondayDriverBoardItemsConverterService>();
         services.AddScoped<IMondayBoardDriverService, MondayBoardDriverService>();
 
         services.AddScoped<IMondayDriverTeamConverterService, MondayDriverTeamConverterService>();
@@ -45,5 +58,6 @@ public static class ServiceCollectionExtensions
     {
         public string? MondayWebApiUrl { get; set; }
         public string? MondayToken { get; set; }
+        public string? MondayFileEndpoint { get; set; }
     }
 }
