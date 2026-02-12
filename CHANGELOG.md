@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v1.4.0"></a>
+## [v1.4.0] - 2026-02-12
+### Feat
+- **configuration:** add MondayFileEndpoint
+- **create_item:** added create item but need a lot of work
+
+### Pull Requests
+- Merge pull request [#94](https://github.com/montipirlo21/OpenMonday/issues/94) from montipirlo21/93-update-library-version
+
+
 <a name="v1.3.0"></a>
 ## [v1.3.0] - 2025-09-05
 ### Fix
@@ -306,7 +316,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.0...HEAD
+[v1.4.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.6...v1.3.0
 [v1.2.6]: https://github.com/montipirlo21/OpenMonday/compare/v.1.2.5...v1.2.6
 [v.1.2.5]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.4...v.1.2.5
