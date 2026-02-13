@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.4.1"></a>
+## [v1.4.1] - 2026-02-13
+### Fix
+- **jsonHelper:** add SerializeObjToJsonElementForMonday
+
+### Pull Requests
+- Merge pull request [#96](https://github.com/montipirlo21/OpenMonday/issues/96) from montipirlo21/95-load-assets-files-to-monday
+
+
 <a name="v1.4.0"></a>
 ## [v1.4.0] - 2026-02-12
 ### Feat
@@ -316,7 +325,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.1...HEAD
+[v1.4.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.2.6...v1.3.0
 [v1.2.6]: https://github.com/montipirlo21/OpenMonday/compare/v.1.2.5...v1.2.6
