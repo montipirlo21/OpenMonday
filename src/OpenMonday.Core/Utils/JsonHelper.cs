@@ -49,17 +49,17 @@ public static class JsonHelper
         }
     }
     
-    public static JsonElement SerializeObjToJsonElementForMonday(string obj)
+    public static JsonElement SerializeObjToJsonElementForMonday(object obj)
     {
         try
         {
-            // 1️⃣  obj -> JSON
+            // obj -> JSON
             string innerJson = JsonSerializer.Serialize(obj);
 
-            // 2️⃣ Json -> STRING JSON escaped
+            // json -> STRING JSON escaped
             string doubleSerialized = JsonSerializer.Serialize(innerJson);
 
-            // 3️⃣ to JsonElement
+            // to JsonElement
             JsonElement jsonElement = JsonDocument.Parse(doubleSerialized).RootElement;
 
             return jsonElement;
