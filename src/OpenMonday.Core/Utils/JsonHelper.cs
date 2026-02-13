@@ -48,4 +48,27 @@ public static class JsonHelper
             throw;
         }
     }
+    
+    public static JsonElement SerializeObjToJsonElementForMonday(string obj)
+    {
+        try
+        {
+            // 1️⃣  obj -> JSON
+            string innerJson = JsonSerializer.Serialize(obj);
+
+            // 2️⃣ Json -> STRING JSON escaped
+            string doubleSerialized = JsonSerializer.Serialize(innerJson);
+
+            // 3️⃣ to JsonElement
+            JsonElement jsonElement = JsonDocument.Parse(doubleSerialized).RootElement;
+
+            return jsonElement;
+        }
+        catch (Exception e)
+        {
+            LoggerHelper.LogError($"Error SerializeObjToJsonElementForMonday");
+            LoggerHelper.LogException(e);
+            throw;
+        }
+    }
 }
