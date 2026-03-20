@@ -1,6 +1,10 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Feat
+- **netcore:** update to net 10
+- **netcore:** update to net 10
+
 
 <a name="v1.4.2"></a>
 ## [v1.4.2] - 2026-02-13
