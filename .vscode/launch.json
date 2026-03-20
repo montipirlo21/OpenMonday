@@ -6,9 +6,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build .NET Core",
-      "program": "${workspaceFolder}/examples/OpenMonday.Web/bin/Debug/net9.0/OpenMonday.Web.dll",
+      "program": "${workspaceFolder}/examples/OpenMonday.Web/bin/Debug/net10.0/OpenMonday.Web.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/examples/OpenMonday.Web/bin/Debug/net9.0/",
+      "cwd": "${workspaceFolder}/examples/OpenMonday.Web/bin/Debug/net10.0/",
       "stopAtEntry": false,
       "serverReadyAction": {
         "action": "openExternally",
