@@ -55,7 +55,7 @@ public class TestDataBuilders_MondayDriverBoardItems
             ("1626989663", "Task 1",new GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group("groupid1"),
             new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
                 new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateTime(2024,12,3),
+                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateOnly(2024,12,3),
                  new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>(){
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("13118233", Kind.Team),
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("66320205", Kind.Team)
@@ -67,7 +67,7 @@ public class TestDataBuilders_MondayDriverBoardItems
             new GetBoardItemsByCursor_Boards_Items_page_Items_Item("1626989661", "Task 2",new GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group("groupid1"),
              new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
                 new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateTime(2024,12,3),
+                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateOnly(2024,12,3),
                  new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>(){
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("13118233", Kind.Team),
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("66320205", Kind.Team)
@@ -80,7 +80,7 @@ public class TestDataBuilders_MondayDriverBoardItems
             new GetBoardItemsByCursor_Boards_Items_page_Items_Item("1626989662", "Task 3", new GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group("groupid2"),  new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
 
                 new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-                null, ColumnType.People, "","PeopleValue", new DateTime(2024,12,3),new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>() )
+                null, ColumnType.People, "","PeopleValue", new DateOnly(2024,12,3),new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>() )
 
             })
         };
@@ -122,7 +122,7 @@ public class TestDataBuilders_MondayDriverBoardItems
             ("1626989663", "Task 1", new GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group("groupid1"),
            new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
                 new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateTime(2024,12,3),
+                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateOnly(2024,12,3),
                  new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>(){
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("13118233", Kind.Team),
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("66320205", Kind.Team)
@@ -135,7 +135,7 @@ public class TestDataBuilders_MondayDriverBoardItems
             new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item("1626989661", "Task 2",new GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group("groupid1"),
              new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
                 new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateTime(2024,12,3),
+                JsonDocument.Parse("{}").RootElement, ColumnType.People, "","PeopleValue", new DateOnly(2024,12,3),
                  new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>(){
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("13118233", Kind.Team),
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("66320205", Kind.Team)
@@ -148,7 +148,7 @@ public class TestDataBuilders_MondayDriverBoardItems
             new GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item("1626989662", "Task 3",new GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group("groupid2"),   new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values>(){
 
                 new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-                null, ColumnType.People, "","PeopleValue", new DateTime(2024,12,3),new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>())
+                null, ColumnType.People, "","PeopleValue", new DateOnly(2024,12,3),new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>())
 
             })
         };

@@ -26,7 +26,7 @@ namespace OpenMonday.Tests.MondayDriver
 
             // PEOPLE 1
             var driverPeople1 = new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue("project_owner",
-            JsonDocument.Parse("{}").RootElement, ColumnType.People, "Name Surname, AnotherUser@aaaaaa.com", "PeopleValue", new DateTime(2024, 12, 3),
+            JsonDocument.Parse("{}").RootElement, ColumnType.People, "Name Surname, AnotherUser@aaaaaa.com", "PeopleValue", new DateOnly(2024, 12, 3),
              new List<IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>(){
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("55860256", Kind.Person),
                     new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity("66320205", Kind.Team)
@@ -55,7 +55,7 @@ namespace OpenMonday.Tests.MondayDriver
             Assert.NotNull(people1);
             Assert.NotNull(people1Data);
             Assert.Equal(typeof(MondayDriverPeopleColumnData), people1Data.GetType());
-            Assert.Equal(people1Data.Updated_at, driverPeople1.Updated_at);
+            Assert.Equal(people1Data.Updated_at, DateTimeConverter.ToDateTime(driverPeople1.Updated_at));
             foreach (var person in driverPeople1.Persons_and_teams)
             {
                 var p = people1Data.PersonsAndTeams.FirstOrDefault(x => x.Id.Equals(person.Id));
@@ -67,7 +67,7 @@ namespace OpenMonday.Tests.MondayDriver
             // ASSERT PEOPLE 2
             var people2 = result.FirstOrDefault(x => x.Id == driverPeople1.Id);
             var people2Data = (MondayDriverPeopleColumnData)people2.ColumnData;
-            Assert.Equal(people1Data.Updated_at, driverPeople1.Updated_at);
+            Assert.Equal(people1Data.Updated_at,  DateTimeConverter.ToDateTime(driverPeople1.Updated_at));
         }
     }
 }
