@@ -22,4 +22,21 @@ public static class DateTimeConverter
             return null;
         }
     }
+
+    public static DateTime? ToDateTime(DateOnly? date, TimeOnly? time = null)
+    {
+        if (date == null)
+            return null;
+
+        return date.Value.ToDateTime(time ?? TimeOnly.MinValue);
+    }
+
+    public static DateOnly? ToDateOnly(DateTime? dateTime)
+    {
+        if (dateTime == null)
+            return null;
+
+        return DateOnly.FromDateTime(dateTime.Value);
+    }
+
 }

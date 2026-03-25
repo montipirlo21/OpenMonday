@@ -100,19 +100,27 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                                 }
                             }
                         }
-                        result = MondayDriverPeopleColumnData.Create(v.Updated_at, peopleEntities);
+
+                        DateTime? updated_at = DateTimeConverter.ToDateTime(v.Updated_at);
+                        result = MondayDriverPeopleColumnData.Create(updated_at, peopleEntities);
                         break;
                     }
                 case ColumnType.Timeline:
                     {
                         IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue)val;
-                        result = MondayDriverTimeLineColumnData.Create(v.From, v.To, v.Updated_at, v.Visualization_type);
+
+                        DateTime? from = DateTimeConverter.ToDateTime(v.From);
+                        DateTime? to = DateTimeConverter.ToDateTime(v.To);
+                        DateTime? updated_at = DateTimeConverter.ToDateTime(v.Updated_at);
+
+                        result = MondayDriverTimeLineColumnData.Create(from, to, updated_at, v.Visualization_type);
                         break;
                     }
                 case ColumnType.Status:
                     {
                         IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue)val;
-                        result = MondayDriverStatusValueColumnData.Create(v.Text, v.Index, v.Is_done, v.Updated_at, v.Update_id);
+                        DateTime? updated_at = DateTimeConverter.ToDateTime(v.Updated_at);
+                        result = MondayDriverStatusValueColumnData.Create(v.Text, v.Index, v.Is_done, updated_at, v.Update_id);
                         break;
                     }
                 case ColumnType.Mirror:

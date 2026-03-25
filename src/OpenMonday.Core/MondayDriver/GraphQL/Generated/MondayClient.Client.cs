@@ -4,7 +4,7 @@
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public static partial class MondayClientServiceCollectionExtensions
     {
         public static global::StrawberryShake.IClientBuilder<global::OpenMonday.Core.strawberryShake.State.MondayClientStoreAccessor> AddMondayClient(this global::Microsoft.Extensions.DependencyInjection.IServiceCollection services, global::StrawberryShake.ExecutionStrategy strategy = global::StrawberryShake.ExecutionStrategy.NetworkOnly)
@@ -26,6 +26,16 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.CreateItemMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetTeamsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IGetUsersQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.ICreateItemMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.MondayClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::OpenMonday.Core.strawberryShake.IMondayClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::OpenMonday.Core.strawberryShake.State.MondayClientStoreAccessor>("MondayClient", services, serviceCollection);
@@ -56,6 +66,9 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.IdSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.DateTimeSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.DateSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.LocalDateSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.LocalDateTimeSerializer>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.LocalTimeSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteArraySerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
@@ -177,7 +190,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLogResult : global::System.IEquatable<GetActivityLogResult>, IGetActivityLogResult
     {
         public GetActivityLogResult(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetActivityLog_Boards?>? boards)
@@ -254,7 +267,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLog_Boards_Board : global::System.IEquatable<GetActivityLog_Boards_Board>, IGetActivityLog_Boards_Board
     {
         public GetActivityLog_Boards_Board(global::System.String? updated_At, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetActivityLog_Boards_Activity_logs?>? activity_Logs)
@@ -341,7 +354,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An activity log event
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLog_Boards_Activity_logs_ActivityLogType : global::System.IEquatable<GetActivityLog_Boards_Activity_logs_ActivityLogType>, IGetActivityLog_Boards_Activity_logs_ActivityLogType
     {
         public GetActivityLog_Boards_Activity_logs_ActivityLogType(global::System.String id, global::System.String user_Id, global::System.String @event, global::System.String created_At)
@@ -414,7 +427,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetActivityLogResult
     {
         /// <summary>
@@ -426,7 +439,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetActivityLog_Boards
     {
         /// <summary>
@@ -442,7 +455,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetActivityLog_Boards_Board : IGetActivityLog_Boards
     {
     }
@@ -450,7 +463,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An activity log event
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetActivityLog_Boards_Activity_logs
     {
         public global::System.String Id { get; }
@@ -462,7 +475,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An activity log event
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetActivityLog_Boards_Activity_logs_ActivityLogType : IGetActivityLog_Boards_Activity_logs
     {
     }
@@ -470,7 +483,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursorResult : global::System.IEquatable<GetBoardItemsByCursorResult>, IGetBoardItemsByCursorResult
     {
         public GetBoardItemsByCursorResult(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards?>? boards)
@@ -547,7 +560,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Board : global::System.IEquatable<GetBoardItemsByCursor_Boards_Board>, IGetBoardItemsByCursor_Boards_Board
     {
         public GetBoardItemsByCursor_Boards_Board(global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page items_Page)
@@ -611,7 +624,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_ItemsResponse : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_ItemsResponse>, IGetBoardItemsByCursor_Boards_Items_page_ItemsResponse
     {
         public GetBoardItemsByCursor_Boards_Items_page_ItemsResponse(global::System.String? cursor, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items> items)
@@ -694,7 +707,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Item : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Item>, IGetBoardItemsByCursor_Boards_Items_page_Items_Item
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Item(global::System.String id, global::System.String name, global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Group? @group, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values> column_Values)
@@ -787,7 +800,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group>, IGetBoardItemsByCursor_Boards_Items_page_Items_Group_Group
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Group_Group(global::System.String id)
@@ -854,7 +867,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A value showing status distribution counts
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BatteryValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BatteryValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BatteryValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BatteryValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -950,7 +963,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BoardRelationValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BoardRelationValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BoardRelationValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BoardRelationValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1046,7 +1059,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ButtonValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ButtonValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ButtonValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ButtonValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1139,7 +1152,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CheckboxValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CheckboxValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CheckboxValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CheckboxValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1229,7 +1242,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ColorPickerValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ColorPickerValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ColorPickerValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ColorPickerValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1322,7 +1335,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CountryValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CountryValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CountryValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CountryValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1418,7 +1431,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CreationLogValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CreationLogValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CreationLogValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CreationLogValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1511,7 +1524,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1607,7 +1620,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DependencyValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DependencyValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DependencyValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DependencyValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1703,7 +1716,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DirectDocValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DirectDocValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DirectDocValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DirectDocValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1799,7 +1812,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DocValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DocValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DocValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DocValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1895,7 +1908,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -1988,7 +2001,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_EmailValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_EmailValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_EmailValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_EmailValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2084,7 +2097,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FileValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FileValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FileValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FileValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2177,7 +2190,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.String display_Value)
@@ -2279,7 +2292,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_GroupValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_GroupValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_GroupValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_GroupValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2375,7 +2388,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_HourValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_HourValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_HourValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_HourValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2468,7 +2481,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_IntegrationValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_IntegrationValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_IntegrationValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_IntegrationValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2564,7 +2577,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ItemIdValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ItemIdValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ItemIdValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ItemIdValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2657,7 +2670,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LastUpdatedValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LastUpdatedValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LastUpdatedValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LastUpdatedValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2750,7 +2763,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2843,7 +2856,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LocationValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LocationValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LocationValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LocationValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -2936,7 +2949,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LongTextValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LongTextValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LongTextValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LongTextValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3032,7 +3045,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.String display_Value)
@@ -3134,7 +3147,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_NumbersValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_NumbersValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_NumbersValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_NumbersValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3227,10 +3240,10 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue
     {
-        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateTime? updated_At, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>? persons_And_Teams)
+        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateOnly? updated_At, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>? persons_And_Teams)
         {
             Id = id;
             Value = @value;
@@ -3261,7 +3274,7 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The people and teams assigned to the item.
         /// </summary>
@@ -3343,7 +3356,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PersonValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PersonValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PersonValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PersonValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3436,7 +3449,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PhoneValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PhoneValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PhoneValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PhoneValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3529,7 +3542,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ProgressValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ProgressValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ProgressValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ProgressValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3625,7 +3638,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_RatingValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_RatingValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_RatingValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_RatingValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3718,10 +3731,10 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue
     {
-        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.Int32? index, global::System.Boolean? is_Done, global::System.String? update_Id, global::System.DateTime? updated_At)
+        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.Int32? index, global::System.Boolean? is_Done, global::System.String? update_Id, global::System.DateOnly? updated_At)
         {
             Id = id;
             Value = @value;
@@ -3766,7 +3779,7 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
 
         public virtual global::System.Boolean Equals(GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue? other)
         {
@@ -3851,7 +3864,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_SubtasksValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_SubtasksValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_SubtasksValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_SubtasksValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -3947,7 +3960,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TagsValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TagsValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TagsValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TagsValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4040,7 +4053,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TeamValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TeamValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TeamValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TeamValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4133,7 +4146,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4229,10 +4242,10 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue
     {
-        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateTime? @from, global::System.DateTime? to, global::System.DateTime? updated_At, global::System.String? visualization_Type)
+        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateOnly? @from, global::System.DateOnly? to, global::System.DateOnly? updated_At, global::System.String? visualization_Type)
         {
             Id = id;
             Value = @value;
@@ -4268,15 +4281,15 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The start date of the timeline
         /// </summary>
-        public global::System.DateTime? From { get; }
+        public global::System.DateOnly? From { get; }
         /// <summary>
         /// The end date of the timeline
         /// </summary>
-        public global::System.DateTime? To { get; }
+        public global::System.DateOnly? To { get; }
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The visualization type for the timeline
         /// </summary>
@@ -4365,7 +4378,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimeTrackingValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimeTrackingValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimeTrackingValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimeTrackingValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4455,7 +4468,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_UnsupportedValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_UnsupportedValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_UnsupportedValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_UnsupportedValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4551,7 +4564,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_VoteValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_VoteValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_VoteValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_VoteValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4644,7 +4657,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WeekValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WeekValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WeekValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WeekValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4740,7 +4753,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -4833,7 +4846,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity(global::System.String id, global::OpenMonday.Core.strawberryShake.Kind? kind)
@@ -4910,7 +4923,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursorResult
     {
         /// <summary>
@@ -4922,7 +4935,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards
     {
         /// <summary>
@@ -4934,12 +4947,12 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Board : IGetBoardItemsByCursor_Boards
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page
     {
         /// <summary>
@@ -4954,7 +4967,7 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items> Items { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_ItemsResponse : IGetBoardItemsByCursor_Boards_Items_page
     {
     }
@@ -4962,7 +4975,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IItemFragment
     {
         /// <summary>
@@ -4986,7 +4999,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items : IItemFragment
     {
     }
@@ -4994,7 +5007,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Item : IGetBoardItemsByCursor_Boards_Items_page_Items
     {
     }
@@ -5002,7 +5015,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Group
     {
         /// <summary>
@@ -5014,12 +5027,12 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Group_Group : IGetBoardItemsByCursor_Boards_Items_page_Items_Group
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
         /// <summary>
@@ -5044,77 +5057,77 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A value showing status distribution counts
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BatteryValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_BoardRelationValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ButtonValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CheckboxValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ColorPickerValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CountryValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_CreationLogValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DateValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DependencyValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DirectDocValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DocValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_EmailValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FileValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_FormulaValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
         /// <summary>
@@ -5123,47 +5136,47 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.String Display_value { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_GroupValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_HourValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_IntegrationValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ItemIdValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LastUpdatedValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LinkValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LocationValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_LongTextValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_MirrorValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
         /// <summary>
@@ -5172,45 +5185,45 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.String Display_value { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_NumbersValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PeopleValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The people and teams assigned to the item.
         /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>? Persons_and_teams { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PersonValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_PhoneValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ProgressValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_RatingValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_StatusValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
         /// <summary>
@@ -5228,76 +5241,76 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_SubtasksValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TagsValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TeamValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TextValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimelineValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
         /// <summary>
         /// The start date of the timeline
         /// </summary>
-        public global::System.DateTime? From { get; }
+        public global::System.DateOnly? From { get; }
         /// <summary>
         /// The end date of the timeline
         /// </summary>
-        public global::System.DateTime? To { get; }
+        public global::System.DateOnly? To { get; }
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The visualization type for the timeline
         /// </summary>
         public global::System.String? Visualization_type { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_TimeTrackingValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_UnsupportedValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_VoteValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WeekValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams
     {
         /// <summary>
@@ -5310,7 +5323,7 @@ namespace OpenMonday.Core.strawberryShake
         public global::OpenMonday.Core.strawberryShake.Kind? Kind { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams
     {
     }
@@ -5318,7 +5331,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPageResult : global::System.IEquatable<GetBoardItemsByCursor_NextPageResult>, IGetBoardItemsByCursor_NextPageResult
     {
         public GetBoardItemsByCursor_NextPageResult(global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPage_Next_items_page next_Items_Page)
@@ -5382,7 +5395,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_ItemsResponse : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_ItemsResponse>, IGetBoardItemsByCursor_NextPage_Next_items_page_ItemsResponse
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_ItemsResponse(global::System.String? cursor, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPage_Next_items_page_Items> items)
@@ -5465,7 +5478,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Item
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Item(global::System.String id, global::System.String name, global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Group? @group, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values> column_Values)
@@ -5558,7 +5571,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Group_Group : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Group_Group>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Group_Group
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Group_Group(global::System.String id)
@@ -5625,7 +5638,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A value showing status distribution counts
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BatteryValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BatteryValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BatteryValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BatteryValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -5721,7 +5734,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BoardRelationValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BoardRelationValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BoardRelationValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BoardRelationValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -5817,7 +5830,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ButtonValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ButtonValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ButtonValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ButtonValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -5910,7 +5923,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CheckboxValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CheckboxValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CheckboxValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CheckboxValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6000,7 +6013,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ColorPickerValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ColorPickerValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ColorPickerValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ColorPickerValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6093,7 +6106,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CountryValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CountryValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CountryValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CountryValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6189,7 +6202,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CreationLogValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CreationLogValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CreationLogValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CreationLogValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6282,7 +6295,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6378,7 +6391,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DependencyValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DependencyValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DependencyValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DependencyValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6474,7 +6487,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DirectDocValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DirectDocValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DirectDocValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DirectDocValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6570,7 +6583,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DocValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DocValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DocValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DocValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6666,7 +6679,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6759,7 +6772,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_EmailValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_EmailValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_EmailValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_EmailValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6855,7 +6868,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FileValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FileValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FileValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FileValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -6948,7 +6961,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.String display_Value)
@@ -7050,7 +7063,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_GroupValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_GroupValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_GroupValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_GroupValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7146,7 +7159,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_HourValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_HourValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_HourValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_HourValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7239,7 +7252,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_IntegrationValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_IntegrationValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_IntegrationValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_IntegrationValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7335,7 +7348,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ItemIdValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ItemIdValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ItemIdValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ItemIdValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7428,7 +7441,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LastUpdatedValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LastUpdatedValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LastUpdatedValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LastUpdatedValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7521,7 +7534,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7614,7 +7627,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LocationValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LocationValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LocationValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LocationValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7707,7 +7720,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LongTextValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LongTextValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LongTextValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LongTextValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7803,7 +7816,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.String display_Value)
@@ -7905,7 +7918,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_NumbersValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_NumbersValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_NumbersValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_NumbersValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -7998,10 +8011,10 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue
     {
-        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateTime? updated_At, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>? persons_And_Teams)
+        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateOnly? updated_At, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>? persons_And_Teams)
         {
             Id = id;
             Value = @value;
@@ -8032,7 +8045,7 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The people and teams assigned to the item.
         /// </summary>
@@ -8114,7 +8127,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PersonValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PersonValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PersonValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PersonValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8207,7 +8220,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PhoneValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PhoneValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PhoneValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PhoneValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8300,7 +8313,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ProgressValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ProgressValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ProgressValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ProgressValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8396,7 +8409,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_RatingValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_RatingValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_RatingValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_RatingValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8489,10 +8502,10 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue
     {
-        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.Int32? index, global::System.Boolean? is_Done, global::System.String? update_Id, global::System.DateTime? updated_At)
+        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.Int32? index, global::System.Boolean? is_Done, global::System.String? update_Id, global::System.DateOnly? updated_At)
         {
             Id = id;
             Value = @value;
@@ -8537,7 +8550,7 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
 
         public virtual global::System.Boolean Equals(GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue? other)
         {
@@ -8622,7 +8635,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_SubtasksValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_SubtasksValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_SubtasksValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_SubtasksValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8718,7 +8731,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TagsValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TagsValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TagsValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TagsValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8811,7 +8824,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TeamValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TeamValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TeamValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TeamValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -8904,7 +8917,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -9000,10 +9013,10 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimelineValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimelineValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimelineValue
     {
-        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimelineValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateTime? @from, global::System.DateTime? to, global::System.DateTime? updated_At, global::System.String? visualization_Type)
+        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimelineValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.DateOnly? @from, global::System.DateOnly? to, global::System.DateOnly? updated_At, global::System.String? visualization_Type)
         {
             Id = id;
             Value = @value;
@@ -9039,15 +9052,15 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The start date of the timeline
         /// </summary>
-        public global::System.DateTime? From { get; }
+        public global::System.DateOnly? From { get; }
         /// <summary>
         /// The end date of the timeline
         /// </summary>
-        public global::System.DateTime? To { get; }
+        public global::System.DateOnly? To { get; }
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The visualization type for the timeline
         /// </summary>
@@ -9136,7 +9149,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimeTrackingValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimeTrackingValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimeTrackingValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimeTrackingValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -9226,7 +9239,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_UnsupportedValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_UnsupportedValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_UnsupportedValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_UnsupportedValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -9322,7 +9335,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_VoteValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_VoteValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_VoteValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_VoteValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -9415,7 +9428,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WeekValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WeekValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WeekValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WeekValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -9511,7 +9524,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WorldClockValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WorldClockValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WorldClockValue
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WorldClockValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
@@ -9604,7 +9617,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity(global::System.String id, global::OpenMonday.Core.strawberryShake.Kind? kind)
@@ -9681,7 +9694,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPageResult
     {
         /// <summary>
@@ -9690,7 +9703,7 @@ namespace OpenMonday.Core.strawberryShake
         public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPage_Next_items_page Next_items_page { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page
     {
         /// <summary>
@@ -9705,7 +9718,7 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPage_Next_items_page_Items> Items { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_ItemsResponse : IGetBoardItemsByCursor_NextPage_Next_items_page
     {
     }
@@ -9713,7 +9726,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items : IItemFragment
     {
     }
@@ -9721,7 +9734,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Item : IGetBoardItemsByCursor_NextPage_Next_items_page_Items
     {
     }
@@ -9729,7 +9742,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Group
     {
         /// <summary>
@@ -9741,12 +9754,12 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Group_Group : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Group
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
         /// <summary>
@@ -9771,77 +9784,77 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A value showing status distribution counts
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BatteryValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_BoardRelationValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ButtonValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CheckboxValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ColorPickerValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CountryValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_CreationLogValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DateValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DependencyValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DirectDocValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DocValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_EmailValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FileValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_FormulaValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
         /// <summary>
@@ -9850,47 +9863,47 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.String Display_value { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_GroupValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_HourValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_IntegrationValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ItemIdValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LastUpdatedValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LinkValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LocationValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_LongTextValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_MirrorValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
         /// <summary>
@@ -9899,45 +9912,45 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.String Display_value { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_NumbersValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PeopleValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The people and teams assigned to the item.
         /// </summary>
         public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams>? Persons_and_teams { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PersonValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_PhoneValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_ProgressValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_RatingValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_StatusValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
         /// <summary>
@@ -9955,76 +9968,76 @@ namespace OpenMonday.Core.strawberryShake
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_SubtasksValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TagsValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TeamValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TextValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimelineValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
         /// <summary>
         /// The start date of the timeline
         /// </summary>
-        public global::System.DateTime? From { get; }
+        public global::System.DateOnly? From { get; }
         /// <summary>
         /// The end date of the timeline
         /// </summary>
-        public global::System.DateTime? To { get; }
+        public global::System.DateOnly? To { get; }
         /// <summary>
         /// The date when column value was last updated.
         /// </summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         /// <summary>
         /// The visualization type for the timeline
         /// </summary>
         public global::System.String? Visualization_type { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_TimeTrackingValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_UnsupportedValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_VoteValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WeekValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WorldClockValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams
     {
         /// <summary>
@@ -10037,7 +10050,7 @@ namespace OpenMonday.Core.strawberryShake
         public global::OpenMonday.Core.strawberryShake.Kind? Kind { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams
     {
     }
@@ -10045,7 +10058,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureByIdResult : global::System.IEquatable<GetBoardsStructureByIdResult>, IGetBoardsStructureByIdResult
     {
         public GetBoardsStructureByIdResult(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureById_Boards?>? boards)
@@ -10122,7 +10135,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureById_Boards_Board : global::System.IEquatable<GetBoardsStructureById_Boards_Board>, IGetBoardsStructureById_Boards_Board
     {
         public GetBoardsStructureById_Boards_Board(global::System.String id, global::System.String name, global::System.String? updated_At, global::System.Int32? items_Count, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureById_Boards_Columns?>? columns, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureById_Boards_Groups?>? groups)
@@ -10244,7 +10257,7 @@ namespace OpenMonday.Core.strawberryShake
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureById_Boards_Columns_Column : global::System.IEquatable<GetBoardsStructureById_Boards_Columns_Column>, IGetBoardsStructureById_Boards_Columns_Column
     {
         public GetBoardsStructureById_Boards_Columns_Column(global::System.String id, global::System.String title, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String settings_Str)
@@ -10329,7 +10342,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureById_Boards_Groups_Group : global::System.IEquatable<GetBoardsStructureById_Boards_Groups_Group>, IGetBoardsStructureById_Boards_Groups_Group
     {
         public GetBoardsStructureById_Boards_Groups_Group(global::System.String title, global::System.String id)
@@ -10402,7 +10415,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureByIdResult
     {
         /// <summary>
@@ -10414,7 +10427,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureById_Boards
     {
         /// <summary>
@@ -10446,12 +10459,12 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureById_Boards_Board : IGetBoardsStructureById_Boards
     {
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureById_Boards_Columns
     {
         /// <summary>
@@ -10472,7 +10485,7 @@ namespace OpenMonday.Core.strawberryShake
         public global::System.String Settings_str { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureById_Boards_Columns_Column : IGetBoardsStructureById_Boards_Columns
     {
     }
@@ -10480,7 +10493,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureById_Boards_Groups
     {
         /// <summary>
@@ -10496,7 +10509,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A group of items in a board.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureById_Boards_Groups_Group : IGetBoardsStructureById_Boards_Groups
     {
     }
@@ -10504,7 +10517,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIdsResult : global::System.IEquatable<GetTeamsByIdsResult>, IGetTeamsByIdsResult
     {
         public GetTeamsByIdsResult(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetTeamsByIds_Teams?>? teams)
@@ -10581,7 +10594,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A team of users.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIds_Teams_Team : global::System.IEquatable<GetTeamsByIds_Teams_Team>, IGetTeamsByIds_Teams_Team
     {
         public GetTeamsByIds_Teams_Team(global::System.String id, global::System.String name, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetTeamsByIds_Teams_Owners> owners, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetTeamsByIds_Teams_Users?>? users)
@@ -10680,7 +10693,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIds_Teams_Owners_User : global::System.IEquatable<GetTeamsByIds_Teams_Owners_User>, IGetTeamsByIds_Teams_Owners_User
     {
         public GetTeamsByIds_Teams_Owners_User(global::System.String id, global::System.String name)
@@ -10753,7 +10766,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIds_Teams_Users_User : global::System.IEquatable<GetTeamsByIds_Teams_Users_User>, IGetTeamsByIds_Teams_Users_User
     {
         public GetTeamsByIds_Teams_Users_User(global::System.String id, global::System.String name)
@@ -10826,7 +10839,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIdsResult
     {
         /// <summary>
@@ -10838,7 +10851,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A team of users.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIds_Teams
     {
         /// <summary>
@@ -10862,7 +10875,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A team of users.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIds_Teams_Team : IGetTeamsByIds_Teams
     {
     }
@@ -10870,7 +10883,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIds_Teams_Owners
     {
         /// <summary>
@@ -10886,7 +10899,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIds_Teams_Owners_User : IGetTeamsByIds_Teams_Owners
     {
     }
@@ -10894,7 +10907,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIds_Teams_Users
     {
         /// <summary>
@@ -10910,7 +10923,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIds_Teams_Users_User : IGetTeamsByIds_Teams_Users
     {
     }
@@ -10918,7 +10931,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsResult : global::System.IEquatable<GetTeamsResult>, IGetTeamsResult
     {
         public GetTeamsResult(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetTeams_Teams?>? teams)
@@ -10995,7 +11008,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A team of users.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeams_Teams_Team : global::System.IEquatable<GetTeams_Teams_Team>, IGetTeams_Teams_Team
     {
         public GetTeams_Teams_Team(global::System.String id, global::System.String name, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetTeams_Teams_Owners> owners, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetTeams_Teams_Users?>? users)
@@ -11094,7 +11107,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeams_Teams_Owners_User : global::System.IEquatable<GetTeams_Teams_Owners_User>, IGetTeams_Teams_Owners_User
     {
         public GetTeams_Teams_Owners_User(global::System.String id, global::System.String name)
@@ -11167,7 +11180,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeams_Teams_Users_User : global::System.IEquatable<GetTeams_Teams_Users_User>, IGetTeams_Teams_Users_User
     {
         public GetTeams_Teams_Users_User(global::System.String id, global::System.String name)
@@ -11240,7 +11253,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsResult
     {
         /// <summary>
@@ -11252,7 +11265,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A team of users.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeams_Teams
     {
         /// <summary>
@@ -11276,7 +11289,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A team of users.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeams_Teams_Team : IGetTeams_Teams
     {
     }
@@ -11284,7 +11297,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeams_Teams_Owners
     {
         /// <summary>
@@ -11300,7 +11313,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeams_Teams_Owners_User : IGetTeams_Teams_Owners
     {
     }
@@ -11308,7 +11321,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeams_Teams_Users
     {
         /// <summary>
@@ -11324,7 +11337,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeams_Teams_Users_User : IGetTeams_Teams_Users
     {
     }
@@ -11332,7 +11345,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsersResult : global::System.IEquatable<GetUsersResult>, IGetUsersResult
     {
         public GetUsersResult(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetUsers_Users?>? users)
@@ -11409,7 +11422,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsers_Users_User : global::System.IEquatable<GetUsers_Users_User>, IGetUsers_Users_User
     {
         public GetUsers_Users_User(global::System.String id, global::System.String name)
@@ -11482,7 +11495,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root query type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetUsersResult
     {
         /// <summary>
@@ -11494,7 +11507,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetUsers_Users
     {
         /// <summary>
@@ -11510,7 +11523,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// A monday.com user.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetUsers_Users_User : IGetUsers_Users
     {
     }
@@ -11518,7 +11531,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root mutation type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItemResult : global::System.IEquatable<CreateItemResult>, ICreateItemResult
     {
         public CreateItemResult(global::OpenMonday.Core.strawberryShake.ICreateItem_Create_item? create_Item)
@@ -11589,7 +11602,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItem_Create_item_Item : global::System.IEquatable<CreateItem_Create_item_Item>, ICreateItem_Create_item_Item
     {
         public CreateItem_Create_item_Item(global::System.String id)
@@ -11656,7 +11669,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root mutation type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface ICreateItemResult
     {
         /// <summary>
@@ -11668,7 +11681,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface ICreateItem_Create_item
     {
         /// <summary>
@@ -11680,7 +11693,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface ICreateItem_Create_item_Item : ICreateItem_Create_item
     {
     }
@@ -11688,7 +11701,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root mutation type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateBoardAttributeResult : global::System.IEquatable<UpdateBoardAttributeResult>, IUpdateBoardAttributeResult
     {
         public UpdateBoardAttributeResult(global::System.Text.Json.JsonElement? update_Board)
@@ -11759,7 +11772,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root mutation type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IUpdateBoardAttributeResult
     {
         /// <summary>
@@ -11771,7 +11784,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root mutation type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValueResult : global::System.IEquatable<UpdateChangeSimpleColumnValueResult>, IUpdateChangeSimpleColumnValueResult
     {
         public UpdateChangeSimpleColumnValueResult(global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValue_Change_simple_column_value? change_Simple_Column_Value)
@@ -11842,7 +11855,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValue_Change_simple_column_value_Item : global::System.IEquatable<UpdateChangeSimpleColumnValue_Change_simple_column_value_Item>, IUpdateChangeSimpleColumnValue_Change_simple_column_value_Item
     {
         public UpdateChangeSimpleColumnValue_Change_simple_column_value_Item(global::System.String id)
@@ -11909,7 +11922,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Root mutation type for the Dependencies service
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IUpdateChangeSimpleColumnValueResult
     {
         /// <summary>
@@ -11921,7 +11934,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IUpdateChangeSimpleColumnValue_Change_simple_column_value
     {
         /// <summary>
@@ -11933,7 +11946,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// An item (table row).
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IUpdateChangeSimpleColumnValue_Change_simple_column_value_Item : IUpdateChangeSimpleColumnValue_Change_simple_column_value
     {
     }
@@ -11941,7 +11954,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Types of columns supported by the API
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public enum ColumnType
     {
         /// <summary>
@@ -12115,7 +12128,7 @@ namespace OpenMonday.Core.strawberryShake
         Subtasks
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ColumnTypeSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, ColumnType>
     {
         public global::System.String TypeName => "ColumnType";
@@ -12224,7 +12237,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Kind of assignee
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public enum Kind
     {
         /// <summary>
@@ -12237,7 +12250,7 @@ namespace OpenMonday.Core.strawberryShake
         Team
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class KindSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, Kind>
     {
         public global::System.String TypeName => "Kind";
@@ -12264,7 +12277,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// The board attributes available.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public enum BoardAttributes
     {
         /// <summary>
@@ -12281,7 +12294,7 @@ namespace OpenMonday.Core.strawberryShake
         Name
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class BoardAttributesSerializer : global::StrawberryShake.Serialization.IInputValueFormatter, global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, BoardAttributes>
     {
         public global::System.String TypeName => "BoardAttributes";
@@ -12325,7 +12338,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLogQueryDocument : global::StrawberryShake.IDocument
     {
         private GetActivityLogQueryDocument()
@@ -12573,12 +12586,13 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLogQuery : global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetActivityLogResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iSO8601DateTimeFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetActivityLogQuery(global::StrawberryShake.IOperationExecutor<IGetActivityLogResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
@@ -12586,11 +12600,39 @@ namespace OpenMonday.Core.strawberryShake
             _iSO8601DateTimeFormatter = serializerResolver.GetInputValueFormatter("ISO8601DateTime");
         }
 
+        private GetActivityLogQuery(global::StrawberryShake.IOperationExecutor<IGetActivityLogResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter iSO8601DateTimeFormatter, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _iSO8601DateTimeFormatter = iSO8601DateTimeFormatter;
+            _iDFormatter = iDFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetActivityLogResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetActivityLogQuery(_operationExecutor, _configure.Add(configure), _iSO8601DateTimeFormatter, _iDFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetActivityLogResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::System.String? @from, global::System.String? to, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(ids, @from, to);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -12685,9 +12727,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetActivityLogQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetActivityLogResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::System.String? @from, global::System.String? to, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetActivityLogResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::System.String? @from, global::System.String? to, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -12752,7 +12797,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursorQueryDocument : global::StrawberryShake.IDocument
     {
         private GetBoardItemsByCursorQueryDocument()
@@ -13382,22 +13427,50 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursorQuery : global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetBoardItemsByCursorResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetBoardItemsByCursorQuery(global::StrawberryShake.IOperationExecutor<IGetBoardItemsByCursorResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _iDFormatter = serializerResolver.GetInputValueFormatter("ID");
         }
 
+        private GetBoardItemsByCursorQuery(global::StrawberryShake.IOperationExecutor<IGetBoardItemsByCursorResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _iDFormatter = iDFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetBoardItemsByCursorResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursorQuery(_operationExecutor, _configure.Add(configure), _iDFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(ids);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -13506,9 +13579,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursorQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -13570,7 +13646,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPageQueryDocument : global::StrawberryShake.IDocument
     {
         private GetBoardItemsByCursor_NextPageQueryDocument()
@@ -14199,22 +14275,50 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPageQuery : global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetBoardItemsByCursor_NextPageResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetBoardItemsByCursor_NextPageQuery(global::StrawberryShake.IOperationExecutor<IGetBoardItemsByCursor_NextPageResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _stringFormatter = serializerResolver.GetInputValueFormatter("String");
         }
 
+        private GetBoardItemsByCursor_NextPageQuery(global::StrawberryShake.IOperationExecutor<IGetBoardItemsByCursor_NextPageResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter @stringFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _stringFormatter = @stringFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetBoardItemsByCursor_NextPageResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_NextPageQuery(_operationExecutor, _configure.Add(configure), _stringFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursor_NextPageResult>> ExecuteAsync(global::System.String cursor, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(cursor);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -14309,9 +14413,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPageQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursor_NextPageResult>> ExecuteAsync(global::System.String cursor, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursor_NextPageResult>> Watch(global::System.String cursor, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -14342,7 +14449,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureByIdQueryDocument : global::StrawberryShake.IDocument
     {
         private GetBoardsStructureByIdQueryDocument()
@@ -14583,22 +14690,50 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureByIdQuery : global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetBoardsStructureByIdResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetBoardsStructureByIdQuery(global::StrawberryShake.IOperationExecutor<IGetBoardsStructureByIdResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _iDFormatter = serializerResolver.GetInputValueFormatter("ID");
         }
 
+        private GetBoardsStructureByIdQuery(global::StrawberryShake.IOperationExecutor<IGetBoardsStructureByIdResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _iDFormatter = iDFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetBoardsStructureByIdResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetBoardsStructureByIdQuery(_operationExecutor, _configure.Add(configure), _iDFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardsStructureByIdResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(ids);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -14673,9 +14808,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardsStructureByIdQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardsStructureByIdResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardsStructureByIdResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -14702,7 +14840,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIdsQueryDocument : global::StrawberryShake.IDocument
     {
         private GetTeamsByIdsQueryDocument()
@@ -14884,22 +15022,50 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIdsQuery : global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetTeamsByIdsResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetTeamsByIdsQuery(global::StrawberryShake.IOperationExecutor<IGetTeamsByIdsResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _iDFormatter = serializerResolver.GetInputValueFormatter("ID");
         }
 
+        private GetTeamsByIdsQuery(global::StrawberryShake.IOperationExecutor<IGetTeamsByIdsResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _iDFormatter = iDFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetTeamsByIdsResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetTeamsByIdsQuery(_operationExecutor, _configure.Add(configure), _iDFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetTeamsByIdsResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(ids);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -14970,9 +15136,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsByIdsQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetTeamsByIdsResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetTeamsByIdsResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -14999,7 +15168,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsQueryDocument : global::StrawberryShake.IDocument
     {
         private GetTeamsQueryDocument()
@@ -15151,20 +15320,47 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsQuery : global::OpenMonday.Core.strawberryShake.IGetTeamsQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetTeamsResult> _operationExecutor;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetTeamsQuery(global::StrawberryShake.IOperationExecutor<IGetTeamsResult> operationExecutor)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
         }
 
+        private GetTeamsQuery(global::StrawberryShake.IOperationExecutor<IGetTeamsResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetTeamsResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetTeamsQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetTeamsQuery(_operationExecutor, _configure.Add(configure));
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetTeamsQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetTeamsQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetTeamsResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest();
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -15212,9 +15408,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetTeamsQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetTeamsQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetTeamsQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetTeamsQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetTeamsResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetTeamsResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -15231,7 +15430,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsersQueryDocument : global::StrawberryShake.IDocument
     {
         private GetUsersQueryDocument()
@@ -15314,20 +15513,47 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsersQuery : global::OpenMonday.Core.strawberryShake.IGetUsersQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetUsersResult> _operationExecutor;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public GetUsersQuery(global::StrawberryShake.IOperationExecutor<IGetUsersResult> operationExecutor)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
         }
 
+        private GetUsersQuery(global::StrawberryShake.IOperationExecutor<IGetUsersResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetUsersResult);
+
+        public global::OpenMonday.Core.strawberryShake.IGetUsersQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.GetUsersQuery(_operationExecutor, _configure.Add(configure));
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetUsersQuery WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IGetUsersQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetUsersResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest();
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -15365,9 +15591,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetUsersQuery : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IGetUsersQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IGetUsersQuery WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IGetUsersQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetUsersResult>> ExecuteAsync(global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IGetUsersResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -15383,7 +15612,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItemMutationDocument : global::StrawberryShake.IDocument
     {
         private CreateItemMutationDocument()
@@ -15645,13 +15874,14 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItemMutation : global::OpenMonday.Core.strawberryShake.ICreateItemMutation
     {
         private readonly global::StrawberryShake.IOperationExecutor<ICreateItemResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _jSONFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public CreateItemMutation(global::StrawberryShake.IOperationExecutor<ICreateItemResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
@@ -15660,11 +15890,40 @@ namespace OpenMonday.Core.strawberryShake
             _jSONFormatter = serializerResolver.GetInputValueFormatter("JSON");
         }
 
+        private CreateItemMutation(global::StrawberryShake.IOperationExecutor<ICreateItemResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter, global::StrawberryShake.Serialization.IInputValueFormatter jSONFormatter, global::StrawberryShake.Serialization.IInputValueFormatter @stringFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _iDFormatter = iDFormatter;
+            _jSONFormatter = jSONFormatter;
+            _stringFormatter = @stringFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ICreateItemResult);
+
+        public global::OpenMonday.Core.strawberryShake.ICreateItemMutation With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.CreateItemMutation(_operationExecutor, _configure.Add(configure), _iDFormatter, _jSONFormatter, _stringFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.ICreateItemMutation WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.ICreateItemMutation WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICreateItemResult>> ExecuteAsync(global::System.String board_Id, global::System.String? group_Id, global::System.String item_Name, global::System.Text.Json.JsonElement? column_Values, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(board_Id, group_Id, item_Name, column_Values);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -15750,9 +16009,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface ICreateItemMutation : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.ICreateItemMutation With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.ICreateItemMutation WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.ICreateItemMutation WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<ICreateItemResult>> ExecuteAsync(global::System.String board_Id, global::System.String? group_Id, global::System.String item_Name, global::System.Text.Json.JsonElement? column_Values, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<ICreateItemResult>> Watch(global::System.String board_Id, global::System.String? group_Id, global::System.String item_Name, global::System.Text.Json.JsonElement? column_Values, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -15765,7 +16027,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateBoardAttributeMutationDocument : global::StrawberryShake.IDocument
     {
         private UpdateBoardAttributeMutationDocument()
@@ -15985,13 +16247,14 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateBoardAttributeMutation : global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation
     {
         private readonly global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _boardAttributesFormatter;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public UpdateBoardAttributeMutation(global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
@@ -16000,11 +16263,40 @@ namespace OpenMonday.Core.strawberryShake
             _stringFormatter = serializerResolver.GetInputValueFormatter("String");
         }
 
+        private UpdateBoardAttributeMutation(global::StrawberryShake.IOperationExecutor<IUpdateBoardAttributeResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter boardAttributesFormatter, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter, global::StrawberryShake.Serialization.IInputValueFormatter @stringFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _boardAttributesFormatter = boardAttributesFormatter;
+            _iDFormatter = iDFormatter;
+            _stringFormatter = @stringFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IUpdateBoardAttributeResult);
+
+        public global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeMutation(_operationExecutor, _configure.Add(configure), _boardAttributesFormatter, _iDFormatter, _stringFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> ExecuteAsync(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(ids, board_Attribute, new_Value);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -16067,9 +16359,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IUpdateBoardAttributeMutation : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeMutation WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> ExecuteAsync(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateBoardAttributeResult>> Watch(global::System.String ids, global::OpenMonday.Core.strawberryShake.BoardAttributes board_Attribute, global::System.String new_Value, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -16085,7 +16380,7 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValueMutationDocument : global::StrawberryShake.IDocument
     {
         private UpdateChangeSimpleColumnValueMutationDocument()
@@ -16352,12 +16647,13 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValueMutation : global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation
     {
         private readonly global::StrawberryShake.IOperationExecutor<IUpdateChangeSimpleColumnValueResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _iDFormatter;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
+        private readonly global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> _configure = global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>>.Empty;
         public UpdateChangeSimpleColumnValueMutation(global::StrawberryShake.IOperationExecutor<IUpdateChangeSimpleColumnValueResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
@@ -16365,11 +16661,39 @@ namespace OpenMonday.Core.strawberryShake
             _stringFormatter = serializerResolver.GetInputValueFormatter("String");
         }
 
+        private UpdateChangeSimpleColumnValueMutation(global::StrawberryShake.IOperationExecutor<IUpdateChangeSimpleColumnValueResult> operationExecutor, global::System.Collections.Immutable.ImmutableArray<global::System.Action<global::StrawberryShake.OperationRequest>> configure, global::StrawberryShake.Serialization.IInputValueFormatter iDFormatter, global::StrawberryShake.Serialization.IInputValueFormatter @stringFormatter)
+        {
+            _operationExecutor = operationExecutor;
+            _configure = configure;
+            _iDFormatter = iDFormatter;
+            _stringFormatter = @stringFormatter;
+        }
+
         global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IUpdateChangeSimpleColumnValueResult);
+
+        public global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation With(global::System.Action<global::StrawberryShake.OperationRequest> configure)
+        {
+            return new global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueMutation(_operationExecutor, _configure.Add(configure), _iDFormatter, _stringFormatter);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation WithRequestUri(global::System.Uri requestUri)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.RequestUri"] = requestUri);
+        }
+
+        public global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation WithHttpClient(global::System.Net.Http.HttpClient httpClient)
+        {
+            return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
+        }
 
         public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> ExecuteAsync(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(board_Id, item_Id, column_Id, @value);
+            foreach (var configure in _configure)
+            {
+                configure(request);
+            }
+
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
@@ -16455,9 +16779,12 @@ namespace OpenMonday.Core.strawberryShake
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IUpdateChangeSimpleColumnValueMutation : global::StrawberryShake.IOperationRequestFactory
     {
+        global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
+        global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation WithRequestUri(global::System.Uri requestUri);
+        global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueMutation WithHttpClient(global::System.Net.Http.HttpClient httpClient);
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> ExecuteAsync(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::System.Threading.CancellationToken cancellationToken = default);
         global::System.IObservable<global::StrawberryShake.IOperationResult<IUpdateChangeSimpleColumnValueResult>> Watch(global::System.String board_Id, global::System.String? item_Id, global::System.String column_Id, global::System.String? @value, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
@@ -16465,7 +16792,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Represents the MondayClient GraphQL client
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class MondayClient : global::OpenMonday.Core.strawberryShake.IMondayClient
     {
         private readonly global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery _getActivityLog;
@@ -16508,7 +16835,7 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Represents the MondayClient GraphQL client
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IMondayClient
     {
         global::OpenMonday.Core.strawberryShake.IGetActivityLogQuery GetActivityLog { get; }
@@ -16535,7 +16862,7 @@ namespace OpenMonday.Core.strawberryShake
 
 namespace OpenMonday.Core.strawberryShake.State
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLogResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetActivityLogResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -16639,7 +16966,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLogResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -16664,7 +16991,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursorResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursorResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -17225,7 +17552,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursorResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -17250,7 +17577,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPageResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_NextPageResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -17775,7 +18102,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPageResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -17800,7 +18127,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureByIdResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetBoardsStructureByIdResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -17940,7 +18267,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureByIdResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -17965,7 +18292,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIdsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetTeamsByIdsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18100,7 +18427,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIdsResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -18125,7 +18452,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetTeamsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18260,7 +18587,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -18285,7 +18612,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsersResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.GetUsersResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18353,7 +18680,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsersResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -18378,7 +18705,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItemResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.CreateItemResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18430,7 +18757,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItemResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -18455,7 +18782,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateBoardAttributeResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.UpdateBoardAttributeResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18487,7 +18814,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateBoardAttributeResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -18512,7 +18839,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValueResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.UpdateChangeSimpleColumnValueResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18564,7 +18891,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValueResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -18589,7 +18916,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetActivityLogBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetActivityLogResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18735,7 +19062,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursorBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -18745,7 +19072,7 @@ namespace OpenMonday.Core.strawberryShake.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _iDParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement> _jSONParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateOnly> _dateParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         public GetBoardItemsByCursorBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
@@ -18758,7 +19085,7 @@ namespace OpenMonday.Core.strawberryShake.State
             _iDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ID") ?? throw new global::System.ArgumentException("No serializer for type `ID` found.");
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
             _jSONParser = serializerResolver.GetLeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
-            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateOnly>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
             _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
         }
@@ -19093,7 +19420,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("PeopleValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.PeopleValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), updated_At: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), persons_And_Teams: Deserialize_IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teamsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "persons_and_teams")));
+                return new global::OpenMonday.Core.strawberryShake.State.PeopleValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), updated_At: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), persons_And_Teams: Deserialize_IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teamsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "persons_and_teams")));
             }
 
             if (typename?.Equals("PersonValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19118,7 +19445,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("StatusValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.StatusValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), index: Deserialize_Int32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "index")), is_Done: Deserialize_Boolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "is_done")), update_Id: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "update_id")), updated_At: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")));
+                return new global::OpenMonday.Core.strawberryShake.State.StatusValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), index: Deserialize_Int32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "index")), is_Done: Deserialize_Boolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "is_done")), update_Id: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "update_id")), updated_At: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")));
             }
 
             if (typename?.Equals("SubtasksValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19143,7 +19470,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("TimelineValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.TimelineValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), @from: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "from")), to: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "to")), updated_At: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), visualization_Type: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "visualization_type")));
+                return new global::OpenMonday.Core.strawberryShake.State.TimelineValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), @from: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "from")), to: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "to")), updated_At: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), visualization_Type: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "visualization_type")));
             }
 
             if (typename?.Equals("TimeTrackingValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19204,7 +19531,7 @@ namespace OpenMonday.Core.strawberryShake.State
             return _columnTypeParser.Parse(obj.Value.GetString()!);
         }
 
-        private global::System.DateTime? Deserialize_DateTime(global::System.Text.Json.JsonElement? obj)
+        private global::System.DateOnly? Deserialize_DateOnly(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
@@ -19307,7 +19634,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPageBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -19317,7 +19644,7 @@ namespace OpenMonday.Core.strawberryShake.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _iDParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement> _jSONParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTime> _dateParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateOnly> _dateParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Boolean, global::System.Boolean> _booleanParser;
         public GetBoardItemsByCursor_NextPageBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_NextPageResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
@@ -19330,7 +19657,7 @@ namespace OpenMonday.Core.strawberryShake.State
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
             _iDParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ID") ?? throw new global::System.ArgumentException("No serializer for type `ID` found.");
             _jSONParser = serializerResolver.GetLeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
-            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTime>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
+            _dateParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateOnly>("Date") ?? throw new global::System.ArgumentException("No serializer for type `Date` found.");
             _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
             _booleanParser = serializerResolver.GetLeafValueParser<global::System.Boolean, global::System.Boolean>("Boolean") ?? throw new global::System.ArgumentException("No serializer for type `Boolean` found.");
         }
@@ -19623,7 +19950,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("PeopleValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.PeopleValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), updated_At: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), persons_And_Teams: Deserialize_IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teamsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "persons_and_teams")));
+                return new global::OpenMonday.Core.strawberryShake.State.PeopleValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), updated_At: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), persons_And_Teams: Deserialize_IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teamsNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "persons_and_teams")));
             }
 
             if (typename?.Equals("PersonValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19648,7 +19975,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("StatusValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.StatusValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), index: Deserialize_Int32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "index")), is_Done: Deserialize_Boolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "is_done")), update_Id: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "update_id")), updated_At: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")));
+                return new global::OpenMonday.Core.strawberryShake.State.StatusValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), index: Deserialize_Int32(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "index")), is_Done: Deserialize_Boolean(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "is_done")), update_Id: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "update_id")), updated_At: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")));
             }
 
             if (typename?.Equals("SubtasksValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19673,7 +20000,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("TimelineValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.TimelineValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), @from: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "from")), to: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "to")), updated_At: Deserialize_DateTime(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), visualization_Type: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "visualization_type")));
+                return new global::OpenMonday.Core.strawberryShake.State.TimelineValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), @from: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "from")), to: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "to")), updated_At: Deserialize_DateOnly(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "updated_at")), visualization_Type: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "visualization_type")));
             }
 
             if (typename?.Equals("TimeTrackingValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19734,7 +20061,7 @@ namespace OpenMonday.Core.strawberryShake.State
             return _columnTypeParser.Parse(obj.Value.GetString()!);
         }
 
-        private global::System.DateTime? Deserialize_DateTime(global::System.Text.Json.JsonElement? obj)
+        private global::System.DateOnly? Deserialize_DateOnly(global::System.Text.Json.JsonElement? obj)
         {
             if (!obj.HasValue)
             {
@@ -19837,7 +20164,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureByIdBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20059,7 +20386,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsByIdsBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetTeamsByIdsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20230,7 +20557,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetTeamsBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetTeamsResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20401,7 +20728,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetUsersBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IGetUsersResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20488,7 +20815,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreateItemBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.ICreateItemResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20556,7 +20883,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateBoardAttributeBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IUpdateBoardAttributeResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20605,7 +20932,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UpdateChangeSimpleColumnValueBuilder : global::StrawberryShake.OperationResultBuilder<global::OpenMonday.Core.strawberryShake.IUpdateChangeSimpleColumnValueResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -20672,14 +20999,14 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>A monday.com board.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IMirroredValueData
     {
         global::System.String __typename { get; }
     }
 
     ///<summary>A monday.com board.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class BoardData : IMirroredValueData
     {
         public BoardData(global::System.String __typename, global::System.String? updated_At = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.ActivityLogTypeData?>? activity_Logs = default !, global::OpenMonday.Core.strawberryShake.State.ItemsResponseData? items_Page = default !, global::System.String? id = default !, global::System.String? name = default !, global::System.Int32? items_Count = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.ColumnData?>? columns = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.GroupData?>? groups = default !)
@@ -20715,7 +21042,7 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>An activity log event</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ActivityLogTypeData
     {
         public ActivityLogTypeData(global::System.String __typename, global::System.String? id = default !, global::System.String? user_Id = default !, global::System.String? @event = default !, global::System.String? created_At = default !)
@@ -20734,7 +21061,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Created_at { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ItemsResponseData
     {
         public ItemsResponseData(global::System.String __typename, global::System.String? cursor = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.ItemData>? items = default !)
@@ -20752,7 +21079,7 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>An item (table row).</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ItemData
     {
         public ItemData(global::System.String __typename, global::System.String? id = default !, global::System.String? name = default !, global::OpenMonday.Core.strawberryShake.State.GroupData? @group = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.IColumnValueData>? column_Values = default !)
@@ -20776,7 +21103,7 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>A group of items in a board.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GroupData : IMirroredValueData
     {
         public GroupData(global::System.String __typename, global::System.String? id = default !, global::System.String? title = default !)
@@ -20794,14 +21121,14 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>A value showing status distribution counts</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IColumnValueData
     {
         global::System.String __typename { get; }
     }
 
     ///<summary>A value showing status distribution counts</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class BatteryValueData : IMirroredValueData, IColumnValueData
     {
         public BatteryValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20824,7 +21151,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class BoardRelationValueData : IMirroredValueData, IColumnValueData
     {
         public BoardRelationValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20847,7 +21174,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ButtonValueData : IMirroredValueData, IColumnValueData
     {
         public ButtonValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20869,7 +21196,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CheckboxValueData : IMirroredValueData, IColumnValueData
     {
         public CheckboxValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20890,7 +21217,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ColorPickerValueData : IMirroredValueData, IColumnValueData
     {
         public ColorPickerValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20912,7 +21239,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CountryValueData : IMirroredValueData, IColumnValueData
     {
         public CountryValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20935,7 +21262,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class CreationLogValueData : IMirroredValueData, IColumnValueData
     {
         public CreationLogValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20957,7 +21284,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class DateValueData : IMirroredValueData, IColumnValueData
     {
         public DateValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -20980,7 +21307,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class DependencyValueData : IMirroredValueData, IColumnValueData
     {
         public DependencyValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21003,7 +21330,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class DirectDocValueData : IMirroredValueData, IColumnValueData
     {
         public DirectDocValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21026,7 +21353,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class DocValueData : IMirroredValueData, IColumnValueData
     {
         public DocValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21049,7 +21376,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class DropdownValueData : IMirroredValueData, IColumnValueData
     {
         public DropdownValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21071,7 +21398,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class EmailValueData : IMirroredValueData, IColumnValueData
     {
         public EmailValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21094,7 +21421,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class FileValueData : IMirroredValueData, IColumnValueData
     {
         public FileValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21116,7 +21443,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class FormulaValueData : IMirroredValueData, IColumnValueData
     {
         public FormulaValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.String? display_Value = default !)
@@ -21142,7 +21469,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Display_value { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GroupValueData : IMirroredValueData, IColumnValueData
     {
         public GroupValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21165,7 +21492,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class HourValueData : IMirroredValueData, IColumnValueData
     {
         public HourValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21187,7 +21514,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class IntegrationValueData : IMirroredValueData, IColumnValueData
     {
         public IntegrationValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21210,7 +21537,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ItemIdValueData : IMirroredValueData, IColumnValueData
     {
         public ItemIdValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21232,7 +21559,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class LastUpdatedValueData : IMirroredValueData, IColumnValueData
     {
         public LastUpdatedValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21254,7 +21581,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class LinkValueData : IMirroredValueData, IColumnValueData
     {
         public LinkValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21276,7 +21603,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class LocationValueData : IMirroredValueData, IColumnValueData
     {
         public LocationValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21298,7 +21625,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class LongTextValueData : IMirroredValueData, IColumnValueData
     {
         public LongTextValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21321,7 +21648,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class MirrorValueData : IMirroredValueData, IColumnValueData
     {
         public MirrorValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.String? display_Value = default !)
@@ -21347,7 +21674,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Display_value { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class NumbersValueData : IMirroredValueData, IColumnValueData
     {
         public NumbersValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21369,10 +21696,10 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class PeopleValueData : IMirroredValueData, IColumnValueData
     {
-        public PeopleValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.DateTime? updated_At = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.PeopleEntityData>? persons_And_Teams = default !)
+        public PeopleValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.DateOnly? updated_At = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.PeopleEntityData>? persons_And_Teams = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Id = id;
@@ -21392,12 +21719,12 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::OpenMonday.Core.strawberryShake.ColumnType? Type { get; }
         public global::System.String? Text { get; }
         ///<summary>The date when column value was last updated.</summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         ///<summary>The people and teams assigned to the item.</summary>
         public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.PeopleEntityData>? Persons_and_teams { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class PersonValueData : IMirroredValueData, IColumnValueData
     {
         public PersonValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21419,7 +21746,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class PhoneValueData : IMirroredValueData, IColumnValueData
     {
         public PhoneValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21441,7 +21768,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ProgressValueData : IMirroredValueData, IColumnValueData
     {
         public ProgressValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21464,7 +21791,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class RatingValueData : IMirroredValueData, IColumnValueData
     {
         public RatingValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21486,10 +21813,10 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class StatusValueData : IMirroredValueData, IColumnValueData
     {
-        public StatusValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.Int32? index = default !, global::System.Boolean? is_Done = default !, global::System.String? update_Id = default !, global::System.DateTime? updated_At = default !)
+        public StatusValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.Int32? index = default !, global::System.Boolean? is_Done = default !, global::System.String? update_Id = default !, global::System.DateOnly? updated_At = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Id = id;
@@ -21517,10 +21844,10 @@ namespace OpenMonday.Core.strawberryShake.State
         ///<summary>The ID of an update attached to the status</summary>
         public global::System.String? Update_id { get; }
         ///<summary>The date when column value was last updated.</summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class SubtasksValueData : IMirroredValueData, IColumnValueData
     {
         public SubtasksValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21543,7 +21870,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class TagsValueData : IMirroredValueData, IColumnValueData
     {
         public TagsValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21565,7 +21892,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class TeamValueData : IMirroredValueData, IColumnValueData
     {
         public TeamValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21587,7 +21914,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class TextValueData : IMirroredValueData, IColumnValueData
     {
         public TextValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21610,10 +21937,10 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class TimelineValueData : IMirroredValueData, IColumnValueData
     {
-        public TimelineValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.DateTime? @from = default !, global::System.DateTime? to = default !, global::System.DateTime? updated_At = default !, global::System.String? visualization_Type = default !)
+        public TimelineValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.DateOnly? @from = default !, global::System.DateOnly? to = default !, global::System.DateOnly? updated_At = default !, global::System.String? visualization_Type = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Id = id;
@@ -21636,16 +21963,16 @@ namespace OpenMonday.Core.strawberryShake.State
         ///<summary>The range of dates representing the timeline (YYYY-MM-DD)</summary>
         public global::System.String? Text { get; }
         ///<summary>The start date of the timeline</summary>
-        public global::System.DateTime? From { get; }
+        public global::System.DateOnly? From { get; }
         ///<summary>The end date of the timeline</summary>
-        public global::System.DateTime? To { get; }
+        public global::System.DateOnly? To { get; }
         ///<summary>The date when column value was last updated.</summary>
-        public global::System.DateTime? Updated_at { get; }
+        public global::System.DateOnly? Updated_at { get; }
         ///<summary>The visualization type for the timeline</summary>
         public global::System.String? Visualization_type { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class TimeTrackingValueData : IMirroredValueData, IColumnValueData
     {
         public TimeTrackingValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21666,7 +21993,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UnsupportedValueData : IMirroredValueData, IColumnValueData
     {
         public UnsupportedValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21689,7 +22016,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class VoteValueData : IMirroredValueData, IColumnValueData
     {
         public VoteValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21711,7 +22038,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class WeekValueData : IMirroredValueData, IColumnValueData
     {
         public WeekValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21734,7 +22061,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class WorldClockValueData : IMirroredValueData, IColumnValueData
     {
         public WorldClockValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
@@ -21756,7 +22083,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Text { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class PeopleEntityData
     {
         public PeopleEntityData(global::System.String __typename, global::System.String? id = default !, global::OpenMonday.Core.strawberryShake.Kind? kind = default !)
@@ -21773,7 +22100,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::OpenMonday.Core.strawberryShake.Kind? Kind { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ColumnData
     {
         public ColumnData(global::System.String __typename, global::System.String? id = default !, global::System.String? title = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? settings_Str = default !)
@@ -21797,7 +22124,7 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>A team of users.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class TeamData
     {
         public TeamData(global::System.String __typename, global::System.String? id = default !, global::System.String? name = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.UserData>? owners = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.UserData?>? users = default !)
@@ -21821,7 +22148,7 @@ namespace OpenMonday.Core.strawberryShake.State
     }
 
     ///<summary>A monday.com user.</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class UserData
     {
         public UserData(global::System.String __typename, global::System.String? id = default !, global::System.String? name = default !)
@@ -21838,7 +22165,7 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Name { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class MondayClientEntityIdFactory : global::StrawberryShake.IEntityIdSerializer
     {
         private static readonly global::System.Text.Json.JsonWriterOptions _options = new global::System.Text.Json.JsonWriterOptions()
@@ -21861,7 +22188,7 @@ namespace OpenMonday.Core.strawberryShake.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class MondayClientStoreAccessor : global::StrawberryShake.StoreAccessor
     {
         public MondayClientStoreAccessor(global::StrawberryShake.IOperationStore operationStore, global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer entityIdSerializer, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory> requestFactories, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory> resultDataFactories) : base(operationStore, entityStore, entityIdSerializer, requestFactories, resultDataFactories)

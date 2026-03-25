@@ -1,9 +1,26 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.5.1"></a>
+## [v1.5.1] - 2026-03-25
+### Fix
+- **FlexibleDateSerializer:** added date serializer cause Monday send Datetime even if the graphql schema is Date
+- **datetimeonly:** modified field to datetime only
+
+### Pull Requests
+- Merge pull request [#104](https://github.com/montipirlo21/OpenMonday/issues/104) from montipirlo21/103-create-version
+
+
+<a name="v1.5.0"></a>
+## [v1.5.0] - 2026-03-20
 ### Feat
 - **netcore:** update to net 10
 - **netcore:** update to net 10
+
+### Pull Requests
+- Merge pull request [#102](https://github.com/montipirlo21/OpenMonday/issues/102) from montipirlo21/101-update-to-net-10
+- Merge pull request [#100](https://github.com/montipirlo21/OpenMonday/issues/100) from montipirlo21/99-fix-serializeobjtojsonelementformonday
 
 
 <a name="v1.4.2"></a>
@@ -335,7 +352,9 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.2...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.1...HEAD
+[v1.5.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.0...v1.5.1
+[v1.5.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.2...v1.5.0
 [v1.4.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.1...v1.4.2
 [v1.4.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.3.0...v1.4.0
