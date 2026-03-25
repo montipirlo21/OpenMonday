@@ -202,7 +202,7 @@ type Mutation {
   remove_required_column(id: ID! column_id: String! "The type of entity for validations the default is board" type: ValidationsEntityType = board): RequiredColumns
   "Update the dependency column for a specific pulse"
   update_dependency_column(boardId: String! pulseId: String! value: DependencyValueInput! columnId: String! "Optional new date for the successor node (or one of its descendants). When provided, updates the successor date and all predecessor edge lags." successor_new_date: TimelineDateInput): JSON!
-  "Batch update the dependency column values in a board"
+  "Batch update the dependency column values in a board. Limited to 50 items per batch."
   batch_update_dependency_column(boardId: String! columnId: String! "The list of pulses with their dependency column values to update" values: [DependencyPulseValueInput!]!): JSON!
   "Adds markdown content to an existing document by converting it into document blocks. Use this to append content to the end of a document or insert content after a specific block. The markdown will be parsed and converted into the appropriate document block types (text, headers, lists, etc.). Returns the IDs of the newly created blocks on success."
   add_content_to_doc_from_markdown("The document's unique identifier." docId: ID! "The markdown content to convert into document blocks." markdown: String! "Optional block ID to insert the markdown content after." afterBlockId: String): DocBlocksFromMarkdownResult
@@ -339,7 +339,7 @@ type Mutation {
   "Update item column value by existing assets"
   update_assets_on_item("The board's unique identifier." board_id: ID! "The column's unique identifier." column_id: String! "Array of files values." files: [FileInput!]! "The item's unique identifier." item_id: ID!): Item
   "Update Board attribute."
-  update_board("The board's attribute to update (name \/ description \/ communication)" board_attribute: BoardAttributes! "The board's unique identifier" board_id: ID! "The new attribute value." new_value: String!): JSON
+  update_board("The board's attribute to update (name \/ description \/ communication \/ item_nickname)" board_attribute: BoardAttributes! "The board's unique identifier" board_id: ID! "The new attribute value." new_value: String!): JSON
   "Update a board's position, workspace, or account product."
   update_board_hierarchy("The position and location attributes to update" attributes: UpdateBoardHierarchyAttributesInput! "The board's unique identifier" board_id: ID!): UpdateBoardHierarchyResult
   "Update a document block"
@@ -1500,7 +1500,9 @@ type DropdownManagedColumn {
   updated_by: ID
   revision: Int
   state: ManagedColumnState
+  "The date and time of creation."
   created_at: Date
+  "The date and time of the last update."
   updated_at: Date
   settings: DropdownColumnSettings
 }
@@ -1522,7 +1524,9 @@ type ManagedColumn {
   updated_by: ID
   revision: Int
   state: ManagedColumnState
+  "The date and time of creation."
   created_at: Date
+  "The date and time of the last update."
   updated_at: Date
   settings: ColumnSettings
 }
@@ -1623,7 +1627,9 @@ type StatusManagedColumn {
   updated_by: ID
   revision: Int
   state: ManagedColumnState
+  "The date and time of creation."
   created_at: Date
+  "The date and time of the last update."
   updated_at: Date
   settings: StatusColumnSettings
 }
@@ -1849,6 +1855,38 @@ enum DocKind {
   public
   "Shareable document"
   share
+}
+
+"Represents a monday.com doc - a rich-text page built from editable blocks (text, files, embeds, etc.).\n  A doc can belong to:\n  (1) a workspace (left-pane doc),\n  (2) an item (doc on column),\n  (3) a board view (doc as a board view)."
+type Document {
+  "Unique document ID returned when the doc is created.\n  Use this ID in every API call that references the doc.\n  How to find it:\n  • Call the docs() GraphQL query with object_ids to map object_id → id\n  • Enable 'Developer Mode' in monday.labs to display it inside the doc."
+  id: ID!
+  "Identifier that appears in the doc's URL.\n  Returned on creation, but DO NOT use it in API routes that expect a document ID."
+  object_id: ID!
+  "The document's content blocks"
+  blocks("Number of items to get, the default is 25." limit: Int = 25 "Page number to get, starting at 1." page: Int = 1): [DocumentBlock]
+  "The document's creation date."
+  created_at: Date
+  "The document's creator"
+  created_by: User
+  "The document's folder unique identifier (null for first level)."
+  doc_folder_id: ID
+  "The document's kind (public \/ private \/ share)."
+  doc_kind: BoardKind!
+  "The document's name."
+  name: String!
+  "The document's relative url"
+  relative_url: String
+  "The document's settings."
+  settings: JSON
+  "The document's last updated date."
+  updated_at: Date
+  "The document's direct url"
+  url: String
+  "The workspace that contains this document (null for main workspace)."
+  workspace: Workspace
+  "The document's workspace unique identifier (null for main workspace)."
+  workspace_id: ID
 }
 
 "Controls what gets copied when duplicating a document"
@@ -2346,6 +2384,8 @@ enum AppFeatureTypeE {
   DIGITAL_WORKER
   "AI_AGENT_SKILL"
   AI_AGENT_SKILL
+  "SKILL"
+  SKILL
   "VIBE_OBJECT"
   VIBE_OBJECT
   "VIBE_ITEM_VIEW"
@@ -2688,7 +2728,7 @@ type Asset {
 
 "The source of the asset"
 enum AssetsSource {
-  "Assets from file columns and item's files gallery"
+  "Assets from file columns and item's files gallery. From version 2026-04, also includes assets from updates"
   all
   "Assets only from file columns"
   columns
@@ -3157,38 +3197,6 @@ enum DocsOrderBy {
   created_at
   "The last time the user making the request viewd the document (desc)."
   used_at
-}
-
-"Represents a monday.com doc - a rich-text page built from editable blocks (text, files, embeds, etc.).\n  A doc can belong to:\n  (1) a workspace (left-pane doc),\n  (2) an item (doc on column),\n  (3) a board view (doc as a board view)."
-type Document {
-  "The document's content blocks"
-  blocks("Number of items to get, the default is 25." limit: Int = 25 "Page number to get, starting at 1." page: Int = 1): [DocumentBlock]
-  "The document's creation date."
-  created_at: Date
-  "The document's creator"
-  created_by: User
-  "The document's folder unique identifier (null for first level)."
-  doc_folder_id: ID
-  "The document's kind (public \/ private \/ share)."
-  doc_kind: BoardKind!
-  "Unique document ID returned when the doc is created.\n  Use this ID in every API call that references the doc.\n  How to find it:\n  • Call the docs() GraphQL query with object_ids to map object_id → id\n  • Enable 'Developer Mode' in monday.labs to display it inside the doc."
-  id: ID!
-  "The document's name."
-  name: String!
-  "Identifier that appears in the doc's URL.\n  Returned on creation, but DO NOT use it in API routes that expect a document ID."
-  object_id: ID!
-  "The document's relative url"
-  relative_url: String
-  "The document's settings."
-  settings: JSON
-  "The document's last updated date."
-  updated_at: Date
-  "The document's direct url"
-  url: String
-  "The workspace that contains this document (null for main workspace)."
-  workspace: Workspace
-  "The document's workspace unique identifier (null for main workspace)."
-  workspace_id: ID
 }
 
 "A monday.com document block."

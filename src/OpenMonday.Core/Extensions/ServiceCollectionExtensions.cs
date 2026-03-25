@@ -20,7 +20,9 @@ public static class ServiceCollectionExtensions
         });
 
         // Add Monday Client
-        services.AddMondayClient().ConfigureHttpClient((sp, client) =>
+        services
+         .AddSerializer<FlexibleDateSerializer>()
+         .AddMondayClient().ConfigureHttpClient((sp, client) =>
           {
               var factory = sp.GetRequiredService<IHttpClientFactory>();
               var mondayClient = factory.CreateClient(MONDAYHTTPCLIENTNAME);
