@@ -1,5 +1,5 @@
-query GetBoardItemsByCursor($ids: [ID!]!) {
-  boards(ids: $ids) {
+query GetBoardItemsByCursor($ids: [ID!]) {
+  boards(ids: $ids, state: all) {
     items_page(limit: 100) {
       cursor
       items {
