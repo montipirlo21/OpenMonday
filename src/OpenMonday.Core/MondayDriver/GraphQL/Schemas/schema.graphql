@@ -25,6 +25,8 @@ type Query {
   trigger_event(triggerUuid: String!): TriggerEvent
   "List block events for a given trigger UUID"
   block_events(triggerUuid: String! nextPageOffset: Int = 0): BlockEventsPage
+  "List tool events for a given trigger UUID"
+  tool_events(trigger_uuid: String! next_page_offset: Int = 0): ToolEventsPage
   "Get aggregated automation runs statistics in the account"
   account_trigger_statistics(filters: AccountTriggerStatisticsFiltersInput): AccountTriggerStatistics
   "Get aggregated automation runs statistics grouped by entity Ids"
@@ -46,14 +48,26 @@ type Query {
   get_column_type_schema("Specifies which column type to retrieve the schema for. Valid values include \"text\", \"status\", \"date\", \"numbers\", etc. Each type has different available properties and validation rules." type: ColumnType!): JSON
   "Get validations configuration for a board"
   validations(id: ID! "The type of entity for validations the default is board" type: ValidationsEntityType = board): Validations
+  "Get account departments"
+  departments("Filter by department IDs" ids: [ID!]): [Department!]
   "Export the dependency graph for a specific board"
   export_graph("The ID of the board to export the graph for" boardId: String!): BoardGraphExport
   "Fetch dependency column configuration for a board"
   dependency_column_config("The ID of the board to fetch dependency columns from" board_id: ID! "The account ID (needed for authentication)" account_id: ID! "The user ID (needed for authentication)" user_id: ID!): DependencyColumnConfigResult
-  "Export events with optional filters and pagination"
-  export_events("Filter events by board ID" board_id: ID "Filter events by state(s)" state: [String!] "Filter events by type(s)" type: [String!] "Filter events created after this date (ISO format)" start_date: String "Filter events created before this date (ISO format)" end_date: String "Maximum number of events to return (default: 100, max: 1000)" limit: Int "Number of events to skip for pagination" offset: Int "Field to order by (default: createdAt)" order_by: String "Order direction: ASC or DESC (default: DESC)" order_direction: String): EventsExport
+  "Export events for a board within a date range. Requires a valid X-Tool-Execution-Secret header."
+  export_events("Filter events by board ID" board_id: ID "Filter events created after this date (ISO format)" start_date: String "Filter events created before this date (ISO format)" end_date: String "Filter events by state(s)" state: [String!] "Filter events by type(s)" type: [String!] "Maximum number of events to return (default: 100, max: 1000)" limit: Int "Number of events to skip for pagination" offset: Int "Field to order by (default: createdAt)" order_by: String "Order direction: ASC or DESC (default: DESC)" order_direction: String): EventsExport
+  "Retrieves blocks for the published version of a specific article if the requesting user has permission to access it. Returns paginated blocks in their position order. Will return an error if the user lacks the required permissions."
+  article_blocks("The unique identifier of the article object. Can be used to reference this specific object in queries and mutations. This ID can be found in the article's URL." object_id: ID! "Maximum number of blocks to return per article. Defaults to 25." limit: Int = 25 "Page number for blocks pagination, starting from 1." page: Int = 1): [ArticleBlock]!
+  "Retrieves a list of published articles with their metadata and content blocks that the requesting user has permission to access. Articles without proper permissions will be filtered out. By default, returns the first 25 blocks per article. To retrieve more blocks, use the article_blocks query."
+  articles("Array of article object IDs to fetch. These IDs can be found in the articles' URLs." object_ids: [ID!]! "Optional array of workspace IDs to filter articles by." workspace_ids: [ID!] "Maximum number of articles to return. Defaults to 25." limit: Int = 25 "Page number, starting from 1." page: Int = 1): [Article]!
+  "Retrieves the content diff between two versions of a document. Pass two restoring point dates (from doc_version_history) to see what blocks were added, deleted, or changed. Only blocks with changes are returned."
+  doc_version_diff("The ID of the document to get the diff for." doc_id: ID! "The newer restoring point date (ISO 8601 string). Use a date from the doc_version_history restoring_points." date: String! "The older restoring point date (ISO 8601 string). Use a date from the doc_version_history restoring_points." prev_date: String!): DocVersionDiff
+  "Retrieves the version history of a document. Returns a list of restoring points (snapshots) with timestamps and the users who made changes. Snapshots are grouped in 5-minute intervals. Use the since and until arguments to filter the time range."
+  doc_version_history("The ID of the document to retrieve version history for." doc_id: ID! "Optional ISO 8601 date string or timestamp to filter restoring points from. Only restoring points after this date will be returned." since: String "Optional ISO 8601 date string or timestamp to filter restoring points until. Only restoring points before this date will be returned." until: String): DocVersionHistory
   "Converts document content into standard markdown format for external use, backup, or processing. Exports the entire document by default, or specific blocks if block IDs are provided. Use this to extract content for integration with other systems, create backups, generate reports, or process document content with external tools. The output is clean, portable markdown that preserves formatting and structure."
   export_markdown_from_doc("The document's unique identifier to export. Get this from document queries or creation responses." docId: ID! "Optional array of specific block IDs to export. If omitted, exports the entire document. Use when you only need specific sections." blockIds: [String!]): ExportMarkdownResult
+  "Search knowledge base snippets."
+  knowledge_base_search("The search query." query: String! "The maximum number of results to return." limit: Int = 5): KnowledgeBaseAnswer
   "Get all personal list items by list ID"
   favorites: [GraphqlHierarchyObjectItem!]
   marketplace_app_discounts("The id of an app" app_id: ID!): [MarketplaceAppDiscount!]!
@@ -68,6 +82,10 @@ type Query {
   marketplace_ai_search("The input for the marketplace search, including the search query, limit, and offset" input: MarketplaceAiSearchInput!): MarketplaceAiSearchResults!
   "Get an app by ID or slug."
   app("The ID or slug of the app" id: ID!): AppType
+  "Query the monday.com apps documentation using AI. Returns an AI-generated answer based on the documentation."
+  ask_developer_docs("The question to ask about monday.com apps documentation." query: String!): AppDocumentationAiResponse
+  "Get lifecycle subscriptions for all entity types in a specific app version. If version_id is not provided, resolves the active version (user testing version, live, or latest)."
+  get_app_lifecycle_subscriptions("The app ID or slug" app_id: ID! "Optional app version ID. If not provided, resolves the active version (user testing version, live, or latest)" version_id: ID): [LifecycleSubscriptionKind!]
   "Get the connected account's information."
   account: Account
   "Get a collection of installs of an app."
@@ -107,9 +125,11 @@ type Query {
   "Get a collection of webhooks for the board"
   webhooks("Filters webhooks that were created by the app initiating the request" app_webhooks_only: Boolean "Board unique identifier." board_id: ID!): [Webhook]
   "Get a collection of workspaces."
-  workspaces("A list of workspace unique identifiers." ids: [ID!] "The workspace's kind (open \/ closed \/ template)" kind: WorkspaceKind "Number of items to get, the default is 25." limit: Int = 25 "The workspace's membership kind (member \/ all)" membership_kind: WorkspaceMembershipKind = all "Property to order by (created_at)." order_by: WorkspacesOrderBy "Page number to get, starting at 1." page: Int = 1 "The state of the workspace (all \/ active \/ archived \/ deleted), the default is active." state: State = active): [Workspace]
+  workspaces("A list of workspace unique identifiers." ids: [ID!] "The workspace's kind (open \/ closed \/ template)" kind: WorkspaceKind "Number of items to get, the default is 25." limit: Int = 25 "The workspace's membership kind (member \/ all)" membership_kind: WorkspaceMembershipKind = all "Property to order by (created_at)." order_by: WorkspacesOrderBy "Page number to get, starting at 1." page: Int = 1 "Parameters to filter workspaces" query_params: WorkspacesQueryInput "The state of the workspace (all \/ active \/ archived \/ deleted), the default is active." state: State = active): [Workspace]
   "Get board candidates based on workspace and usage type"
   board_candidates("The workspace ID to get boards from" workspaceId: String! "The usage type for filtering boards" usageType: BoardUsage!): [Board!]
+  "Namespace for all notetaker-related queries."
+  notetaker: NotetakerQueries
   notifications("The last notification id to get." cursor: ID "Number of items to get, the default is 25." limit: Int = 25 "Whether to get only unread notifications." filter_read: Boolean "Filter notifications created from this date (inclusive). ISO 8601 format (e.g., YYYY-MM-DD or YYYY-MM-DDTHH:mm)." since: ISO8601DateTime): [NotificationV2!]
   "Retrieves the current user's notification settings across all available channels."
   notifications_settings("notification settings scope types. Options: account user defaults or user private settings." scope_type: ScopeType! "Relevant when using scopeType: user. The userId of the user whose notification settings you want to retrieve. By default, the current user is used." scope_id: Int "Filter results to specific notification setting types by their names. Leave empty to retrieve all settings." setting_kinds: [String!] "Return results for a specific notification channel type" channels: [ChannelType!]): [NotificationSetting!]
@@ -119,6 +139,8 @@ type Query {
   object_types_unique_keys: [ObjectTypeUniqueKey!]
   "Retrieves a list of objects from the Monday.com Objects Platform based on specified filters. This query can return any type of object (board, doc, dashboard, workflow, etc.) depending on the filter criteria. Use object_type_unique_keys to filter for specific object types."
   objects("The unique identifier for the object type, formatted as 'app_slug::app_feature_slug'" object_type_unique_keys: [String!] "Filter by specific object ID(s). Use this when you need to retrieve one or more specific objects by their unique identifiers." ids: [ID!] "Maximum number of objects to return in the response. Default is 25, but can be increased to retrieve more objects at once." limit: Int "Specifies the order in which objects are returned." order_by: OrderBy "Filter objects by their state." state: ObjectState "Filter objects by their kind\/visibility setting." privacy_kind: PrivacyKind "Filter objects by workspace ID(s). Returns only objects that belong to the specified workspace(s). Use null or omit for objects in the main workspace." workspace_ids: [ID!]): [Object!]
+  "Fetch relations for a specific object"
+  object_relations("ID of the source object" object_id: ID! "Kind of the relation to fetch. If not provided, all relation kinds are returned." kind: RelationKind "Direction of the relation (defaults to \"outgoing\")" direction: RelationDirection = OUTGOING): [ObjectRelation!]
   "Get the API version in use"
   version: Version!
   "Get a list containing the versions of the API"
@@ -129,6 +151,8 @@ type Query {
   aggregate("The aggregation query to execute" query: AggregateQueryInput!): AggregateQueryResult
   "Fetch resources information from the resource directory"
   get_directory_resources("Query parameters for filtering resources" query_params: ItemsQuery "The cursor which allows to fetch the next page of directory resources." cursor: String "Number of items to get, the default is 25." limit: Int = 25): DirectoryResourcesResponse
+  "Get sequences that the current user is allowed to enroll items to, that are connected to the provided board. Returns sequences owned by the user or sequences where the user has access to the sender connection."
+  allowed_sequences_to_enroll("The ID of the board to get allowed sequences for" board_id: ID!): [Sequence!]
   "Get a collection of monday dev sprints"
   sprints("A list of monday dev sprints unique identifiers" ids: [ID!]!): [Sprint!]
   "Get all roles for the account"
@@ -137,6 +161,82 @@ type Query {
   all_widgets_schema: [WidgetSchemaInfo!]
   "Fetch a form by its token. The returned form includes all the details of the form such as its settings, questions, title, etc. Use this endpoint when you need to retrieve complete form data for display or processing. Requires that the requesting user has read access to the associated board."
   form("The unique identifier token for the form. This token is used to securely access the form and can be found in the form URL." formToken: String!): ResponseForm
+}
+
+"A monday.com user."
+type User {
+  "The user's unique identifier."
+  id: ID!
+  "The department the user is a member of (if any)"
+  department: Department
+  "The user's account."
+  account: Account!
+  "The products the user is assigned to."
+  account_products: [AccountProduct!]
+  "The user's birthday."
+  birthday: Date
+  "The user’s country code."
+  country_code: String
+  "The user's creation date."
+  created_at: Date
+  "The current user's language"
+  current_language: String
+  "The custom field metas of the user profile."
+  custom_field_metas: [CustomFieldMetas]
+  "The custom field values of the user profile."
+  custom_field_values: [CustomFieldValue]
+  "The user's email."
+  email: String!
+  "Is the user enabled or not."
+  enabled: Boolean! @deprecated(reason: "This field is deprecated. Please use status instead.")
+  "The token of the user for email to board."
+  encrypt_api_token: String @deprecated(reason: "This field is deprecated and will be removed in later versions.")
+  "Is the user an account admin."
+  is_admin: Boolean @deprecated(reason: "This field is deprecated. Please use kind instead.")
+  "Is the user a guest or not."
+  is_guest: Boolean @deprecated(reason: "This field is deprecated. Please use kind instead.")
+  "Is the user a pending user"
+  is_pending: Boolean @deprecated(reason: "This field is deprecated. Please use status instead.")
+  "Is user verified his email."
+  is_verified: Boolean @deprecated(reason: "This field is deprecated. Please use is_email_confirmed instead.")
+  "Is the user a view only user or not."
+  is_view_only: Boolean @deprecated(reason: "This field is deprecated. Please use kind instead.")
+  "The date the user joined the account."
+  join_date: Date @deprecated(reason: "This field is deprecated. Please use became_active_at instead.")
+  "Last date & time when user was active"
+  last_activity: Date
+  "The user’s location."
+  location: String
+  "The user's mobile phone number."
+  mobile_phone: String
+  "The user's name."
+  name: String!
+  "The user's out of office status."
+  out_of_office: OutOfOffice
+  "The user's phone number."
+  phone: String
+  "The user's photo in the original size."
+  photo_original: String @deprecated(reason: "This field is deprecated. Please use photo_url.original instead.")
+  "The user's photo in small size (150x150)."
+  photo_small: String @deprecated(reason: "This field is deprecated. Please use photo_url.small instead.")
+  "The user's photo in thumbnail size (100x100)."
+  photo_thumb: String @deprecated(reason: "This field is deprecated. Please use photo_url.thumb instead.")
+  "The user's photo in small thumbnail size (50x50)."
+  photo_thumb_small: String @deprecated(reason: "This field is deprecated. Please use photo_url.thumb_small instead.")
+  "The user's photo in tiny size (30x30)."
+  photo_tiny: String @deprecated(reason: "This field is deprecated. Please use photo_url.tiny instead.")
+  "The product to which the user signed up to first."
+  sign_up_product_kind: String @deprecated(reason: "This field is deprecated and will be removed in later versions.")
+  "The teams the user is a member in."
+  teams("A list of teams unique identifiers." ids: [ID!]): [Team]
+  "The user’s timezone identifier."
+  time_zone_identifier: String
+  "The user's title."
+  title: String
+  "The user's profile url."
+  url: String!
+  "The user’s utc hours difference."
+  utc_hours_diff: Int
 }
 
 "Root mutation type for the Dependencies service"
@@ -200,28 +300,52 @@ type Mutation {
   add_required_column(id: ID! column_id: String! "The type of entity for validations the default is board" type: ValidationsEntityType = board): RequiredColumns
   "Remove a required column from a board"
   remove_required_column(id: ID! column_id: String! "The type of entity for validations the default is board" type: ValidationsEntityType = board): RequiredColumns
+  "Assigns members to a department."
+  assign_department_members("The department ID to assign the members to." department_id: ID! "The user IDs to assign to the department." user_ids: [ID!]!): AssignDepartmentMembersResult
+  "Clear users department"
+  clear_users_department("The user IDs to remove theirs department." user_ids: [ID!]!): ClearUsersDepartmentResult
+  "Assigns an owner to a department."
+  assign_department_owner("The department ID to assign the owner to." department_id: ID! "The user ID to assign as the owner of the department." user_id: ID!): AssignDepartmentOwnerResult
+  "Unassigns owners from a department."
+  unassign_department_owners("The department ID to unassign the owners from." department_id: ID! "The user IDs to unassign as the owners of the department." user_ids: [ID!]!): UnassignDepartmentOwnerResult
+  "Creates a new department."
+  create_department(data: CreateDepartmentDataInput!): Department
+  "Updates a department."
+  update_department("The department ID to update." department_id: ID! data: UpdateDepartmentOptionsInput): Department
+  "Deletes a department."
+  delete_department("The department ID to delete." department_id: ID!): Department
   "Update the dependency column for a specific pulse"
   update_dependency_column(boardId: String! pulseId: String! value: DependencyValueInput! columnId: String! "Optional new date for the successor node (or one of its descendants). When provided, updates the successor date and all predecessor edge lags." successor_new_date: TimelineDateInput): JSON!
   "Batch update the dependency column values in a board. Limited to 50 items per batch."
   batch_update_dependency_column(boardId: String! columnId: String! "The list of pulses with their dependency column values to update" values: [DependencyPulseValueInput!]!): JSON!
   "Adds markdown content to an existing document by converting it into document blocks. Use this to append content to the end of a document or insert content after a specific block. The markdown will be parsed and converted into the appropriate document block types (text, headers, lists, etc.). Returns the IDs of the newly created blocks on success."
   add_content_to_doc_from_markdown("The document's unique identifier." docId: ID! "The markdown content to convert into document blocks." markdown: String! "Optional block ID to insert the markdown content after." afterBlockId: String): DocBlocksFromMarkdownResult
+  "Creates a new article in the specified workspace. Optionally accepts a name and folder ID. Returns the created article metadata."
+  create_article("The display name of the article. This is what appears in the monday.com interface." name: String "The ID of the workspace containing this article." workspace_id: ID! "The ID of the folder containing this article, if the article is organized in a folder structure." folder_id: ID): ArticleMetadata
+  "Deletes an article with the specified object ID"
+  delete_article("The unique identifier of the article object. Can be used to reference this specific object in queries and mutations. This ID can be found in the article's URL." object_id: ID!): ArticleMetadata
   "Permanently deletes a document and all its content from the system. This action cannot be undone. The document will be removed from all user views and workspaces. Use with caution - ensure the document is no longer needed before deletion. Returns success status and the deleted document ID."
   delete_doc("The document's unique identifier. Get this from document queries or creation responses." docId: ID!): JSON
   "Creates an exact copy of an existing document, including all content, structure, and formatting. Use this to create templates, backup documents before major changes, or create variations of existing documents. The duplicated document will have a new unique ID and can be modified independently. Returns the new document's ID on success."
   duplicate_doc("The document's unique identifier to duplicate. Get this from document queries or creation responses." docId: ID! "Controls what gets duplicated: content only (default) or content with update history. Choose content-only for clean copies." duplicateType: DuplicateType): JSON
   "Imports HTML content as a new document by converting it into document blocks. The HTML will be parsed and converted into the appropriate document block types (text, headers, lists, etc.). Returns the ID of the newly created document on success."
   import_doc_from_html("The HTML content to convert into a new document." html: String! "The workspace ID where the document should be created." workspaceId: ID! "The access level of the document. Defaults to \"public\" if not specified." kind: DocKind "The folder ID where the document should be placed. If not provided, the document will be created at the root level of the workspace." folderId: ID "The name\/title of the document. If not provided, the title will be inferred from the HTML content." title: String): ImportDocFromHtmlResult
+  "Publishes an article with the specified object ID. Allows setting privacy level, target folder, and managing subscribers (users and teams). Returns the updated article metadata."
+  publish_article("The unique identifier of the article object. Can be used to reference this specific object in queries and mutations. This ID can be found in the article's URL." object_id: ID! "The kind\/visibility setting of the article (private, public). Determines who can access it." privacy_kind: PrivacyKind! "The ID of the folder to move the article to. If not specified, the article will remain at its current folder level" folder_id: ID "List of user IDs to add as subscribers to this article. Only applicable when privacy_kind is PRIVATE" add_subscriber_ids: [ID!] "List of team IDs to add as subscribers to this article. Only applicable when privacy_kind is PRIVATE" add_subscriber_team_ids: [ID!] "List of user IDs to remove from article subscribers. Only applicable when privacy_kind is PRIVATE" remove_subscriber_ids: [ID!] "List of team IDs to remove from article subscribers. Only applicable when privacy_kind is PRIVATE" remove_subscriber_team_ids: [ID!]): ArticleMetadata
   "Updates the content of a specific article block. The block must belong to a draft article that the user has permission to edit. Cannot update blocks of published articles."
   update_article_block("The ID of the block to update" block_id: String! "The new content for the block" content: JSON!): ArticleBlock
   "Update a document's name\/title. Changes are applied immediately and visible to all users with access to the document."
   update_doc_name("The document's unique identifier. Use document ID from API responses" docId: ID! "The new name\/title for the document. Should be descriptive and help users identify the document purpose." name: String!): JSON
+  "Sets an item description document's content with new markdown data. This mutation converts the provided markdown into document blocks and replaces the existing content of the item's description. Returns the IDs of the newly created blocks on success. Note: Markdown does not support text colors or background highlights. Any existing colored or highlighted text will be lost after replacement."
+  set_item_description_content("The item's unique identifier." item_id: ID! "The markdown content to replace the document with." markdown: String!): DocBlocksFromMarkdownResult
   "Add workspace object to favorites"
   create_favorite("The input for adding an object to the favorites" input: CreateFavoriteInput!): CreateFavoriteResultType
   "Remove an object from favorites"
   delete_favorite("The input for removing an object from favorites" input: DeleteFavoriteInput!): DeleteFavoriteInputResultType
   "Update the position of an object in favorites"
   update_favorite_position("The input for updating the favorite object position" input: UpdateObjectHierarchyPositionInput!): UpdateFavoriteResultType
+  "Create a marketplace app discount"
+  create_marketplace_app_discount("The id of an app" app_id: ID! "Slug of an account" account_slug: String! discount_data: CreateMarketplaceAppDiscountInput!): CreateMarketplaceAppDiscountResult!
   delete_marketplace_app_discount("The id of an app" app_id: ID! "Slug of an account" account_slug: String!): DeleteMarketplaceAppDiscountResult!
   grant_marketplace_app_discount("The id of an app" app_id: ID! "Slug of an account" account_slug: String! data: GrantMarketplaceAppDiscountData!): GrantMarketplaceAppDiscountResult!
   "Creates a new app with the specified configuration."
@@ -232,6 +356,10 @@ type Mutation {
   update_app_feature("The ID of the app feature to update." id: ID! "The input data for updating the app feature." input: UpdateAppFeatureInput!): AppFeatureType
   "Create a new app feature."
   create_app_feature("The name of the app feature. If not provided, a default name will be used." name: String "The unique slug identifier for the app feature." slug: String! "The ID of the app to create the app feature for." app_id: ID! "The ID of the app version to create the app feature for. If not provided, the latest draft version will be used." app_version_id: ID "The type of the app feature to create." type: AppFeatureTypeE! "The app feature data to update. This structure is dynamic and depends on the different app feature types." data: JSON "The deployment data for the app feature. https:\/\/developer.monday.com\/apps\/docs\/deploy-your-app" deployment: AppFeatureReleaseInput): AppFeatureType
+  "Update (or create) lifecycle subscriptions for an entity. This will soft delete all existing subscriptions for this entity_identifier and create new ones."
+  update_app_lifecycle_subscription("App feature entity ID or full slug (app_slug::feature_slug)" entity_identifier: ID! "Entity type enum (currently only \"appFeature\" is supported)" entity_type: String! "Lifecycle event configurations" input: UpdateLifecycleSubscriptionsInput!): [LifecycleSubscriptionKind!]
+  "Delete all lifecycle subscriptions for an entity. Returns true if deleted successfully or if no subscriptions exist."
+  delete_app_lifecycle_subscription("App feature entity ID or full slug (app_slug::feature_slug)" entity_identifier: ID! "Entity type enum (currently only \"appFeature\" is supported)" entity_type: String!): Boolean
   "Add a file to a column value."
   add_file_to_column("The column to add the file to." column_id: String! "The file to upload." file: File! "The item to add the file to." item_id: ID!): Asset
   "Add a file to an update."
@@ -273,7 +401,7 @@ type Mutation {
   "Get the complexity data of your mutations."
   complexity: Complexity
   "Create a new board."
-  create_board("The board's kind (public \/ private \/ share)" board_kind: BoardKind! "The board's name" board_name: String! "Optional board owner user ids" board_owner_ids: [ID!] "Optional board owner team ids" board_owner_team_ids: [ID!] "Optional board subscriber ids" board_subscriber_ids: [ID!] "Optional list of subscriber team ids" board_subscriber_teams_ids: [ID!] "Optional board's description" description: String "Optional flag to create an empty board (without any default items)" empty: Boolean = false "Optional board folder id" folder_id: ID "Optional item nickname configuration for the board" item_nickname: ItemNicknameInput "Optional board template id" template_id: ID "Optional workspace id" workspace_id: ID): Board
+  create_board("The board's kind (public \/ private \/ share)" board_kind: BoardKind! "The board's name" board_name: String! "Optional board owner user ids" board_owner_ids: [ID!] "Optional board owner team ids" board_owner_team_ids: [ID!] "Optional board subscriber ids" board_subscriber_ids: [ID!] "Optional list of subscriber team ids" board_subscriber_teams_ids: [ID!] "Optional board's description" description: String "Optional flag to create an empty board (without any default items)" empty: Boolean = false "Optional board folder id" folder_id: ID "Optional item nickname configuration for the board" item_nickname: ItemNicknameInput "AI prompt to generate the board structure and content" prompt: String "Optional board template id" template_id: ID "Optional workspace id" workspace_id: ID): Board
   "Create a new doc."
   create_doc("new monday doc location" location: CreateDocInput!): Document
   "Create new document block"
@@ -333,7 +461,7 @@ type Mutation {
   "Remove users from team."
   remove_users_from_team("The team's unique identifier." team_id: ID! "User ids to add to\/remove from the team" user_ids: [ID!]!): ChangeTeamMembershipsResult
   "Set or update the board's permission to specified role. This concept is also\nknown as default board role, general access or board permission set."
-  set_board_permission("The basic role name to set. One of: editor (can edit structure and content),\ncontributor (can edit content only), viewer (read-only access). Note:\nassigned_contributor is not yet supported." basic_role_name: BoardBasicRoleName! "The board's unique identifier" board_id: ID!): SetBoardPermissionResponse
+  set_board_permission("The basic role name to set. One of: editor (can edit structure and content),\ncontributor (can edit content only), viewer (read-only access). Note:\nassigned_contributor is not yet supported." basic_role_name: BoardBasicRoleName "The board's unique identifier" board_id: ID!): SetBoardPermissionResponse
   "Set mock app subscription for the current account"
   set_mock_app_subscription("The app id of the app to mock subscription for." app_id: ID! "Billing period [monthly\/yearly]" billing_period: String "Is the subscription a trial" is_trial: Boolean "Maximum number of units for the mocked plan" max_units: Int "The last 10 characters of the app's signing secret." partial_signing_secret: String! "The plan id for the mocked plan" plan_id: String "Pricing plans version" pricing_version: Int "The subscription renewal date" renewal_date: Date): AppSubscription
   "Update item column value by existing assets"
@@ -356,12 +484,14 @@ type Mutation {
   use_template("The board's kind (public \/ private \/ share)" board_kind: BoardKind "Optional board owner user ids" board_owner_ids: [Int] "Optional board owner team ids" board_owner_team_ids: [Int] "Optional board subscriber ids" board_subscriber_ids: [Int] "Optional list of subscriber team ids" board_subscriber_teams_ids: [Int] "The callback URL to send the workspace, boards and dashboards IDs result, after its completed in the background" callback_url_on_complete: String "The folder ID to duplicate the template to." destination_folder_id: Int "The folder name to duplicate the template to, in case of multiple boards template" destination_folder_name: String "The name of the instance" destination_name: String "The workspace ID to duplicate the template to, If not defined, it will be created in Main Workspace" destination_workspace_id: Int "Skips target folder creation in multiple entities templates" skip_target_folder_creation: Boolean "Optional adding extra options" solution_extra_options: JSON "The template ID" template_id: Int!): Template
   "Convert an existing monday.com board into a project with enhanced project management capabilities. This mutation transforms a regular board by applying project-specific features and configurations through column mappings that define how existing board columns should be interpreted in the project context. The conversion process is asynchronous and returns a process_id for tracking completion. Optionally accepts a callback URL for notification when the conversion completes. Use this when you have an existing board with data that needs to be upgraded to a full project with advanced project management features like Resource Planner integration."
   convert_board_to_project(input: ConvertBoardToProjectInput!): ConvertBoardToProjectResult
+  "Create a new project in monday.com from scratch. This mutation initiates asynchronous project creation with comprehensive customization options including: privacy settings (private\/public - share is currently not supported), optional companions like Resource Planner for enhanced project management capabilities, workspace assignment for organizational structure, folder placement for better organization, and template selection for predefined project structures. Since project creation is asynchronous, you can optionally provide a callback_url where the project ID will be sent via POST request once creation completes. The callback will receive: { is_success: boolean, process_id: string, project_id?: number }. Returns a process_id for tracking the creation request."
+  create_project(input: CreateProjectInput!): CreateProjectResult
   "Updates a notification setting's enabled status."
   update_notification_setting("Notification settings scope types, the options are account user defaults or user private settings" scope_type: ScopeType! "Relevant when using scopeType: user, the user id of the user whose notification settings you want to update, by default the current user is used" scope_id: Int "The notification setting type to update. Must be one of the allowed notification setting kinds." setting_kind: String! "The channel type to update (Monday, Email, Slack, etc.)" channel: ChannelType! "Whether the notification setting should be enabled or disabled" enabled: Boolean!): [NotificationSetting!]
   "Update mute notification settings for a board. Allows muting all notifications for all users, only for the current user, or setting mentions\/assigns-only. Returns the updated mute state for the board. Requires appropriate permissions for muting all users."
   update_mute_board_settings("The ID of the board to update mute settings for. Must be a valid board ID." board_id: String! "The desired mute state for the board.\n- MUTE_ALL: Mute all notifications for all users (admin only).\n- CURRENT_USER_MUTE_ALL: Mute all notifications for the current user only.\n- MENTIONS_AND_ASSIGNS_ONLY: Only notify the current user on mentions or assigns.\n- NOT_MUTED: Unmute notifications." mute_state: BoardMuteState! "When mute_state is CUSTOM_SETTINGS, this array specifies which custom settings are enabled. Accepts IM_MENTIONED, IM_ASSIGNED, AUTOMATION_NOTIFY." enabled: [CustomizableBoardSettings!]): [BoardMuteSettings!]
   "Creates a new object in the Monday.com Objects Platform. The type of object created is determined by the object_type_unique_key parameter. This mutation can create boards, docs, dashboards, workflows, or specialized objects like CRM, capacity manager, etc. Under the hood, this creates a board with the corresponding app_feature_id."
-  create_object("The name of the new object. This will be displayed in the Monday.com interface as the primary identifier for this object." name: String! "The kind\/visibility setting of the object (private, public, share). Determines who can access it." privacy_kind: PrivacyKind! "The ID of the workspace containing this object. Null indicates the object is in the main workspace." workspace_id: ID "Optional description of the object, providing additional context about its purpose or contents." description: String "The ID of the folder to create the object in. Used for organizing objects in folders. visible in the left pane of the platform. Must be a valid and existing workspace id in monday.com." folder_id: ID "List of user IDs who will be assigned as owners of this object. Owners have full control permissions." owner_ids: [ID!] "List of team IDs who will be assigned as owners of this object. All members of these teams will have owner permissions." owner_team_ids: [ID!] "List of user IDs who will be added as subscribers to this object. Subscribers receive notifications about changes." subscriber_ids: [ID!] "List of team IDs who will be added as subscribers to this object. All members of these teams will receive notifications about changes." subscriber_teams_ids: [ID!] "The unique identifier for the object type, formatted as 'app_slug::app_feature_slug. To create an object you must provide this key. You can get a list of available keys by using the 'object_types_unique_keys' query." object_type_unique_key: String! "JSON of creation payload, that will include additional fields for the object creation" payload: JSON): Object
+  create_object("The name of the new object. This will be displayed in the Monday.com interface as the primary identifier for this object." name: String! "The kind\/visibility setting of the object (private, public, share). Determines who can access it." privacy_kind: PrivacyKind! "The ID of the workspace containing this object. Null indicates the object is in the main workspace." workspace_id: ID "Optional description of the object, providing additional context about its purpose or contents." description: String "The ID of the folder to create the object in. Used for organizing objects in folders. visible in the left pane of the platform. Must be a valid and existing workspace id in monday.com." folder_id: ID "List of user IDs who will be assigned as owners of this object. Owners have full control permissions." owner_ids: [ID!] "List of team IDs who will be assigned as owners of this object. All members of these teams will have owner permissions." owner_team_ids: [ID!] "List of user IDs who will be added as subscribers to this object. Subscribers receive notifications about changes." subscriber_ids: [ID!] "List of team IDs who will be added as subscribers to this object. All members of these teams will receive notifications about changes." subscriber_teams_ids: [ID!] "The unique identifier for the object type, formatted as 'app_slug::app_feature_slug. To create an object you must provide this key. You can get a list of available keys by using the 'object_types_unique_keys' query." object_type_unique_key: String! "JSON of creation payload, that will include additional fields for the object creation" payload: JSON "Optional relations to create with the object" relations: [ObjectRelationInput!]): Object
   "Permanently deletes an object from the Monday.com Objects Platform. Unlike archiving, deletion is only reversible for 30 days and removes all associated data. This operation works for any object type including boards, docs, dashboards, workflows, and specialized objects (CRM, capacity manager, etc.). WARNING: This operation cannot be undone after 30 days."
   delete_object("The unique identifier of the object to delete. Each object has a unique ID regardless of its type (board, doc, dashboard, etc.). WARNING: Deletion is only reversible for 30 days." id: ID!): Object
   "Archives an object in the Monday.com Objects Platform, changing its state to \"archived\" while preserving all data. Archived objects remain in the system but are hidden from regular views. This operation works for any object type including boards, docs, dashboards, workflows, and specialized objects (CRM, capacity manager, etc.). Under the hood, this archives the board that represents this object."
@@ -374,12 +504,18 @@ type Mutation {
   publish_object("The unique identifier of the object instance." id: ID!): ObjectOperationResponse
   "Unpublishes object from public state back to draft state. Returns {success: true} on success, {success: false} on failure."
   unpublish_object("The unique identifier of the object instance." id: ID!): ObjectOperationResponse
+  "Create relations for an object"
+  create_object_relations("ID of the source object" source_object_id: ID! "List of relations to create" relations: [ObjectRelationInput!]!): [ObjectRelation!]
+  "Delete a specific object relation or all relations for an object. Returns the number of relations deleted."
+  delete_object_relation("ID of the source object" source_object_id: ID! "ID of the relation to delete. If not provided, deletes all relations for the source object." relation_id: ID): Int
   "Connect project to portfolio"
   connect_project_to_portfolio("The ID of the project to connect" projectBoardId: ID! "The ID of the portfolio to connect to" portfolioBoardId: ID!): ConnectProjectResult
   "Create a new portfolio"
   create_portfolio(boardName: String! boardPrivacy: String! destinationWorkspaceId: Int): CreatePortfolioResult
   "Update attributes (Job Role, Skills, or Location) for multiple resources in the directory"
   update_directory_resources_attributes("The attribute type to update (JOB_ROLE, SKILLS, or LOCATION)" attribute: DirectoryResourceAttribute! "The values of the attribute to update" values: [String!]! "List of resource IDs to update" resource_ids: [ID!]!): UpdateDirectoryResourceAttributesResponse
+  "Enroll multiple items to a single sequence. Maximum 50 items per request."
+  enroll_items_to_sequence("Input for enrolling multiple items to a single sequence" input: EnrollToSequenceInput!): EnrollToSequenceResult
   "Creates a new team."
   create_team(input: CreateTeamAttributesInput! options: CreateTeamOptionsInput): Team
   "Activates the specified users."
@@ -429,7 +565,7 @@ type Mutation {
   "Create a new tag for a form. Tags are used to categorize and track responses. (e.g. UTM tags)"
   create_form_tag("The unique identifier token for the form. Required for all form-specific operations." formToken: String! "The tag data to create" tag: CreateFormTagInput!): FormTag
   "Update an existing tag in a form"
-  update_form_tag("The unique identifier token for the form. Required for all form-specific operations." formToken: String! "The unique identifier for the tag" tagId: String! "The tag data to create" tag: UpdateFormTagInput!): Boolean
+  update_form_tag("The unique identifier token for the form. Required for all form-specific operations." formToken: String! "The unique identifier for the tag" tagId: String! "The tag data to create" tag: UpdateFormTagInput!): Boolean @deprecated(reason: "Updating tag values is no longer supported after version 2026-07.")
   "Delete a tag from a form"
   delete_form_tag("The unique identifier token for the form. Required for all form-specific operations." formToken: String! "The unique identifier for the tag" tagId: String! "Options for deleting the tag" options: DeleteFormTagInput): Boolean
   "Create a new form with specified configuration. Returns the created form with its unique token."
@@ -452,6 +588,9 @@ scalar ISO8601DateTime
 
 "A JSON formatted string."
 scalar JSON
+
+"A file"
+scalar File
 
 type AuditEventCatalogueEntry {
   name: String
@@ -484,9 +623,6 @@ type AuditLogPage {
   pagination: Pagination
 }
 
-"A file"
-scalar File
-
 "Pagination metadata: indicates the current page and page size, whether there\n  are more pages, and the next page number if one exists. Note that the page size reflects\n  the number of items requested, not the number of items returned."
 type Pagination {
   "Current page number (1-based)"
@@ -497,80 +633,6 @@ type Pagination {
   has_more_pages: Boolean
   "Number of the next page"
   next_page_number: Int
-}
-
-"A monday.com user."
-type User {
-  "The user's unique identifier."
-  id: ID!
-  "The user's account."
-  account: Account!
-  "The products the user is assigned to."
-  account_products: [AccountProduct!]
-  "The user's birthday."
-  birthday: Date
-  "The user's country code."
-  country_code: String
-  "The user's creation date."
-  created_at: Date
-  "The current user's language"
-  current_language: String
-  "The custom field metas of the user profile."
-  custom_field_metas: [CustomFieldMetas]
-  "The custom field values of the user profile."
-  custom_field_values: [CustomFieldValue]
-  "The user's email."
-  email: String!
-  "Is the user enabled or not."
-  enabled: Boolean!
-  "The token of the user for email to board."
-  encrypt_api_token: String
-  "Is the user an account admin."
-  is_admin: Boolean
-  "Is the user a guest or not."
-  is_guest: Boolean
-  "Is the user a pending user"
-  is_pending: Boolean
-  "Is user verified his email."
-  is_verified: Boolean
-  "Is the user a view only user or not."
-  is_view_only: Boolean
-  "The date the user joined the account."
-  join_date: Date
-  "Last date & time when user was active"
-  last_activity: Date
-  "The user's location."
-  location: String
-  "The user's mobile phone number."
-  mobile_phone: String
-  "The user's name."
-  name: String!
-  "The user's out of office status."
-  out_of_office: OutOfOffice
-  "The user's phone number."
-  phone: String
-  "The user's photo in the original size."
-  photo_original: String
-  "The user's photo in small size (150x150)."
-  photo_small: String
-  "The user's photo in thumbnail size (100x100)."
-  photo_thumb: String
-  "The user's photo in small thumbnail size (50x50)."
-  photo_thumb_small: String
-  "The user's photo in tiny size (30x30)."
-  photo_tiny: String
-  "The product to which the user signed up to first."
-  sign_up_product_kind: String
-  "The teams the user is a member in."
-  teams("A list of teams unique identifiers." ids: [ID!]): [Team]
-  "The user's timezone identifier."
-  time_zone_identifier: String
-  "The user's title."
-  title: String
-  "The user's profile url."
-  url: String!
-  "The user’s utc hours difference."
-  utc_hours_diff: Int
 }
 
 "Represents an integration connection between a monday.com account and an external service."
@@ -683,6 +745,12 @@ type BlockEvent {
   billingActionCountForBlock: Int
   "Error reason if block failed"
   errorReason: String
+  "Iterator identifier if block is part of a loop"
+  iterator_id: ID
+  "Current iteration number within the loop"
+  current_iteration: Int
+  "Total number of iterations configured for the loop"
+  max_iterations: Int
 }
 
 "A page of block events"
@@ -697,6 +765,44 @@ input DateRangeInput {
   startDate: String!
   "End date (ISO 8601)"
   endDate: String!
+}
+
+"MCP tool execution event"
+type ToolEvent {
+  "Document identifier"
+  id: ID
+  "Account identifier"
+  account_id: ID
+  "User identifier"
+  user_id: ID
+  "UUID of the parent trigger event"
+  trigger_uuid: String
+  "Atomic action identifier"
+  atomic_action_id: ID
+  "Recipe identifier"
+  recipe_id: ID
+  "Integration identifier"
+  integration_id: ID
+  "Name of the MCP tool"
+  tool_name: String
+  "MCP server name"
+  mcp_server: String
+  "Status of the tool execution"
+  event_status: String
+  "Error message if tool execution failed"
+  error_message: String
+  "Timestamp (epoch) when tool execution started"
+  tool_start_timestamp: Float
+  "Timestamp (epoch) when tool execution finished"
+  tool_finish_timestamp: Float
+  "Execution duration in milliseconds"
+  execution_duration_ms: Int
+}
+
+"A page of tool events"
+type ToolEventsPage {
+  "List of tool events in the current page"
+  tool_events: [ToolEvent!]
 }
 
 "Represents a single automation trigger event"
@@ -811,10 +917,14 @@ type Board {
   communication: JSON
   "The time the board was created at."
   created_at: ISO8601DateTime
+  "The board's source board unique identifier (the board from which this board was created)"
+  created_from_board_id: ID
   "The creator of the board."
   creator: User!
   "The board's description."
   description: String
+  "The folder that contains this board, or null if it isn't in any folder."
+  folder: Folder
   "The board's visible groups."
   groups("A list of group unique identifiers." ids: [String]): [Group]
   "The hierarchy type of the board"
@@ -1063,6 +1173,12 @@ enum ViewMutationKind {
   UPDATE
 }
 
+"The type of entity that a reaction is attributed to."
+enum AttributionEntity {
+  "An AI agent"
+  AGENT
+}
+
 "An item (table row)."
 type Item {
   "The item's unique identifier."
@@ -1112,6 +1228,10 @@ type Like {
   creator_id: String
   creator: User
   reaction_type: String
+  "The reference identifier of the entity that created this reaction on behalf of the user, who this reaction should be attributed to (e.g. agent_{agentId})."
+  attribution_entity_ref: String
+  "The type of entity that created this reaction."
+  attribution_entity_type: AttributionEntity
   created_at: Date
   updated_at: Date
 }
@@ -1679,6 +1799,64 @@ enum ValidationsEntityType {
   board
 }
 
+"Result of assigning members to a department."
+type AssignDepartmentMembersResult {
+  "The users that were successfully assigned to the department."
+  successful_users: [User!]
+  "The users that were not assigned to the department."
+  failed_users: [User!]
+}
+
+"Result of assigning an owner to a department."
+type AssignDepartmentOwnerResult {
+  "The user ID of the owner that was assigned to the department."
+  owner: User
+}
+
+"Result of clearing users department."
+type ClearUsersDepartmentResult {
+  "The users that their department was cleared."
+  cleared_users: [User!]
+}
+
+"Data for creating a department."
+input CreateDepartmentDataInput {
+  "The name of the department."
+  name: String!
+  "The number of reserved seats for the department."
+  reserved_seats: Int
+}
+
+"A department in the account."
+type Department {
+  "The department's ID."
+  id: ID!
+  "The department's name."
+  name: String!
+  "The number of seats reserved for the department."
+  reserved_seats: Int!
+  "The number of seats assigned to the department."
+  assigned_seats: Int!
+  "The members of the department"
+  members: [User!]
+  "The owners of the department"
+  owners: [User!]
+}
+
+"Result of unassigning owners from a department."
+type UnassignDepartmentOwnerResult {
+  "The user IDs of the owners that were unassigned from the department."
+  unassigned_users: [User!]
+}
+
+"Options for updating a department."
+input UpdateDepartmentOptionsInput {
+  "The new name of the department."
+  name: String
+  "The new number of reserved seats for the department."
+  reserved_seats: Int
+}
+
 "The complete graph export for a board"
 type BoardGraphExport {
   "The ID of the board"
@@ -1815,6 +1993,14 @@ input UpdateDependencyColumnInput {
   metadata: MetadataInput
 }
 
+"The Article is the main object type of monday.com Knowledge product. A collaborative article that can contain rich text, media, and structured content. Articles have both draft and published versions, and are organized within workspaces and folders, with configurable privacy settings and access controls. They support features like version history, real-time collaboration, and can be shared with specific users or teams. Articles are commonly used for documentation, knowledge sharing, and team collaboration."
+type Article {
+  "The Article is the main object type of monday.com Knowledge product. Article Metadata is a subset of the Article object that contains only the metadata of the article, not the article itself. It is used to get the metadata of an article without having to fetch the article itself."
+  metadata: ArticleMetadata
+  "The content blocks that make up the article."
+  blocks: [ArticleBlock!]
+}
+
 "The content blocks that make up the article."
 type ArticleBlock {
   "The block's unique identifier."
@@ -1837,6 +2023,60 @@ type ArticleBlock {
   updated_at: String
 }
 
+"The Article is the main object type of monday.com Knowledge product. Article Metadata is a subset of the Article object that contains only the metadata of the article, not the article itself. It is used to get the metadata of an article without having to fetch the article itself."
+type ArticleMetadata {
+  "The unique identifier of the article object. Can be used to reference this specific object in queries and mutations. This ID can be found in the article's URL."
+  object_id: ID
+  "The ID of the draft version of this article."
+  draft_article_id: ID
+  "The ID of the published version of this article."
+  published_article_id: ID
+  "The display name of the article. This is what appears in the monday.com interface."
+  name: String
+  "The kind\/visibility setting of the article (private, public). Determines who can access it."
+  privacy_kind: String
+  "The ID of the workspace containing this article."
+  workspace_id: ID
+  "The ID of the folder containing this article, if the article is organized in a folder structure."
+  folder_id: ID
+  "Timestamp of when the article was last updated. Format is ISO 8601."
+  updated_at: String
+  "The current state of the article. Determines visibility in the interface."
+  state: String
+  "The ID of the user who created this article. Useful for tracking article origin."
+  creator: ID
+  "List of users who are owners of this article. Owners have full control permissions."
+  owners: [User!]
+  "List of users who are subscribers to this article. Subscribers receive notifications about changes."
+  subscribers: [User!]
+}
+
+"Describes what type of change occurred to a block between two versions."
+type BlockChanges {
+  "True if this block was added in the newer version."
+  added: Boolean
+  "True if this block was deleted in the newer version. The content reflects the state before deletion."
+  deleted: Boolean
+  "True if this block content was modified between the two versions."
+  changed: Boolean
+}
+
+"A document block that was changed between two versions, including its content and what type of change occurred."
+type DiffBlock {
+  "The unique identifier of the block."
+  id: ID
+  "The type of block (e.g., text, image, list)."
+  type: String
+  "The block content as a JSON string."
+  content: String
+  "A human-readable summary of what changed in this block. For text blocks, shows the added and deleted text. For other block types, describes the change type."
+  summary: String
+  "The parent block ID, or null if the block is at the top level."
+  parent_block_id: ID
+  "The changes that occurred to this block (added, deleted, or changed)."
+  changes: BlockChanges
+}
+
 "Response from adding markdown content to a document. Contains success status and the IDs of newly created blocks."
 type DocBlocksFromMarkdownResult {
   "True if markdown was successfully converted and added to the document"
@@ -1855,6 +2095,18 @@ enum DocKind {
   public
   "Shareable document"
   share
+}
+
+"A single restoring point (snapshot) in the document version history. Represents a group of changes made within a time window, including which users made changes."
+type DocRestoringPoint {
+  "The ISO 8601 timestamp of when this restoring point was captured."
+  date: String
+  "The IDs of users who made changes in this restoring point time window."
+  user_ids: [ID!]
+  "The type of restoring point. \"publish\" indicates the document was published at this point. Null for regular edit snapshots."
+  type: String
+  "AI agents that contributed changes in this restoring point time window."
+  agent_attributions: [RestoringPointAgentAttribution!]
 }
 
 "Represents a monday.com doc - a rich-text page built from editable blocks (text, files, embeds, etc.).\n  A doc can belong to:\n  (1) a workspace (left-pane doc),\n  (2) an item (doc on column),\n  (3) a board view (doc as a board view)."
@@ -1887,6 +2139,26 @@ type Document {
   workspace: Workspace
   "The document's workspace unique identifier (null for main workspace)."
   workspace_id: ID
+}
+
+"Represents the diff between two versions of a document. Contains the blocks that were added, deleted, or changed between two restoring points."
+type DocVersionDiff {
+  "The ID of the document this diff belongs to."
+  doc_id: ID
+  "The newer version date used for this diff."
+  date: String
+  "The older version date used for this diff."
+  prev_date: String
+  "The list of blocks that have changes between the two versions. Only blocks with actual changes are included."
+  blocks: [DiffBlock!]
+}
+
+"Represents the version history of a document, including a list of restoring points (snapshots) that capture the state of the document at specific points in time."
+type DocVersionHistory {
+  "The ID of the document this version history belongs to."
+  doc_id: ID
+  "The list of restoring points (snapshots) for this document, ordered by date descending."
+  restoring_points: [DocRestoringPoint!]
 }
 
 "Controls what gets copied when duplicating a document"
@@ -1923,6 +2195,44 @@ enum PrivacyKind {
   PRIVATE
   "Public objects are visible to all users within the account, unless their access is blocked on a higher level in the hierarchy, or by specific object permission."
   PUBLIC
+}
+
+"An AI agent that contributed changes in this restoring point time window."
+type RestoringPointAgentAttribution {
+  "The ID of the agent that made changes."
+  agent_id: ID
+  "The type of entity (e.g. \"agent\", \"workflow\")."
+  entity_type: String
+  "The display name of the agent, if available."
+  agent_name: String
+}
+
+"Knowledge base answer generated from snippets using LLM."
+type KnowledgeBaseAnswer {
+  "List of knowledge base snippets used to generate the answer."
+  raw_snippets: [SnippetSearchResult!]
+  "LLM-generated answer based on the knowledge base snippets."
+  answer: String
+}
+
+"A knowledge base for monday.com which returns a list of snippet search results containing document content and metadata."
+type SnippetSearchResult {
+  "The unique identifier of the snippet."
+  id: ID!
+  "The title of the article."
+  title: String
+  "The content of the snippet."
+  text: String
+  "The parent document ID."
+  parent_id: ID
+  "When the snippet was created."
+  created_at: String
+  "When the snippet was last updated."
+  updated_at: String
+  "The vector distance score. Lower is better. value between 0 and 1."
+  distance: Float
+  "The URL of the source article."
+  url: String
 }
 
 "Input type for adding an object to a hierarchy list"
@@ -1969,6 +2279,8 @@ type GraphqlFolder {
   updatedAt: Date
   "The user who created this folder"
   createdBy: ID
+  "The app feature slug associated with this folder"
+  app_feature_slug: String
 }
 
 "Represents an item in favorites"
@@ -2070,6 +2382,40 @@ type AppSubscriptions {
   total_count: Int!
   "The value, which identifies the exact point to continue fetching the subscriptions from"
   cursor: String
+}
+
+"A granted marketplace app discount offer"
+type CreateMarketplaceAppDiscount {
+  "Number of days a discount will be valid"
+  days_valid: Int!
+  "Percentage value of a discount"
+  discount: Int!
+  "Is discount recurring"
+  is_recurring: Boolean!
+  "The period of a discount"
+  period: DiscountPeriod
+  "List of app plan ids"
+  app_plan_ids: [ID!]
+  "The id of an app"
+  app_id: ID!
+}
+
+"Input data for creating a marketplace app discount"
+input CreateMarketplaceAppDiscountInput {
+  "Number of days a discount will be valid"
+  days_valid: Int!
+  "Percentage value of a discount"
+  discount: Int!
+  "The period of a discount"
+  period: DiscountPeriod
+  "List of app plan ids"
+  app_plan_ids: [ID!]!
+}
+
+"Result of granting a marketplace app discount offer"
+type CreateMarketplaceAppDiscountResult {
+  "The granted discount offer"
+  granted_discount: CreateMarketplaceAppDiscount!
 }
 
 type DeleteMarketplaceAppDiscount {
@@ -2240,6 +2586,18 @@ enum SubscriptionStatus {
   inactive
 }
 
+"Response from querying the apps documentation AI."
+type AppDocumentationAiResponse {
+  "Unique identifier for this query response."
+  id: ID
+  "The original question that was asked."
+  question: String
+  "The AI-generated answer based on the documentation."
+  answer: String!
+  "The conversation ID for follow-up queries."
+  conversation_id: ID
+}
+
 "Input for app feature release data."
 input AppFeatureReleaseDataInput {
   "The URL for the release."
@@ -2272,6 +2630,8 @@ type AppFeatureType {
   name: String
   "The app feature app id"
   app_id: ID
+  "The reference ID of the app feature"
+  reference_id: ID
   "The type of the app feature"
   type: String
   "The data of the app feature"
@@ -2464,7 +2824,7 @@ type AppType {
   name: String
   "The API app ID"
   api_app_id: ID
-  "The API app ID"
+  "The client ID used to identify the app for OAuth and API access"
   client_id: String
   "The app photo URL"
   photo_url: String
@@ -2526,6 +2886,36 @@ type CreateAppResponse {
   signing_secret: String
 }
 
+"Input for a single lifecycle event subscription"
+input LifecycleEventInput {
+  "The lifecycle event type (e.g., \"AppFeatureColumn:create\")"
+  event_type: String!
+  "The webhook URL for this event (max 2048 characters)"
+  webhook_url: String!
+  "Whether the subscription is synchronous (defaults to false)"
+  is_sync: Boolean
+}
+
+"A lifecycle subscription configuration for an entity"
+type LifecycleSubscriptionKind {
+  "The subscription ID"
+  id: ID
+  "The entity ID (e.g., app feature ID)"
+  entity_id: ID
+  "The type of entity (e.g., \"appFeature\")"
+  entity_type: String
+  "The lifecycle event type (e.g., \"AppFeatureColumn:create\")"
+  event_type: String
+  "The webhook URL for notifications"
+  webhook_url: String
+  "Whether the subscription is synchronous"
+  is_sync: Boolean
+  "When the subscription was created"
+  created_at: Date
+  "When the subscription was last updated"
+  updated_at: Date
+}
+
 "Input for updating an app feature with its associated data and release information."
 input UpdateAppFeatureInput {
   "The app feature data to update. This structure is dynamic and depends on the different app feature types."
@@ -2550,6 +2940,12 @@ input UpdateAppInput {
   webhook_url: String
   "Array of user IDs with access (replaces existing collaborators)"
   collaborators: [ID!]
+}
+
+"Input for updating lifecycle subscriptions for an entity"
+input UpdateLifecycleSubscriptionsInput {
+  "List of lifecycle event configurations (must have unique eventType values)"
+  lifecycle_events: [LifecycleEventInput!]!
 }
 
 "Your monday.com account"
@@ -2786,6 +3182,8 @@ enum BoardAttributes {
   communication
   "Board description."
   description
+  "The nickname of items on the board (item terminology)."
+  item_nickname
   "Board name."
   name
 }
@@ -3458,6 +3856,8 @@ enum FirstDayOfTheWeek {
 
 "A workspace folder containing boards, docs, sub folders, etc."
 type Folder {
+  "The folder's app feature slug (folders 2.0)"
+  app_feature_slug: String
   "The various items in the folder, not including sub-folders and dashboards."
   children: [Board]!
   "The folder's color."
@@ -3718,6 +4118,8 @@ type ItemsResponse {
 
 "Kind of assignee"
 enum Kind {
+  "Represents an AI agent"
+  agent
   "Represents a person"
   person
   "Represents a team"
@@ -4570,6 +4972,32 @@ enum WorkspacesOrderBy {
   created_at
 }
 
+"The account product kinds available for workspaces query."
+enum WorkspacesQueryAccountProductKind {
+  "monday work management"
+  core
+  "monday CRM"
+  crm
+  "workforms"
+  forms
+  "monday marketer"
+  marketing
+  "monday projects"
+  project_management
+  "monday service"
+  service
+  "monday dev"
+  software
+  "canvas"
+  whiteboard
+}
+
+"Parameters to filter workspaces"
+input WorkspacesQueryInput {
+  "Filter workspaces by account product kind (core \/ marketing \/ crm \/ software \/\nproject_management \/ service \/ forms \/ whiteboard)"
+  account_product_kind: WorkspacesQueryAccountProductKind
+}
+
 "The workspace subscriber kind."
 enum WorkspaceSubscriberKind {
   "Workspace owner."
@@ -4621,6 +5049,166 @@ type ConvertBoardToProjectResult {
   message: String
   projectId: ID
   process_id: String
+}
+
+input CreateProjectInput {
+  "The name of the project to create"
+  name: String!
+  "The project's privacy setting (public \/ private)"
+  board_kind: BoardKind!
+  "Optional template id to create the project from. Currently only supported for solution templates"
+  template_id: ID
+  "Optional list of companion features to enable (currently only \"resource_planner\")"
+  companions: [String!]
+  "Optional workspace ID to associate with the project"
+  workspace_id: String
+  "Optional folder ID to associate with the project"
+  folder_id: String
+  "Optional external callback URL where the project ID will be sent after async creation. The callback will receive a POST request with { is_success: boolean, process_id: string, project_id?: number }"
+  callback_url: String
+}
+
+type CreateProjectResult {
+  "Indicates if the project creation request was accepted"
+  success: Boolean
+  "Success message when project creation is initiated"
+  message: String
+  "Error message if project creation request failed"
+  error: String
+  "Unique process ID for tracking this creation request. This will be included in the callback when creation completes."
+  process_id: ID
+}
+
+"An action item from a meeting."
+type ActionItem {
+  "The unique identifier of the action item."
+  id: ID!
+  "The text content of the action item."
+  content: String!
+  "Whether the action item has been completed."
+  is_completed: Boolean!
+  "The owner assigned to the action item."
+  owner: String
+  "The due date of the action item."
+  due_date: Date
+}
+
+"A recorded meeting with its metadata, transcript, and insights."
+type Meeting {
+  "The unique identifier of the meeting."
+  id: ID!
+  "The title of the meeting."
+  title: String!
+  "The start time of the meeting."
+  start_time: Date!
+  "The end time of the meeting."
+  end_time: Date!
+  "The duration of the recording in seconds."
+  recording_duration: Int
+  "The type of access the current user has to this meeting."
+  access_type: MeetingAccess!
+  "The URL to view the meeting in the notetaker."
+  meeting_link: String!
+  "The list of participants in the meeting."
+  participants: [Participant!]!
+  "The AI-generated summary of the meeting."
+  summary: String
+  "The topics discussed during the meeting."
+  topics: [Topic!]
+  "The action items from the meeting."
+  action_items: [ActionItem!]
+  "The transcript entries for the meeting."
+  transcript: [TranscriptEntry!]
+}
+
+"The type of access the current user has to a meeting."
+enum MeetingAccess {
+  "The user was a participant in the meeting or invited the bot."
+  OWN
+  "The meeting was shared directly with the user or their team."
+  SHARED_WITH_ME
+  "The meeting was shared with the account."
+  SHARED_WITH_ACCOUNT
+}
+
+"Filter for the access level of meetings in the query."
+enum MeetingAccessFilter {
+  "The user was a participant in the meeting or invited the bot."
+  OWN
+  "The meeting was shared directly with the user or their team."
+  SHARED_WITH_ME
+  "The meeting was shared with the account."
+  SHARED_WITH_ACCOUNT
+  "All meetings the user has access to (own, shared with user, and shared with account)."
+  ALL
+}
+
+"Filters for the meetings query."
+input MeetingsFilterInput {
+  "Filter meetings by specific IDs."
+  ids: [ID!]
+  "Search meetings by title, participant name, or email."
+  search: String
+  "Filter meetings by access level. Defaults to OWN, returning only meetings the user owns."
+  access: MeetingAccessFilter = OWN
+}
+
+"A paginated response containing meetings."
+type MeetingsResponse {
+  "The list of meetings in the current page."
+  meetings: [Meeting!]
+  "Pagination metadata for fetching additional pages."
+  page_info: PageInfo
+}
+
+"Namespace for all notetaker-related queries."
+type NotetakerQueries {
+  "Retrieve a paginated list of meetings with completed recordings that the current user has view permissions for."
+  meetings("Maximum number of meetings to return per page (1-100)." limit: Int = 10 "Cursor for pagination. Use cursor from the previous page_info." cursor: String "Filters to apply to the meetings list." filters: MeetingsFilterInput): MeetingsResponse
+}
+
+"Pagination metadata for cursor-based pagination."
+type PageInfo {
+  "Whether there are more results available after this page."
+  has_next_page: Boolean
+  "Cursor to use as the \"after\" argument to fetch the next page."
+  cursor: String
+}
+
+"A meeting participant."
+type Participant {
+  "The email address of the participant."
+  email: String
+}
+
+"A talking point within a meeting topic."
+type TalkingPoint {
+  "The text content of the talking point."
+  content: String!
+  "The timestamp of the talking point in seconds."
+  timestamp: Float!
+}
+
+"A topic discussed during a meeting."
+type Topic {
+  "The title of the topic."
+  title: String!
+  "The talking points discussed under this topic."
+  talking_points: [TalkingPoint!]!
+}
+
+"A single entry in a meeting transcript."
+type TranscriptEntry {
+  "The transcribed text content."
+  text: String!
+  "The start time of the transcript entry in seconds."
+  start_time: Float!
+  "The end time of the transcript entry in seconds."
+  end_time: Float!
+  "The name of the speaker."
+  speaker: String!
+  "The language of the transcript entry."
+  language: String!
 }
 
 type BoardMuteSettings {
@@ -4746,12 +5334,38 @@ type Object {
   owners: [User!]
   "List of users who are subscribers to this object. Subscribers receive notifications about changes."
   subscribers: [User!]
+  "Relations for this object"
+  relations("Kind of the relation to fetch. If not provided, all relation kinds are returned." kind: RelationKind "Direction of the relation (defaults to \"outgoing\")" direction: RelationDirection = OUTGOING): [ObjectRelation!]
 }
 
 "Response for object operations indicating success or failure"
 type ObjectOperationResponse {
   "Indicates whether the operation was successful"
   success: Boolean
+}
+
+"Represents a relation between two objects"
+type ObjectRelation {
+  "Unique identifier for the relation"
+  id: ID
+  "ID of the source object in the relation"
+  source_object_id: ID
+  "ID of the target object in the relation"
+  target_id: ID
+  "Type of the target object (board or dashboard)"
+  target_object_type: TargetObject
+  "Kind of the relation"
+  kind: String
+}
+
+"Input for creating object relations"
+input ObjectRelationInput {
+  "Kind of the relation"
+  kind: RelationKind!
+  "ID of the target object"
+  target_id: ID!
+  "Type of the target object (defaults to \"board\")"
+  target_object_type: TargetObject = BOARD
 }
 
 "The state of the object."
@@ -4784,12 +5398,36 @@ enum OrderBy {
   USED_AT
 }
 
+"The direction of the relation from the object perspective"
+enum RelationDirection {
+  "Relations where the object is the source"
+  OUTGOING
+  "Relations where the object is the target"
+  INCOMING
+}
+
+"The kind\/type of relation between objects"
+enum RelationKind {
+  "Alias relation type"
+  ALIAS
+  "Dependency relation type"
+  DEPENDENCY
+}
+
 "Defines the type of the user's role as members of the object"
 enum SubscriberKind {
   "User will be added as an owner of the object, granting them full control permissions."
   OWNER
   "User will be added as a subscriber to the object, receiving notifications about changes."
   SUBSCRIBER
+}
+
+"The type of target object for a relation"
+enum TargetObject {
+  "Board object type"
+  BOARD
+  "Dashboard object type"
+  DASHBOARD
 }
 
 "Input for updating an object"
@@ -4800,6 +5438,8 @@ input UpdateObjectInput {
   description: String
   "The new privacy kind for the object."
   privacy_kind: PrivacyKind
+  "Optional relations to add to the object"
+  relations: [ObjectRelationInput!]
 }
 
 "API usage data."
@@ -4895,14 +5535,6 @@ input AggregateGroupByElementInput {
 }
 
 type AggregateGroupByResult {
-  "The string value of the group by result."
-  value_string: String
-  "The integer value of the group by result."
-  value_int: Int
-  "The float value of the group by result."
-  value_float: Float
-  "The boolean value of the group by result."
-  value_boolean: Boolean
   "The value of the group by result. Can be an integer, float, string, or boolean."
   value: JSON
 }
@@ -5087,6 +5719,66 @@ type DirectoryResourcesResponse {
 type UpdateDirectoryResourceAttributesResponse {
   "Indicates whether the batch update completed successfully."
   success: Boolean!
+}
+
+"Input for enrolling multiple items to a single sequence"
+input EnrollToSequenceInput {
+  "The ID of the sequence to enroll items to"
+  sequence_id: ID!
+  "The ID of the board containing the items"
+  board_id: ID!
+  "List of item IDs to enroll (maximum 50 items)"
+  item_ids: [ID!]!
+}
+
+"Result of enrolling items to a sequence"
+type EnrollToSequenceResult {
+  "List of item IDs that were successfully enrolled, including items that were provided and are already enrolled"
+  succeeded_item_ids: [ID!]
+  "List of item IDs that failed to enroll"
+  failed_item_ids: [ID!]
+}
+
+"A sequence that can be used to automate email outreach"
+type Sequence {
+  "The unique identifier of the sequence"
+  id: ID
+  "The title of the sequence"
+  title: String
+  "The current status of the sequence"
+  status: SequenceStatus
+  "The type of context the sequence is associated with"
+  context_type: SequenceContext
+  "The ID of the context (e.g., board ID) the sequence is associated with"
+  context_id: ID
+  "The ID of the user who owns the sequence"
+  user_id: ID
+  "The number of steps in the sequence"
+  step_count: Int
+  "The total duration of the sequence in seconds"
+  duration: Int
+  "The timestamp when the sequence was created or last updated"
+  created_at: Date
+  "The timestamp when the sequence was created or last updated"
+  updated_at: Date
+}
+
+"The type of context a sequence is associated with"
+enum SequenceContext {
+  "Sequence is associated with a board"
+  BOARD
+}
+
+"The status of a sequence"
+enum SequenceStatus {
+  "Sequence is active"
+  ACTIVE
+  "Sequence is inactive"
+  INACTIVE
+  "Sequence is missing required configuration"
+  MISSING_CONFIG
+  "Sequence has been deleted"
+  DELETED
 }
 
 "A monday dev sprint."
@@ -5515,6 +6207,10 @@ enum ExternalWidget {
   CALENDAR
   "A Gantt chart visualization of board timelines with dependencies, grouping, and coloring capabilities."
   GANTT
+  "App feature widgets for displaying custom application features. Used to embed and render app-specific functionality within dashboards and views."
+  APP_FEATURE
+  "ListView widgets for displaying cross-board items in a tabular list format with filtering and sorting."
+  LISTVIEW
 }
 
 "Data visualization object."
@@ -5523,7 +6219,7 @@ type Widget {
   id: ID
   "Parent container where the widget is placed."
   parent: WidgetParentOutput
-  "The type of widget (CHART, NUMBER, BATTERY, CALENDAR, GANTT)."
+  "The type of widget (CHART, NUMBER, BATTERY, CALENDAR, GANTT, MAP)."
   kind: ExternalWidget
   "Widget label (UTF-8 chars)."
   name: String
@@ -5803,6 +6499,7 @@ enum FormFontSize {
   Large
 }
 
+"String specifying the form display format. Can be a step by step form or a classic one page form."
 enum FormFormat {
   OneByOne
   Classic
@@ -5937,6 +6634,7 @@ type FormQuestion {
   required: Boolean!
   settings: FormQuestionSettings
   options: [FormQuestionOption!]
+  "Conditional logic rules that control when this question is displayed based on other question answers."
   showIfRules: JSON
 }
 
@@ -6019,26 +6717,47 @@ input FormQuestionSettingsInput {
 
 "The type of the question (ex. text, number, MultiSelect etc.)"
 enum FormQuestionType {
+  "A yes\/no checkbox question."
   Boolean
+  "A question that links to items on a connected board. Board configuration must be done through the column settings."
   ConnectedBoards
+  "A country selection question with a searchable dropdown."
   Country
+  "A date picker question with optional time selection."
   Date
+  "A date range question allowing start and end date selection."
   DateRange
+  "An email address input question with format validation."
   Email
+  "A file upload question for attachments."
   File
+  "A URL\/link input question with optional format validation."
   Link
+  "A location\/address input question with optional geolocation autofill."
   Location
+  "A multi-line text input question for longer responses."
   LongText
+  "A multiple-choice question allowing several selections."
   MultiSelect
+  "A name input question mapped to the item name column on the board."
   Name
+  "A numeric input question."
   Number
+  "A people picker question for selecting monday.com users."
   People
+  "A phone number input question with optional country prefix."
   Phone
+  "A rating question with a configurable scale."
   Rating
+  "A single-line text input question."
   ShortText
+  "A signature capture question for collecting drawn or uploaded signatures."
   Signature
+  "A single-choice question allowing one selection."
   SingleSelect
+  "A subitems question that creates sub-items on the board. Sub-items columns must be configured through the board."
   Subitems
+  "An updates\/comments question mapped to the item updates feed."
   Updates
 }
 
@@ -6185,7 +6904,7 @@ input PrefillSettingsInput {
 }
 
 input QuestionOptionInput {
-  "The label to display for the option"
+  "The display text for the option shown to respondents. Must be at least 1 character long."
   label: String!
 }
 
@@ -6251,7 +6970,7 @@ input UpdateFormSettingsInput {
 
 input UpdateFormTagInput {
   "The value of the tag"
-  value: String
+  value: String @deprecated(reason: "Updating tag values is no longer supported after version 2026-07.")
 }
 
 input UpdateQuestionInput {

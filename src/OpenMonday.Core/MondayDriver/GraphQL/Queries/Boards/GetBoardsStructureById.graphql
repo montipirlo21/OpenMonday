@@ -1,5 +1,5 @@
 query GetBoardsStructureById($ids: [ID!]!) {
-  boards(ids: $ids) {
+  boards(ids: $ids, state: all) {
     id
     name
     updated_at

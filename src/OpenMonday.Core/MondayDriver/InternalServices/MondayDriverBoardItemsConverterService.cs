@@ -132,7 +132,16 @@ public class MondayDriverBoardItemsConverterService : IMondayDriverBoardItemsCon
                 case ColumnType.Dropdown:
                     {
                         IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue v = (IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue)val;
-                        result = MondayDriverDropDownColumnData.Create(v.Text);
+                        List<MondayDriverDropDownValuesEntity> peopleEntities = [];
+                        if (v.Values != null)
+                        {
+                            foreach (var p in v.Values)
+                            {
+                                peopleEntities.Add(MondayDriverDropDownValuesEntity.Create(p.Id, p.Label));
+                            }
+                        }
+
+                        result = MondayDriverDropDownColumnData.Create(v.Text, peopleEntities);
                         break;
                     }
                 case ColumnType.Text:
