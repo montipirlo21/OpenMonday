@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.6.0"></a>
+## [v1.6.0] - 2026-05-22
+### Feat
+- **gitignore:** edited gitignore
+
+### Pull Requests
+- Merge pull request [#106](https://github.com/montipirlo21/OpenMonday/issues/106) from montipirlo21/105-fix-strawberryshake-there-is-no-parser-registered-the-specified-type-problem
+
+
 <a name="v1.5.1"></a>
 ## [v1.5.1] - 2026-03-25
 ### Fix
@@ -352,7 +361,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.1...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.0...HEAD
+[v1.6.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.1...v1.6.0
 [v1.5.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.0...v1.5.1
 [v1.5.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.2...v1.5.0
 [v1.4.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.1...v1.4.2
