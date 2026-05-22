@@ -40,5 +40,12 @@ fragment ItemFragment on Item {
     ... on FormulaValue {
       display_value
     }
+
+     ... on DropdownValue {
+      values {
+        id
+        label
+      }
+    }
   }
 }

@@ -1911,13 +1911,14 @@ namespace OpenMonday.Core.strawberryShake
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue
     {
-        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
+        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> values)
         {
             Id = id;
             Value = @value;
             Type = type;
             Text = text;
             this.__typename = __typename;
+            Values = values;
         }
 
         /// <summary>
@@ -1937,6 +1938,10 @@ namespace OpenMonday.Core.strawberryShake
         /// The name of the current Object type at runtime.
         /// </summary>
         public global::System.String __typename { get; }
+        /// <summary>
+        /// The selected dropdown values.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> Values { get; }
 
         public virtual global::System.Boolean Equals(GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue? other)
         {
@@ -1955,7 +1960,7 @@ namespace OpenMonday.Core.strawberryShake
                 return false;
             }
 
-            return (Id.Equals(other.Id)) && global::System.Object.Equals(Value, other.Value) && Type.Equals(other.Type) && ((Text is null && other.Text is null) || Text != null && Text.Equals(other.Text)) && __typename.Equals(other.__typename);
+            return (Id.Equals(other.Id)) && global::System.Object.Equals(Value, other.Value) && Type.Equals(other.Type) && ((Text is null && other.Text is null) || Text != null && Text.Equals(other.Text)) && __typename.Equals(other.__typename) && global::StrawberryShake.Internal.ComparisonHelper.SequenceEqual(Values, other.Values);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -1996,6 +2001,11 @@ namespace OpenMonday.Core.strawberryShake
                 }
 
                 hash ^= 397 * __typename.GetHashCode();
+                foreach (var Values_elm in Values)
+                {
+                    hash ^= 397 * Values_elm.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -4847,6 +4857,76 @@ namespace OpenMonday.Core.strawberryShake
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption
+    {
+        public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption(global::System.String id, global::System.String label)
+        {
+            Id = id;
+            Label = label;
+        }
+
+        /// <summary>
+        /// The dropdown item's unique identifier.
+        /// </summary>
+        public global::System.String Id { get; }
+        /// <summary>
+        /// The dropdown item's label.
+        /// </summary>
+        public global::System.String Label { get; }
+
+        public virtual global::System.Boolean Equals(GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id)) && Label.Equals(other.Label);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * Label.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity : global::System.IEquatable<GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity>, IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity
     {
         public GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Persons_and_teams_PeopleEntity(global::System.String id, global::OpenMonday.Core.strawberryShake.Kind? kind)
@@ -5115,6 +5195,10 @@ namespace OpenMonday.Core.strawberryShake
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
     {
+        /// <summary>
+        /// The selected dropdown values.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> Values { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
@@ -5307,6 +5391,24 @@ namespace OpenMonday.Core.strawberryShake
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values
+    {
+        /// <summary>
+        /// The dropdown item's unique identifier.
+        /// </summary>
+        public global::System.String Id { get; }
+        /// <summary>
+        /// The dropdown item's label.
+        /// </summary>
+        public global::System.String Label { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial interface IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption : IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values
     {
     }
 
@@ -6682,13 +6784,14 @@ namespace OpenMonday.Core.strawberryShake
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue
     {
-        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename)
+        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue(global::System.String id, global::System.Text.Json.JsonElement? @value, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String? text, global::System.String __typename, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> values)
         {
             Id = id;
             Value = @value;
             Type = type;
             Text = text;
             this.__typename = __typename;
+            Values = values;
         }
 
         /// <summary>
@@ -6708,6 +6811,10 @@ namespace OpenMonday.Core.strawberryShake
         /// The name of the current Object type at runtime.
         /// </summary>
         public global::System.String __typename { get; }
+        /// <summary>
+        /// The selected dropdown values.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> Values { get; }
 
         public virtual global::System.Boolean Equals(GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue? other)
         {
@@ -6726,7 +6833,7 @@ namespace OpenMonday.Core.strawberryShake
                 return false;
             }
 
-            return (Id.Equals(other.Id)) && global::System.Object.Equals(Value, other.Value) && Type.Equals(other.Type) && ((Text is null && other.Text is null) || Text != null && Text.Equals(other.Text)) && __typename.Equals(other.__typename);
+            return (Id.Equals(other.Id)) && global::System.Object.Equals(Value, other.Value) && Type.Equals(other.Type) && ((Text is null && other.Text is null) || Text != null && Text.Equals(other.Text)) && __typename.Equals(other.__typename) && global::StrawberryShake.Internal.ComparisonHelper.SequenceEqual(Values, other.Values);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -6767,6 +6874,11 @@ namespace OpenMonday.Core.strawberryShake
                 }
 
                 hash ^= 397 * __typename.GetHashCode();
+                foreach (var Values_elm in Values)
+                {
+                    hash ^= 397 * Values_elm.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -9618,6 +9730,76 @@ namespace OpenMonday.Core.strawberryShake
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption
+    {
+        public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption(global::System.String id, global::System.String label)
+        {
+            Id = id;
+            Label = label;
+        }
+
+        /// <summary>
+        /// The dropdown item's unique identifier.
+        /// </summary>
+        public global::System.String Id { get; }
+        /// <summary>
+        /// The dropdown item's label.
+        /// </summary>
+        public global::System.String Label { get; }
+
+        public virtual global::System.Boolean Equals(GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Id.Equals(other.Id)) && Label.Equals(other.Label);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Id.GetHashCode();
+                hash ^= 397 * Label.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity : global::System.IEquatable<GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity>, IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity
     {
         public GetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Persons_and_teams_PeopleEntity(global::System.String id, global::OpenMonday.Core.strawberryShake.Kind? kind)
@@ -9842,6 +10024,10 @@ namespace OpenMonday.Core.strawberryShake
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_DropdownValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
     {
+        /// <summary>
+        /// The selected dropdown values.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> Values { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
@@ -10034,6 +10220,24 @@ namespace OpenMonday.Core.strawberryShake
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_WorldClockValue : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values
+    {
+        /// <summary>
+        /// The dropdown item's unique identifier.
+        /// </summary>
+        public global::System.String Id { get; }
+        /// <summary>
+        /// The dropdown item's label.
+        /// </summary>
+        public global::System.String Label { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial interface IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values_DropdownValueOption : IGetBoardItemsByCursor_NextPage_Next_items_page_Items_Column_values_Values
     {
     }
 
@@ -12241,6 +12445,10 @@ namespace OpenMonday.Core.strawberryShake
     public enum Kind
     {
         /// <summary>
+        /// Represents an AI agent
+        /// </summary>
+        Agent,
+        /// <summary>
         /// Represents a person
         /// </summary>
         Person,
@@ -12259,6 +12467,7 @@ namespace OpenMonday.Core.strawberryShake
         {
             return serializedValue switch
             {
+                "agent" => Kind.Agent,
                 "person" => Kind.Person,
                 "team" => Kind.Team,
                 _ => throw new global::StrawberryShake.GraphQLClientException($"String value '{serializedValue}' can't be converted to enum Kind")};
@@ -12268,6 +12477,7 @@ namespace OpenMonday.Core.strawberryShake
         {
             return runtimeValue switch
             {
+                Kind.Agent => "agent",
                 Kind.Person => "person",
                 Kind.Team => "team",
                 _ => throw new global::StrawberryShake.GraphQLClientException($"Enum Kind value '{runtimeValue}' can't be converted to string")};
@@ -12289,6 +12499,10 @@ namespace OpenMonday.Core.strawberryShake
         /// </summary>
         Description,
         /// <summary>
+        /// The nickname of items on the board (item terminology).
+        /// </summary>
+        ItemNickname,
+        /// <summary>
         /// Board name.
         /// </summary>
         Name
@@ -12305,6 +12519,7 @@ namespace OpenMonday.Core.strawberryShake
             {
                 "communication" => BoardAttributes.Communication,
                 "description" => BoardAttributes.Description,
+                "item_nickname" => BoardAttributes.ItemNickname,
                 "name" => BoardAttributes.Name,
                 _ => throw new global::StrawberryShake.GraphQLClientException($"String value '{serializedValue}' can't be converted to enum BoardAttributes")};
         }
@@ -12315,6 +12530,7 @@ namespace OpenMonday.Core.strawberryShake
             {
                 BoardAttributes.Communication => "communication",
                 BoardAttributes.Description => "description",
+                BoardAttributes.ItemNickname => "item_nickname",
                 BoardAttributes.Name => "name",
                 _ => throw new global::StrawberryShake.GraphQLClientException($"Enum BoardAttributes value '{runtimeValue}' can't be converted to string")};
         }
@@ -12324,7 +12540,7 @@ namespace OpenMonday.Core.strawberryShake
     /// Represents the operation service of the GetActivityLog GraphQL operation
     /// <code>
     /// query GetActivityLog($ids: [ID!], $from: ISO8601DateTime, $to: ISO8601DateTime) {
-    ///   boards(ids: $ids) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     updated_at
     ///     activity_logs(from: $from, to: $to) {
@@ -12447,6 +12663,18 @@ namespace OpenMonday.Core.strawberryShake
             0x69,
             0x64,
             0x73,
+            0x2c,
+            0x20,
+            0x73,
+            0x74,
+            0x61,
+            0x74,
+            0x65,
+            0x3a,
+            0x20,
+            0x61,
+            0x6c,
+            0x6c,
             0x29,
             0x20,
             0x7b,
@@ -12556,7 +12784,7 @@ namespace OpenMonday.Core.strawberryShake
             0x20,
             0x7d
         };
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "1a47c1be3ea882a3a1bcd26775e00395");
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "6b8271396fb4f1bec423b369b3d7899a");
 
         public override global::System.String ToString()
         {
@@ -12572,7 +12800,7 @@ namespace OpenMonday.Core.strawberryShake
     /// Represents the operation service of the GetActivityLog GraphQL operation
     /// <code>
     /// query GetActivityLog($ids: [ID!], $from: ISO8601DateTime, $to: ISO8601DateTime) {
-    ///   boards(ids: $ids) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     updated_at
     ///     activity_logs(from: $from, to: $to) {
@@ -12713,7 +12941,7 @@ namespace OpenMonday.Core.strawberryShake
     /// Represents the operation service of the GetActivityLog GraphQL operation
     /// <code>
     /// query GetActivityLog($ids: [ID!], $from: ISO8601DateTime, $to: ISO8601DateTime) {
-    ///   boards(ids: $ids) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     updated_at
     ///     activity_logs(from: $from, to: $to) {
@@ -12740,8 +12968,8 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Represents the operation service of the GetBoardItemsByCursor GraphQL operation
     /// <code>
-    /// query GetBoardItemsByCursor($ids: [ID!]!) {
-    ///   boards(ids: $ids) {
+    /// query GetBoardItemsByCursor($ids: [ID!]) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     items_page(limit: 100) {
     ///       __typename
@@ -12792,6 +13020,13 @@ namespace OpenMonday.Core.strawberryShake
     ///     }
     ///     ... on FormulaValue {
     ///       display_value
+    ///     }
+    ///     ... on DropdownValue {
+    ///       values {
+    ///         __typename
+    ///         id
+    ///         label
+    ///       }
     ///     }
     ///   }
     /// }
@@ -12847,7 +13082,6 @@ namespace OpenMonday.Core.strawberryShake
             0x44,
             0x21,
             0x5d,
-            0x21,
             0x29,
             0x20,
             0x7b,
@@ -12868,6 +13102,18 @@ namespace OpenMonday.Core.strawberryShake
             0x69,
             0x64,
             0x73,
+            0x2c,
+            0x20,
+            0x73,
+            0x74,
+            0x61,
+            0x74,
+            0x65,
+            0x3a,
+            0x20,
+            0x61,
+            0x6c,
+            0x6c,
             0x29,
             0x20,
             0x7b,
@@ -13351,11 +13597,67 @@ namespace OpenMonday.Core.strawberryShake
             0x20,
             0x7d,
             0x20,
+            0x2e,
+            0x2e,
+            0x2e,
+            0x20,
+            0x6f,
+            0x6e,
+            0x20,
+            0x44,
+            0x72,
+            0x6f,
+            0x70,
+            0x64,
+            0x6f,
+            0x77,
+            0x6e,
+            0x56,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x20,
+            0x7b,
+            0x20,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x73,
+            0x20,
+            0x7b,
+            0x20,
+            0x5f,
+            0x5f,
+            0x74,
+            0x79,
+            0x70,
+            0x65,
+            0x6e,
+            0x61,
+            0x6d,
+            0x65,
+            0x20,
+            0x69,
+            0x64,
+            0x20,
+            0x6c,
+            0x61,
+            0x62,
+            0x65,
+            0x6c,
+            0x20,
+            0x7d,
+            0x20,
+            0x7d,
+            0x20,
             0x7d,
             0x20,
             0x7d
         };
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "99b1786e6a260fbe21dbd4b6e10b079a");
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "938d0a2e809cfc13f976625a9a30f7bc");
 
         public override global::System.String ToString()
         {
@@ -13370,8 +13672,8 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Represents the operation service of the GetBoardItemsByCursor GraphQL operation
     /// <code>
-    /// query GetBoardItemsByCursor($ids: [ID!]!) {
-    ///   boards(ids: $ids) {
+    /// query GetBoardItemsByCursor($ids: [ID!]) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     items_page(limit: 100) {
     ///       __typename
@@ -13422,6 +13724,13 @@ namespace OpenMonday.Core.strawberryShake
     ///     }
     ///     ... on FormulaValue {
     ///       display_value
+    ///     }
+    ///     ... on DropdownValue {
+    ///       values {
+    ///         __typename
+    ///         id
+    ///         label
+    ///       }
     ///     }
     ///   }
     /// }
@@ -13463,7 +13772,7 @@ namespace OpenMonday.Core.strawberryShake
             return With(r => r.ContextData["StrawberryShake.Transport.Http.HttpConnection.HttpClient"] = httpClient);
         }
 
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default)
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(ids);
             foreach (var configure in _configure)
@@ -13474,13 +13783,13 @@ namespace OpenMonday.Core.strawberryShake
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
             var request = CreateRequest(ids);
             return _operationExecutor.Watch(request, strategy);
         }
 
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids)
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids)
         {
             var variables = new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>();
             variables.Add("ids", FormatIds(ids));
@@ -13492,25 +13801,27 @@ namespace OpenMonday.Core.strawberryShake
             return new global::StrawberryShake.OperationRequest(id: GetBoardItemsByCursorQueryDocument.Instance.Hash.Value, name: "GetBoardItemsByCursor", document: GetBoardItemsByCursorQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
         }
 
-        private global::System.Object? FormatIds(global::System.Collections.Generic.IReadOnlyList<global::System.String> value)
+        private global::System.Object? FormatIds(global::System.Collections.Generic.IReadOnlyList<global::System.String>? value)
         {
             if (value is null)
             {
-                throw new global::System.ArgumentNullException(nameof(value));
+                return value;
             }
-
-            var value_list = new global::System.Collections.Generic.List<global::System.Object?>();
-            foreach (var value_elm in value)
+            else
             {
-                if (value_elm is null)
+                var value_list = new global::System.Collections.Generic.List<global::System.Object?>();
+                foreach (var value_elm in value)
                 {
-                    throw new global::System.ArgumentNullException(nameof(value_elm));
+                    if (value_elm is null)
+                    {
+                        throw new global::System.ArgumentNullException(nameof(value_elm));
+                    }
+
+                    value_list.Add(_iDFormatter.Format(value_elm));
                 }
 
-                value_list.Add(_iDFormatter.Format(value_elm));
+                return value_list;
             }
-
-            return value_list;
         }
 
         global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
@@ -13522,8 +13833,8 @@ namespace OpenMonday.Core.strawberryShake
     /// <summary>
     /// Represents the operation service of the GetBoardItemsByCursor GraphQL operation
     /// <code>
-    /// query GetBoardItemsByCursor($ids: [ID!]!) {
-    ///   boards(ids: $ids) {
+    /// query GetBoardItemsByCursor($ids: [ID!]) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     items_page(limit: 100) {
     ///       __typename
@@ -13575,6 +13886,13 @@ namespace OpenMonday.Core.strawberryShake
     ///     ... on FormulaValue {
     ///       display_value
     ///     }
+    ///     ... on DropdownValue {
+    ///       values {
+    ///         __typename
+    ///         id
+    ///         label
+    ///       }
+    ///     }
     ///   }
     /// }
     /// </code>
@@ -13585,8 +13903,8 @@ namespace OpenMonday.Core.strawberryShake
         global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery With(global::System.Action<global::StrawberryShake.OperationRequest> configure);
         global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery WithRequestUri(global::System.Uri requestUri);
         global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursorQuery WithHttpClient(global::System.Net.Http.HttpClient httpClient);
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String> ids, global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> ExecuteAsync(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetBoardItemsByCursorResult>> Watch(global::System.Collections.Generic.IReadOnlyList<global::System.String>? ids, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -13641,6 +13959,13 @@ namespace OpenMonday.Core.strawberryShake
     ///     }
     ///     ... on FormulaValue {
     ///       display_value
+    ///     }
+    ///     ... on DropdownValue {
+    ///       values {
+    ///         __typename
+    ///         id
+    ///         label
+    ///       }
     ///     }
     ///   }
     /// }
@@ -14202,11 +14527,67 @@ namespace OpenMonday.Core.strawberryShake
             0x20,
             0x7d,
             0x20,
+            0x2e,
+            0x2e,
+            0x2e,
+            0x20,
+            0x6f,
+            0x6e,
+            0x20,
+            0x44,
+            0x72,
+            0x6f,
+            0x70,
+            0x64,
+            0x6f,
+            0x77,
+            0x6e,
+            0x56,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x20,
+            0x7b,
+            0x20,
+            0x76,
+            0x61,
+            0x6c,
+            0x75,
+            0x65,
+            0x73,
+            0x20,
+            0x7b,
+            0x20,
+            0x5f,
+            0x5f,
+            0x74,
+            0x79,
+            0x70,
+            0x65,
+            0x6e,
+            0x61,
+            0x6d,
+            0x65,
+            0x20,
+            0x69,
+            0x64,
+            0x20,
+            0x6c,
+            0x61,
+            0x62,
+            0x65,
+            0x6c,
+            0x20,
+            0x7d,
+            0x20,
+            0x7d,
+            0x20,
             0x7d,
             0x20,
             0x7d
         };
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "2f078d30df537d5dc54533e5264ffbbb");
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "ff4d4784771da4d17e0e97733a20c127");
 
         public override global::System.String ToString()
         {
@@ -14270,6 +14651,13 @@ namespace OpenMonday.Core.strawberryShake
     ///     }
     ///     ... on FormulaValue {
     ///       display_value
+    ///     }
+    ///     ... on DropdownValue {
+    ///       values {
+    ///         __typename
+    ///         id
+    ///         label
+    ///       }
     ///     }
     ///   }
     /// }
@@ -14409,6 +14797,13 @@ namespace OpenMonday.Core.strawberryShake
     ///     ... on FormulaValue {
     ///       display_value
     ///     }
+    ///     ... on DropdownValue {
+    ///       values {
+    ///         __typename
+    ///         id
+    ///         label
+    ///       }
+    ///     }
     ///   }
     /// }
     /// </code>
@@ -14427,7 +14822,7 @@ namespace OpenMonday.Core.strawberryShake
     /// Represents the operation service of the GetBoardsStructureById GraphQL operation
     /// <code>
     /// query GetBoardsStructureById($ids: [ID!]!) {
-    ///   boards(ids: $ids) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     id
     ///     name
@@ -14521,6 +14916,18 @@ namespace OpenMonday.Core.strawberryShake
             0x69,
             0x64,
             0x73,
+            0x2c,
+            0x20,
+            0x73,
+            0x74,
+            0x61,
+            0x74,
+            0x65,
+            0x3a,
+            0x20,
+            0x61,
+            0x6c,
+            0x6c,
             0x29,
             0x20,
             0x7b,
@@ -14652,7 +15059,7 @@ namespace OpenMonday.Core.strawberryShake
             0x20,
             0x7d
         };
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "1cddf3e9531f7bf57150f9ad2171ac28");
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "412c1f1975ee127b1f82cd0dc8c82755");
 
         public override global::System.String ToString()
         {
@@ -14668,7 +15075,7 @@ namespace OpenMonday.Core.strawberryShake
     /// Represents the operation service of the GetBoardsStructureById GraphQL operation
     /// <code>
     /// query GetBoardsStructureById($ids: [ID!]!) {
-    ///   boards(ids: $ids) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     id
     ///     name
@@ -14786,7 +15193,7 @@ namespace OpenMonday.Core.strawberryShake
     /// Represents the operation service of the GetBoardsStructureById GraphQL operation
     /// <code>
     /// query GetBoardsStructureById($ids: [ID!]!) {
-    ///   boards(ids: $ids) {
+    ///   boards(ids: $ids, state: all) {
     ///     __typename
     ///     id
     ///     name
@@ -17244,7 +17651,7 @@ namespace OpenMonday.Core.strawberryShake.State
                     throw new global::System.ArgumentNullException();
                 }
 
-                returnValue = new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(dropdownValue.Id ?? throw new global::System.ArgumentNullException(), dropdownValue.Value, dropdownValue.Type!.Value, dropdownValue.Text, dropdownValue.__typename ?? throw new global::System.ArgumentNullException());
+                returnValue = new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(dropdownValue.Id ?? throw new global::System.ArgumentNullException(), dropdownValue.Value, dropdownValue.Type!.Value, dropdownValue.Text, dropdownValue.__typename ?? throw new global::System.ArgumentNullException(), MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(dropdownValue.Values, snapshot));
             }
             else if (data is global::OpenMonday.Core.strawberryShake.State.EmailValueData emailValue)
             {
@@ -17506,6 +17913,37 @@ namespace OpenMonday.Core.strawberryShake.State
                 }
 
                 returnValue = new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue(worldClockValue.Id ?? throw new global::System.ArgumentNullException(), worldClockValue.Value, worldClockValue.Type!.Value, worldClockValue.Text, worldClockValue.__typename ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var dropdownValueOptions = new global::System.Collections.Generic.List<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values>();
+            foreach (global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData child in list)
+            {
+                dropdownValueOptions.Add(MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(child, snapshot));
+            }
+
+            return dropdownValueOptions;
+        }
+
+        private global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values returnValue = default !;
+            if (data.__typename.Equals("DropdownValueOption", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption(data.Id ?? throw new global::System.ArgumentNullException(), data.Label ?? throw new global::System.ArgumentNullException());
             }
             else
             {
@@ -17794,7 +18232,7 @@ namespace OpenMonday.Core.strawberryShake.State
                     throw new global::System.ArgumentNullException();
                 }
 
-                returnValue = new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(dropdownValue.Id ?? throw new global::System.ArgumentNullException(), dropdownValue.Value, dropdownValue.Type!.Value, dropdownValue.Text, dropdownValue.__typename ?? throw new global::System.ArgumentNullException());
+                returnValue = new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_DropdownValue(dropdownValue.Id ?? throw new global::System.ArgumentNullException(), dropdownValue.Value, dropdownValue.Type!.Value, dropdownValue.Text, dropdownValue.__typename ?? throw new global::System.ArgumentNullException(), MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(dropdownValue.Values, snapshot));
             }
             else if (data is global::OpenMonday.Core.strawberryShake.State.EmailValueData emailValue)
             {
@@ -18056,6 +18494,37 @@ namespace OpenMonday.Core.strawberryShake.State
                 }
 
                 returnValue = new global::OpenMonday.Core.strawberryShake.GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_WorldClockValue(worldClockValue.Id ?? throw new global::System.ArgumentNullException(), worldClockValue.Value, worldClockValue.Type!.Value, worldClockValue.Text, worldClockValue.__typename ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values> MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (list is null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var dropdownValueOptions = new global::System.Collections.Generic.List<global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values>();
+            foreach (global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData child in list)
+            {
+                dropdownValueOptions.Add(MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(child, snapshot));
+            }
+
+            return dropdownValueOptions;
+        }
+
+        private global::OpenMonday.Core.strawberryShake.IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values MapNonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values returnValue = default !;
+            if (data.__typename.Equals("DropdownValueOption", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values_DropdownValueOption(data.Id ?? throw new global::System.ArgumentNullException(), data.Label ?? throw new global::System.ArgumentNullException());
             }
             else
             {
@@ -19350,7 +19819,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("DropdownValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.DropdownValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")));
+                return new global::OpenMonday.Core.strawberryShake.State.DropdownValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), values: Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "values")));
             }
 
             if (typename?.Equals("EmailValue", global::System.StringComparison.Ordinal) ?? false)
@@ -19529,6 +19998,48 @@ namespace OpenMonday.Core.strawberryShake.State
             }
 
             return _columnTypeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData> Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var dropdownValueOptions = new global::System.Collections.Generic.List<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                dropdownValueOptions.Add(Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(child));
+            }
+
+            return dropdownValueOptions;
+        }
+
+        private global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("DropdownValueOption", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), label: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "label")));
+            }
+
+            throw new global::System.NotSupportedException();
         }
 
         private global::System.DateOnly? Deserialize_DateOnly(global::System.Text.Json.JsonElement? obj)
@@ -19880,7 +20391,7 @@ namespace OpenMonday.Core.strawberryShake.State
 
             if (typename?.Equals("DropdownValue", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.DropdownValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")));
+                return new global::OpenMonday.Core.strawberryShake.State.DropdownValueData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), @value: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "value")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), text: Deserialize_String(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "text")), values: Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "values")));
             }
 
             if (typename?.Equals("EmailValue", global::System.StringComparison.Ordinal) ?? false)
@@ -20059,6 +20570,48 @@ namespace OpenMonday.Core.strawberryShake.State
             }
 
             return _columnTypeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData> Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_ValuesNonNullableArray(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var dropdownValueOptions = new global::System.Collections.Generic.List<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                dropdownValueOptions.Add(Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(child));
+            }
+
+            return dropdownValueOptions;
+        }
+
+        private global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData Deserialize_NonNullableIGetBoardItemsByCursor_Boards_Items_page_Items_Column_values_Values(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("DropdownValueOption", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), label: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "label")));
+            }
+
+            throw new global::System.NotSupportedException();
         }
 
         private global::System.DateOnly? Deserialize_DateOnly(global::System.Text.Json.JsonElement? obj)
@@ -21379,13 +21932,14 @@ namespace OpenMonday.Core.strawberryShake.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class DropdownValueData : IMirroredValueData, IColumnValueData
     {
-        public DropdownValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !)
+        public DropdownValueData(global::System.String __typename, global::System.String? id = default !, global::System.Text.Json.JsonElement? @value = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? text = default !, global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData>? values = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Id = id;
             Value = @value;
             Type = type;
             Text = text;
+            Values = values;
         }
 
         public global::System.String __typename { get; }
@@ -21396,6 +21950,8 @@ namespace OpenMonday.Core.strawberryShake.State
         ///<summary>The column's type.</summary>
         public global::OpenMonday.Core.strawberryShake.ColumnType? Type { get; }
         public global::System.String? Text { get; }
+        ///<summary>The selected dropdown values.</summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.DropdownValueOptionData>? Values { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
@@ -22081,6 +22637,23 @@ namespace OpenMonday.Core.strawberryShake.State
         ///<summary>The column's type.</summary>
         public global::OpenMonday.Core.strawberryShake.ColumnType? Type { get; }
         public global::System.String? Text { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
+    public partial class DropdownValueOptionData
+    {
+        public DropdownValueOptionData(global::System.String __typename, global::System.String? id = default !, global::System.String? label = default !)
+        {
+            this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
+            Id = id;
+            Label = label;
+        }
+
+        public global::System.String __typename { get; }
+        ///<summary>The dropdown item's unique identifier.</summary>
+        public global::System.String? Id { get; }
+        ///<summary>The dropdown item's label.</summary>
+        public global::System.String? Label { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
