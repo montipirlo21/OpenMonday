@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.6.1"></a>
+## [v1.6.1] - 2026-06-23
+### Feat
+- **dropdown:** add dropdown column support
+
+### Pull Requests
+- Merge pull request [#108](https://github.com/montipirlo21/OpenMonday/issues/108) from montipirlo21/107-query-board-archived-state-all-and-dropdown-column-fix
+
+
 <a name="v1.6.0"></a>
 ## [v1.6.0] - 2026-05-22
 ### Feat
@@ -361,7 +370,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.1...HEAD
+[v1.6.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.0...v1.6.1
 [v1.6.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.1...v1.6.0
 [v1.5.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.0...v1.5.1
 [v1.5.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.4.2...v1.5.0
