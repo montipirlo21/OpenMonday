@@ -1,4 +1,6 @@
 
+using OpenMonday.Core.Core.Models.DropDown;
+
 public interface IBoardItemBuilder
 {
     Dictionary<string, Board_Column_Base> GenericItemBuilders(MondayColumnsToBoardMappings columnMapping, MondayDriverBaseTask task);
@@ -10,4 +12,8 @@ public interface IBoardItemBuilder
     Board_Column_Timeline Build_Board_Column_Timeline(MondayDriverBaseColumn column);
 
     Board_Column_Status Build_Board_Column_Status(MondayDriverBaseColumn column);
+
+    Board_Column_DropDown Build_Board_Column_DropDown(MondayDriverBaseColumn column);
+    Board_DropDownValues Build_Board_Column_DropDown_Board_DropDownValues(MondayDriverDropDownValuesEntity value);
+
 }

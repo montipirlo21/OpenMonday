@@ -1,4 +1,5 @@
 
+using OpenMonday.Core.Core.Models.DropDown;
 using OpenMonday.Core.strawberryShake;
 
 public class BoardItemBuilder : IBoardItemBuilder
@@ -53,6 +54,10 @@ public class BoardItemBuilder : IBoardItemBuilder
             else if (map.DestinationBoardType == typeof(Board_Column_String_Value))
             {
                 col = Build_Board_Column_String_Value(taskColumn);
+            }
+             else if (map.DestinationBoardType == typeof(Board_Column_DropDown))
+            {
+                col = Build_Board_Column_DropDown(taskColumn);
             }
             else
             {
@@ -314,6 +319,77 @@ public class BoardItemBuilder : IBoardItemBuilder
             throw;
         }
     }
+
+     /// <summary>
+    /// Method for bulding a Board_Column_DropDown from column with MondayDriverDropDownColumnData
+    /// </summary>
+    /// <param name="column"></param>
+    /// <returns></returns>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="ApplicationException"></exception>
+    public Board_Column_DropDown Build_Board_Column_DropDown(MondayDriverBaseColumn column)
+    {
+        try
+        {
+            if (column == null || column.ColumnData == null)
+            {
+                throw new NullReferenceException("column == null || column.ColumnData == null");
+            }
+
+            var values = new List<Board_DropDownValues>();
+            if (column.Type == ColumnType.Dropdown)
+            {
+                if (column.ColumnData is MondayDriverDropDownColumnData data)
+                {
+                    foreach (var v in data.Values)
+                    {
+                        var vb = Build_Board_Column_DropDown_Board_DropDownValues(v);
+                        values.Add(vb);
+                    }
+
+                    return Board_Column_DropDown.Create(column.Text, values);
+                }
+                else
+                {
+                    return Board_Column_DropDown.Create_Unfilled();
+                }
+            }
+            else
+            {
+                throw new ApplicationException($"The type of the data column is not compatible with Board_Column_People {column.ColumnData.GetType()}");
+            }
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            throw;
+        }
+    }
+
+     /// <summary>
+    /// Method for bulding a Board_People from MondayPeopleEntity
+    /// </summary>
+    /// <param name="peopleEntity"></param>
+    /// <returns></returns>
+    /// <exception cref="NullReferenceException"></exception>
+    public Board_DropDownValues Build_Board_Column_DropDown_Board_DropDownValues(MondayDriverDropDownValuesEntity value)
+    {
+        try
+        {
+            if (value == null)
+            {
+                throw new NullReferenceException("values == null");
+            }
+            var people = Board_DropDownValues.Create(value.Id, value.Label);
+            return people;
+        }
+        catch (Exception ex)
+        {
+            LoggerHelper.LogException(ex);
+            throw;
+        }
+    }
+
 }
 
 
