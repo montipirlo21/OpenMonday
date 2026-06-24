@@ -508,9 +508,9 @@ type Mutation {
   create_object_relations("ID of the source object" source_object_id: ID! "List of relations to create" relations: [ObjectRelationInput!]!): [ObjectRelation!]
   "Delete a specific object relation or all relations for an object. Returns the number of relations deleted."
   delete_object_relation("ID of the source object" source_object_id: ID! "ID of the relation to delete. If not provided, deletes all relations for the source object." relation_id: ID): Int
-  "Connect project to portfolio"
+  "Connect an existing project to a portfolio. When a callback_url is provided the mutation returns immediately with a process_id, and the result is POSTed to that URL once the operation completes. The callback payload is: { is_success: boolean, process_id: string, portfolio_item_id?: string }."
   connect_project_to_portfolio("The ID of the project to connect" projectBoardId: ID! "The ID of the portfolio to connect to" portfolioBoardId: ID!): ConnectProjectResult
-  "Create a new portfolio"
+  "Create a new portfolio. When a callback_url is provided the mutation returns immediately with a process_id, and the portfolio_id is POSTed to that URL once the portfolio is actually created. The callback payload is: { is_success: boolean, process_id: string, portfolio_id?: number }."
   create_portfolio(boardName: String! boardPrivacy: String! destinationWorkspaceId: Int): CreatePortfolioResult
   "Update attributes (Job Role, Skills, or Location) for multiple resources in the directory"
   update_directory_resources_attributes("The attribute type to update (JOB_ROLE, SKILLS, or LOCATION)" attribute: DirectoryResourceAttribute! "The values of the attribute to update" values: [String!]! "List of resource IDs to update" resource_ids: [ID!]!): UpdateDirectoryResourceAttributesResponse

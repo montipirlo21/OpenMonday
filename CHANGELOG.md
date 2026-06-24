@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v1.6.2"></a>
+## [v1.6.2] - 2026-06-24
+### Feat
+- **settins:** add settings informazion for status and dropdown
+
+### Fix
+- **MondayDriverColumnStatusSettingSchema:** add information
+
+### Pull Requests
+- Merge pull request [#110](https://github.com/montipirlo21/OpenMonday/issues/110) from montipirlo21/109-add-dropdrown-column-support
+
+
 <a name="v1.6.1"></a>
 ## [v1.6.1] - 2026-06-23
 ### Feat
@@ -370,7 +382,8 @@
 - Merge pull request [#4](https://github.com/montipirlo21/OpenMonday/issues/4) from montipirlo21/1-create-base-structure-of-the-solution
 
 
-[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.1...HEAD
+[Unreleased]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.2...HEAD
+[v1.6.2]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.1...v1.6.2
 [v1.6.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.6.0...v1.6.1
 [v1.6.0]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.1...v1.6.0
 [v1.5.1]: https://github.com/montipirlo21/OpenMonday/compare/v1.5.0...v1.5.1
