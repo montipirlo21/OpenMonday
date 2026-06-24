@@ -4,7 +4,7 @@ public static class JsonHelper
 {
 
     private static readonly JsonSerializerOptions _options = new JsonSerializerOptions
-    {     
+    {
         Converters = { new JsonStringEnumConverter() }
     };
 
@@ -48,7 +48,7 @@ public static class JsonHelper
             throw;
         }
     }
-    
+
     public static JsonElement SerializeObjToJsonElementForMonday(object obj)
     {
         try
@@ -67,6 +67,24 @@ public static class JsonHelper
         catch (Exception e)
         {
             LoggerHelper.LogError($"Error SerializeObjToJsonElementForMonday");
+            LoggerHelper.LogException(e);
+            throw;
+        }
+    }
+
+    public static JsonElement SerializeObjToJsonElement(object obj)
+    {
+        try
+        {
+            string json = JsonSerializer.Serialize(obj);
+
+            using JsonDocument doc = JsonDocument.Parse(json);
+
+            return doc.RootElement.Clone();
+        }
+        catch (Exception e)
+        {
+            LoggerHelper.LogError($"Error SerializeObjToJsonElement");
             LoggerHelper.LogException(e);
             throw;
         }

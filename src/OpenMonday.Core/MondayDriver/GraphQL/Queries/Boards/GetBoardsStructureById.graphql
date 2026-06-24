@@ -8,7 +8,7 @@ query GetBoardsStructureById($ids: [ID!]!) {
       id
       title
       type
-      settings_str
+      settings
     }
     groups {
       title

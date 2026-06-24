@@ -1,3 +1,4 @@
+using System.Text.Json;
 using OpenMonday.Core.strawberryShake;
 using StrawberryShake;
 
@@ -15,16 +16,54 @@ public class TestDataBuilders_MondayDriverBoardStructure
         string boardName = "BoardName";
         int? item_count = 10;
 
+        var statusSettings = new
+        {
+            labels = new[]
+            {
+                new
+                {
+                    id = 0,
+                    color = 0,
+                    label = "In svolgimento",
+                    index = 0,
+                    is_done = false,
+                    is_deactivated = false,
+                    hex = "#fdab3d"
+                }
+            }
+        };
+
+        var dropDownSettings = new
+        {
+            labels = new[]
+            {
+                new { id = 1, label = "Altre Compagnie", is_deactivated = false },
+                new { id = 2, label = "Commerciale", is_deactivated = false },
+                new { id = 3, label = "Prodotti Fortech", is_deactivated = false },
+                new { id = 4, label = "Sviluppi Interni", is_deactivated = false },
+                new { id = 5, label = "Eni", is_deactivated = false },
+                new { id = 6, label = "Elettrico", is_deactivated = false },
+                new { id = 7, label = "Payments", is_deactivated = false },
+                new { id = 8, label = "Estero", is_deactivated = false },
+                new { id = 9, label = "Sviluppi interni", is_deactivated = false },
+                new { id = 10, label = "Reservation", is_deactivated = false },
+                new { id = 11, label = "Piccole Evolutive", is_deactivated = false },
+                new { id = 12, label = "Compagnia", is_deactivated = false },
+                new { id = 13, label = "Team Board", is_deactivated = false }
+            }
+        };
+
         var listColumn = new List<GetBoardsStructureById_Boards_Columns_Column>(){
-            new("name", "Name", ColumnType.Text, string.Empty),
-            new("project_owner", "Owner", ColumnType.People,"{\"hide_footer\":false,\"max_people_allowed\":\"0\"}"),
-            new("project_status", "Status", ColumnType.Status,"{\"done_colors\":[1],\"labels\":{\"0\":\"Working on it\",\"1\":\"Done\",\"2\":\"Stuck\"},\"labels_positions_v2\":{\"0\":0,\"1\":2,\"2\":1,\"5\":3},\"labels_colors\":{\"0\":{\"color\":\"#fdab3d\",\"border\":\"#e99729\",\"var_name\":\"orange\"},\"1\":{\"color\":\"#00c875\",\"border\":\"#00b461\",\"var_name\":\"green-shadow\"},\"2\":{\"color\":\"#df2f4a\",\"border\":\"#ce3048\",\"var_name\":\"red-shadow\"}}}"),
-            new("date", "Due date", ColumnType.Date,string.Empty),
-            new("timeline__1", "Timeline",ColumnType.Timeline,"{\"hide_footer\":false,\"show_set_as_milestone\":false}")
+            new("name", "Name", ColumnType.Text, JsonHelper.SerializeObjToJsonElement(string.Empty)),
+            new("project_owner", "Owner", ColumnType.People,JsonHelper.SerializeObjToJsonElement(string.Empty)),
+            new("project_status", "Status", ColumnType.Status,JsonHelper.SerializeObjToJsonElement(statusSettings)),
+            new("date", "Due date", ColumnType.Date,JsonHelper.SerializeObjToJsonElement(string.Empty)),
+            new("timeline__1", "Timeline",ColumnType.Timeline,JsonHelper.SerializeObjToJsonElement(string.Empty)),
+            new("dropdown", "Timeline",ColumnType.Dropdown,JsonHelper.SerializeObjToJsonElement(dropDownSettings))
         };
 
         var groups = new List<GetBoardsStructureById_Boards_Groups_Group>(){
-            new GetBoardsStructureById_Boards_Groups_Group("Group 1","11111111111"),            
+            new GetBoardsStructureById_Boards_Groups_Group("Group 1","11111111111"),
             new GetBoardsStructureById_Boards_Groups_Group("Group 2","22222222222")
         };
 
@@ -40,6 +79,22 @@ public class TestDataBuilders_MondayDriverBoardStructure
     public static GetBoardsStructureById_Boards_Columns_Column GenerateStatusColumnResult()
     {
         return new("project_status", "Status", ColumnType.Status,
-        "{\"done_colors\":[1],\"labels\":{\"0\":\"Working on it\",\"1\":\"Done\",\"2\":\"Stuck\"},\"labels_positions_v2\":{\"0\":0,\"1\":2,\"2\":1,\"5\":3},\"labels_colors\":{\"0\":{\"color\":\"#fdab3d\",\"border\":\"#e99729\",\"var_name\":\"orange\"},\"1\":{\"color\":\"#00c875\",\"border\":\"#00b461\",\"var_name\":\"green-shadow\"},\"2\":{\"color\":\"#df2f4a\",\"border\":\"#ce3048\",\"var_name\":\"red-shadow\"}}}");
+
+                   JsonHelper.SerializeObjToJsonElement(new
+                   {
+                       labels = new[]
+                        {
+                            new
+                            {
+                                id = 0,
+                                color = 0,
+                                label = "In svolgimento",
+                                index = 0,
+                                is_done = false,
+                                is_deactivated = false,
+                                hex = "#fdab3d"
+                            }
+                        }
+                   }));
     }
 }

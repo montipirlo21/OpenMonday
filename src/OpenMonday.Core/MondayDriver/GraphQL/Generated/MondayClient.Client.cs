@@ -10464,12 +10464,12 @@ namespace OpenMonday.Core.strawberryShake
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class GetBoardsStructureById_Boards_Columns_Column : global::System.IEquatable<GetBoardsStructureById_Boards_Columns_Column>, IGetBoardsStructureById_Boards_Columns_Column
     {
-        public GetBoardsStructureById_Boards_Columns_Column(global::System.String id, global::System.String title, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.String settings_Str)
+        public GetBoardsStructureById_Boards_Columns_Column(global::System.String id, global::System.String title, global::OpenMonday.Core.strawberryShake.ColumnType type, global::System.Text.Json.JsonElement? settings)
         {
             Id = id;
             Title = title;
             Type = type;
-            Settings_str = settings_Str;
+            Settings = settings;
         }
 
         /// <summary>
@@ -10485,9 +10485,9 @@ namespace OpenMonday.Core.strawberryShake
         /// </summary>
         public global::OpenMonday.Core.strawberryShake.ColumnType Type { get; }
         /// <summary>
-        /// The column's settings in a string form.
+        /// The column's settings in a JSON form.
         /// </summary>
-        public global::System.String Settings_str { get; }
+        public global::System.Text.Json.JsonElement? Settings { get; }
 
         public virtual global::System.Boolean Equals(GetBoardsStructureById_Boards_Columns_Column? other)
         {
@@ -10506,7 +10506,7 @@ namespace OpenMonday.Core.strawberryShake
                 return false;
             }
 
-            return (Id.Equals(other.Id)) && Title.Equals(other.Title) && Type.Equals(other.Type) && Settings_str.Equals(other.Settings_str);
+            return (Id.Equals(other.Id)) && Title.Equals(other.Title) && Type.Equals(other.Type) && global::System.Object.Equals(Settings, other.Settings);
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -10537,7 +10537,11 @@ namespace OpenMonday.Core.strawberryShake
                 hash ^= 397 * Id.GetHashCode();
                 hash ^= 397 * Title.GetHashCode();
                 hash ^= 397 * Type.GetHashCode();
-                hash ^= 397 * Settings_str.GetHashCode();
+                if (Settings != null)
+                {
+                    hash ^= 397 * Settings.GetHashCode();
+                }
+
                 return hash;
             }
         }
@@ -10684,9 +10688,9 @@ namespace OpenMonday.Core.strawberryShake
         /// </summary>
         public global::OpenMonday.Core.strawberryShake.ColumnType Type { get; }
         /// <summary>
-        /// The column's settings in a string form.
+        /// The column's settings in a JSON form.
         /// </summary>
-        public global::System.String Settings_str { get; }
+        public global::System.Text.Json.JsonElement? Settings { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
@@ -14833,7 +14837,7 @@ namespace OpenMonday.Core.strawberryShake
     ///       id
     ///       title
     ///       type
-    ///       settings_str
+    ///       settings
     ///     }
     ///     groups {
     ///       __typename
@@ -15017,10 +15021,6 @@ namespace OpenMonday.Core.strawberryShake
             0x6e,
             0x67,
             0x73,
-            0x5f,
-            0x73,
-            0x74,
-            0x72,
             0x20,
             0x7d,
             0x20,
@@ -15059,7 +15059,7 @@ namespace OpenMonday.Core.strawberryShake
             0x20,
             0x7d
         };
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "412c1f1975ee127b1f82cd0dc8c82755");
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "a3bf7c7e798c292eb6025f7452a02c97");
 
         public override global::System.String ToString()
         {
@@ -15086,7 +15086,7 @@ namespace OpenMonday.Core.strawberryShake
     ///       id
     ///       title
     ///       type
-    ///       settings_str
+    ///       settings
     ///     }
     ///     groups {
     ///       __typename
@@ -15204,7 +15204,7 @@ namespace OpenMonday.Core.strawberryShake
     ///       id
     ///       title
     ///       type
-    ///       settings_str
+    ///       settings
     ///     }
     ///     groups {
     ///       __typename
@@ -18684,7 +18684,7 @@ namespace OpenMonday.Core.strawberryShake.State
             IGetBoardsStructureById_Boards_Columns returnValue = default !;
             if (data?.__typename.Equals("Column", global::System.StringComparison.Ordinal) ?? false)
             {
-                returnValue = new GetBoardsStructureById_Boards_Columns_Column(data.Id ?? throw new global::System.ArgumentNullException(), data.Title ?? throw new global::System.ArgumentNullException(), data.Type ?? throw new global::System.ArgumentNullException(), data.Settings_str ?? throw new global::System.ArgumentNullException());
+                returnValue = new GetBoardsStructureById_Boards_Columns_Column(data.Id ?? throw new global::System.ArgumentNullException(), data.Title ?? throw new global::System.ArgumentNullException(), data.Type ?? throw new global::System.ArgumentNullException(), data.Settings);
             }
             else
             {
@@ -20727,6 +20727,7 @@ namespace OpenMonday.Core.strawberryShake.State
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _iSO8601DateTimeParser;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Int32, global::System.Int32> _intParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement> _jSONParser;
         public GetBoardsStructureByIdBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
@@ -20737,6 +20738,7 @@ namespace OpenMonday.Core.strawberryShake.State
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
             _iSO8601DateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("ISO8601DateTime") ?? throw new global::System.ArgumentException("No serializer for type `ISO8601DateTime` found.");
             _intParser = serializerResolver.GetLeafValueParser<global::System.Int32, global::System.Int32>("Int") ?? throw new global::System.ArgumentException("No serializer for type `Int` found.");
+            _jSONParser = serializerResolver.GetLeafValueParser<global::System.Text.Json.JsonElement, global::System.Text.Json.JsonElement>("JSON") ?? throw new global::System.ArgumentException("No serializer for type `JSON` found.");
         }
 
         protected override global::StrawberryShake.IOperationResultDataFactory<global::OpenMonday.Core.strawberryShake.IGetBoardsStructureByIdResult> ResultDataFactory { get; }
@@ -20875,7 +20877,7 @@ namespace OpenMonday.Core.strawberryShake.State
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("Column", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::OpenMonday.Core.strawberryShake.State.ColumnData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), title: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "title")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), settings_Str: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "settings_str")));
+                return new global::OpenMonday.Core.strawberryShake.State.ColumnData(typename, id: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "id")), title: Deserialize_NonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "title")), type: Deserialize_NonNullableColumnType(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "type")), settings: Deserialize_JsonElement(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "settings")));
             }
 
             throw new global::System.NotSupportedException();
@@ -20894,6 +20896,21 @@ namespace OpenMonday.Core.strawberryShake.State
             }
 
             return _columnTypeParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.Text.Json.JsonElement? Deserialize_JsonElement(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                return null;
+            }
+
+            if (obj.Value.ValueKind == global::System.Text.Json.JsonValueKind.Null)
+            {
+                return null;
+            }
+
+            return _jSONParser.Parse(obj.Value!);
         }
 
         private global::System.Collections.Generic.IReadOnlyList<global::OpenMonday.Core.strawberryShake.State.GroupData?>? Deserialize_IGetBoardsStructureById_Boards_GroupsArray(global::System.Text.Json.JsonElement? obj)
@@ -22676,13 +22693,13 @@ namespace OpenMonday.Core.strawberryShake.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "15.1.12.0")]
     public partial class ColumnData
     {
-        public ColumnData(global::System.String __typename, global::System.String? id = default !, global::System.String? title = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.String? settings_Str = default !)
+        public ColumnData(global::System.String __typename, global::System.String? id = default !, global::System.String? title = default !, global::OpenMonday.Core.strawberryShake.ColumnType? type = default !, global::System.Text.Json.JsonElement? settings = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Id = id;
             Title = title;
             Type = type;
-            Settings_str = settings_Str;
+            Settings = settings;
         }
 
         public global::System.String __typename { get; }
@@ -22692,8 +22709,8 @@ namespace OpenMonday.Core.strawberryShake.State
         public global::System.String? Title { get; }
         ///<summary>The column's type.</summary>
         public global::OpenMonday.Core.strawberryShake.ColumnType? Type { get; }
-        ///<summary>The column's settings in a string form.</summary>
-        public global::System.String? Settings_str { get; }
+        ///<summary>The column's settings in a JSON form.</summary>
+        public global::System.Text.Json.JsonElement? Settings { get; }
     }
 
     ///<summary>A team of users.</summary>

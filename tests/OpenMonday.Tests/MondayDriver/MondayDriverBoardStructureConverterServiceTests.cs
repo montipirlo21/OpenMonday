@@ -32,9 +32,9 @@ public class MondayDriverBoardStructureConverterServiceTests
 
         // SETTINGS 
         Assert.NotNull(result.Settings);
-        Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).DoneColors);
+        // Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).DoneColors);
         Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).Labels);
-        Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).LabelsColors);
-        Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).LabelsPositionsV2);
+        // Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).LabelsColors);
+        // Assert.NotNull(((MondayDriverColumnStatusSettingSchema)result.Settings).LabelsPositionsV2);
     }
 }

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using OpenMonday.Core.MondayDriver.InternalServices.Interfaces;
 using OpenMonday.Core.strawberryShake;
 
@@ -12,7 +13,7 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
             throw new NullReferenceException("mondayBoard has to be not null");
         }
 
-        DateTime? updatedAt= DateTimeConverter.ConvertFromStringToISO8601DateTime(mondayBoard.Updated_at);
+        DateTime? updatedAt = DateTimeConverter.ConvertFromStringToISO8601DateTime(mondayBoard.Updated_at);
 
         // Convert the columns schema
         var columns = ConvertToMondayDriverColumnSchema(mondayBoard.Columns);
@@ -77,27 +78,41 @@ public class MondayDriverBoardStructureConverterService : IMondayDriverBoardStru
             throw new NullReferenceException("column has to be not null");
         }
 
-        var settings = ConvertToColumnSettingSchema(column.Type, column.Settings_str);
+        var settings = ConvertToColumnSettingSchema(column.Type, column.Settings);
 
         return MondayDriverColumnSchema.Create(column.Id, column.Title, column.Type.ToString(), settings);
     }
 
-    public static MondayDriverColumnSettingSchema? ConvertToColumnSettingSchema(ColumnType columnType, string settings)
+    public static MondayDriverColumnSettingSchema ConvertToColumnSettingSchema(ColumnType columnType, JsonElement? settings)
     {
-        if (settings == null)
-        {
-            return MondayDriverColumnSettingSchema.Create();
-        }
-
         try
         {
+            if (settings == null)
+            {
+                return MondayDriverColumnSettingSchema.Create();
+            }
+
             // Try to parse        
+            MondayDriverColumnSettingSchema? result;
             switch (columnType)
             {
                 case ColumnType.Status:
-                    return JsonHelper.Deserialize<MondayDriverColumnStatusSettingSchema>(settings);
+                    result = JsonHelper.Deserialize<MondayDriverColumnStatusSettingSchema>(settings.Value);                    
+                    break;
+                case ColumnType.Dropdown:
+                    result = JsonHelper.Deserialize<MondayDriverColumnDropDownSettingSchema>(settings.Value);
+                    break;
                 default:
                     return MondayDriverColumnSettingSchema.Create();
+            }
+
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return MondayDriverColumnSettingSchema.Create();
             }
         }
         catch (Exception e)
